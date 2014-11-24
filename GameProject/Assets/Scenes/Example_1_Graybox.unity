@@ -7885,6 +7885,18 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 19900000, guid: 5e1f4fcc6849b0b459c8722e748b0bce, type: 2}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19900000, guid: 5e1f4fcc6849b0b459c8722e748b0bce, type: 2}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 5e1f4fcc6849b0b459c8722e748b0bce, type: 2}
+      propertyPath: explosionPrefab
+      value: 
+      objectReference: {fileID: 100000, guid: de044497bd85f4d9283612787102ccb0, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e1f4fcc6849b0b459c8722e748b0bce, type: 2}
   m_RootGameObject: {fileID: 821484813}
@@ -26159,6 +26171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 1
+  explosionPrefab: {fileID: 100000, guid: de044497bd85f4d9283612787102ccb0, type: 2}
 --- !u!58 &821484817
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -56703,8 +56716,8 @@ ParticleSystemRenderer:
   m_PrefabInternal: {fileID: 275342721}
   m_GameObject: {fileID: 1658861143}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
