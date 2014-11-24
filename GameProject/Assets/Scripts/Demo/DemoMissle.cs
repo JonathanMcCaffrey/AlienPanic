@@ -25,9 +25,14 @@ public class DemoMissle : MonoBehaviour {
 	}
 	
 	void OnCollisionEnter2D (Collision2D col) {
+		Health colliderHealth = col.gameObject.GetComponent<Health>();
+		if (colliderHealth) {
+			colliderHealth.ChangeHealth(-1);
+		}
+
 		if (col.gameObject.tag == "Player") {
 		//	col.transform.localScale = new Vector3 (0f, 0f, 1);
 			Destroy (gameObject);
-		}		
+		}
 	}
 }
