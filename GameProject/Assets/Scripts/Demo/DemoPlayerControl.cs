@@ -44,11 +44,10 @@ public class DemoPlayerControl : MonoBehaviour{
 	/// </summary>
 	void Update()
 	{
-		/// @TODO Replace Keyboard button with abstract 'fire' or 'ascend' button.
-		if (Input.GetKeyDown (KeyCode.Space)) {
+		if (Input.GetButtonDown ("Thrust")) {
 			movingUp = true;	
 		}
-		else if (Input.GetKeyUp (KeyCode.Space)) {
+		else if (Input.GetButtonUp ("Thrust")) {
 			movingUp = false;
 		}
 	}
