@@ -1,22 +1,27 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DemoPlayerControl : MonoBehaviour {
-	bool movingUp = false;
-	bool keyTouched = false;
+public class DemoPlayerControl : MonoBehaviour{
+	bool movingUp = false;		// Flag to indicate if the player is in a moving-up state.
+	float particleTimer = 0;	// Timer used to delay when the particles start / stop emitting.
 	
-	public ParticleSystem particleEngine = null;
+	public ParticleSystem particleEngine = null;		// Particle engine used for the spaceship's thruster.
+	public Vector3 maxSpeed = new Vector2(5.0f, 5.0f);	// Maximum speed for each dimension the player can travel in. Min speed is the negative of the max. Stored as a Vector2 for more convenient editing. 
+	public float levelCeiling = 19.5f;					// Max height / ceiling for the level. Used instead of lining the level with colliders.
+	public Vector2 thrustForce = new Vector2(10.0f, 200.0f); // Thrust forces that get applied to the ship. Horizontal force is always applied, vertical force is applied when the player is holding the ascend button.	
 	
-	float particleTimer = 0;
-	
-	void FixedUpdate() {
+	/// <summary>
+	/// Fixed update. Called a fixed number of times per second.
+	/// </summary>
+	void FixedUpdate()
+	{
 		particleTimer += Time.deltaTime;
 		
-		if (gameObject.transform.position.y < 19.5) {
+		if (gameObject.transform.position.y < levelCeiling) {
+			rigidbody2D.AddForce (new Vector2 (thrustForce.x, 0), ForceMode2D.Force);	// Add the horizontal force.
 			
 			if (movingUp) {
-				rigidbody2D.velocity = Vector2.zero;
-				rigidbody2D.AddForce (new Vector2 (275, 200), ForceMode2D.Force);
+				rigidbody2D.AddForce (new Vector2 (0, thrustForce.y), ForceMode2D.Force);	// Add the vertical force.
 				
 				if (particleTimer > 0.02f || (gameObject.transform.position.y > 10 && particleTimer > 0.01f)) {
 					particleTimer = 0.0f;
@@ -30,16 +35,22 @@ public class DemoPlayerControl : MonoBehaviour {
 			}
 		}
 		
+		// Ensure the player doesn't exceed the velocity constraints.
+		rigidbody2D.velocity = new Vector2(Mathf.Clamp(rigidbody2D.velocity.x, -maxSpeed.x, maxSpeed.x), Mathf.Clamp(rigidbody2D.velocity.y, -maxSpeed.y, maxSpeed.y));
 	}
 	
-	void Update() {
-		
+	/// <summary>
+	/// Update function. Called once per game tick.
+	/// </summary>
+	void Update()
+	{
+		/// @TODO Replace Keyboard button with abstract 'fire' or 'ascend' button.
 		if (Input.GetKeyDown (KeyCode.Space)) {
-			movingUp = true;
-			keyTouched = true;
+			movingUp = true;	
 		}
-		if (Input.GetKeyUp (KeyCode.Space)) {
+		else if (Input.GetKeyUp (KeyCode.Space)) {
 			movingUp = false;
 		}
 	}
+	
 }
