@@ -6,7 +6,11 @@ public class Parasite : MonoBehaviour {
 	public float thrashForce = 30.0f;	// Amount of force used when thrashing
 	public float attachDuration = 5.0f;	// Length of time the parasite stays attached to the host
 	private float timeAttached = 0.0f;	// Length of time the parasite has been attached to the current host.
-	private GameObject host = null;
+	private GameObject host = null;		// Host that the parasite is currently attached to.
+
+	private bool waitingToReattach = false;	// True if the parasite is waiting for the timer before re-attaching.
+	private float reattachWaitDuration = 1.0f;		// Time after detaching before the parasite can reattach.
+	private float reattachTimer = 0.0f;		// Amount of time elapsed since detaching from the last host.
 
 	public float secondsBetweenThrashes = 1.0f;	// Number of seconds between thrashes
 	private float thrashTimer = 0.0f;
@@ -20,6 +24,14 @@ public class Parasite : MonoBehaviour {
 			timeAttached += Time.deltaTime;
 			if (timeAttached >= attachDuration) {
 				DetachFromHost();
+			}
+		}
+
+		if (waitingToReattach) {
+			reattachTimer += Time.deltaTime;
+			if (reattachTimer >= reattachWaitDuration) {
+				waitingToReattach = false;
+				reattachTimer = 0.0f;
 			}
 		}
 	}
@@ -48,6 +60,11 @@ public class Parasite : MonoBehaviour {
 	/// </summary>
 	/// <param name="host">Host.</param>
 	void AttachToHost(GameObject host) {
+		// Prevent the parasite from re-attaching too quickly.
+		if (waitingToReattach) {
+			return;
+		}
+
 		this.host = host;
 		transform.parent = host.transform;
 		timeAttached = 0.0f;
@@ -60,9 +77,12 @@ public class Parasite : MonoBehaviour {
 	void DetachFromHost() {
 		if (host) {
 			transform.parent = null;
-			this.host = null;
+			host = null;
 			timeAttached = 0.0f;
 			thrashTimer = 0.0f;
+
+			waitingToReattach = true;
+			reattachTimer = 0.0f;
 		}
 	}
 
