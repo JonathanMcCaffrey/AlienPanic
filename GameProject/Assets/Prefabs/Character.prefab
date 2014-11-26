@@ -169,9 +169,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particleEngine: {fileID: 19800000}
-  maxSpeed: {x: 30, y: 5, z: 0}
+  maxSpeed: {x: 25, y: 5, z: 0}
   levelCeiling: 19.5
-  thrustForce: {x: 3, y: 200}
+  thrustForce: {x: 3, y: 150}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
