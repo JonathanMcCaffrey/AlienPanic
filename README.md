@@ -10,7 +10,7 @@ The **Scene conflicts** will always be there if multiple developers are working 
 
 #### MARKDOWNS FOR THIS README #####
 Please use the proper markdown guidelines for adding anything to this readme to make it easy for readers.
-To learn about markdowns please visit the [Markdowns Demo] (https://bitbucket.org/tutorials/markdowndemo) section by Bitbucket.
+To learn about markdowns please visit the [Markdowns Demo](https://bitbucket.org/tutorials/markdowndemo) section by Bitbucket.
 
 ***
 
