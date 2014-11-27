@@ -7,6 +7,11 @@ This README section identifies developer notes for developing this game. Please 
 The **Scene conflicts** will always be there if multiple developers are working on the same scene.  
 **Solution 1:** Please create prefabs as much as possible or else data will be lost (depending on what you choose to resolve conflicts).  
 **Solution 2:** Make sure you modify scene stuff after you rebase / merge your local copy just before committing and pushing to master (if possible).  
+**Solution 3:** Creating two pushes to master. (If nothing works)  
+- Push all your changes except scene file to master branch.  
+- Rebase / Merge your local copy, fix/add scene changes.  
+- Push scene file to master branch. (This will be notified as 'Merge with conflicts')  
+**Solution 4:** Create a copy of the scene and make your changes there and then copy stuff from the new scene to original scene after you have rebased your local copy from the repository.
 
 #### MARKDOWNS FOR THIS README #####
 Please use the proper markdown guidelines for adding anything to this readme to make it easy for readers.  
