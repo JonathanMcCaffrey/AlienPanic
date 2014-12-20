@@ -36,7 +36,6 @@ public class CameraTracking : MonoBehaviour {
 			return null;
 		}
 		
-		
 		return quadrants [quadrant].transform;
 	}
 	
@@ -115,11 +114,10 @@ public class CameraTracking : MonoBehaviour {
 			if(isTransitioning) { return; } 
 			
 			SetCameraY(CurrentQuadrant * QuadHeight() + cameraOffsetY);
-			
 		}
 	}
 	
-	void QuadrantDisplay () {
+	void RefreshQuadrantDisplay () {
 		var quadList = quadrantContainer.GetComponentsInChildren<CameraQuadrant> ();
 		quadrants.Clear ();
 		int quadIndex = 0;
@@ -134,7 +132,7 @@ public class CameraTracking : MonoBehaviour {
 		}
 	}
 	
-	void ThresholdDisplay () {
+	void RefreshThresholdDisplay () {
 		if (thresholdDisplay) {
 			if (quadrants.Count >= 2) {
 				var y = (quadrants [0].transform.localPosition.y + quadrants [1].transform.localPosition.y) / 2.0f;
@@ -151,8 +149,8 @@ public class CameraTracking : MonoBehaviour {
 	//TODO Add debug wrapper
 	public void OnDrawGizmos() {
 		if (defaultQuadrant) {
-			QuadrantDisplay ();
-			ThresholdDisplay ();
+			RefreshQuadrantDisplay ();
+			RefreshThresholdDisplay ();
 		}
 	}
 }
