@@ -6,7 +6,7 @@ public class ButtonPlayGame : MonoBehaviour {
 	
 	
 	public void onClick() {
-		Application.LoadLevel ("Example_1_Graybox");
+		Application.LoadLevel ("Level_1");
 		//TODO Goto first level. replace later with goto level select
 	}
 }

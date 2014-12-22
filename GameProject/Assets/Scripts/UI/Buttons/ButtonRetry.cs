@@ -4,7 +4,7 @@ using System.Collections;
 public class ButtonRetry : MonoBehaviour {
 
 	public void onClick() {
-		Application.LoadLevel ("Example_1_Graybox");
+		Application.LoadLevel ("Level_1");
 		//TODO Reset Logic
 	}
 }

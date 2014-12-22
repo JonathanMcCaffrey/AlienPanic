@@ -6,21 +6,23 @@ using UnityEditor;
 [CanEditMultipleObjects]
 public class CameraTrackingUnity : Editor {
 	
+	SerializedProperty cameraOffsetY;
 	SerializedProperty defaultQuadrant;
 	SerializedProperty quadrantContainer;
 	SerializedProperty distanceThreshold;
 	SerializedProperty startY;
-	
+
 	SerializedProperty quadrants;
 	
 	SerializedProperty thresholdDisplay;
 	
 	void OnEnable() {
+		cameraOffsetY = serializedObject.FindProperty ("cameraOffsetY");
 		defaultQuadrant = serializedObject.FindProperty ("defaultQuadrant");
 		quadrantContainer = serializedObject.FindProperty ("quadrantContainer");
 		distanceThreshold = serializedObject.FindProperty ("distanceThreshold");
 		startY = serializedObject.FindProperty ("startY");
-		
+
 		quadrants = serializedObject.FindProperty ("quadrants");
 		
 		thresholdDisplay = serializedObject.FindProperty ("thresholdDisplay");
@@ -44,6 +46,7 @@ public class CameraTrackingUnity : Editor {
 			
 			serializedObject.ApplyModifiedProperties ();
 		} else {
+			EditorGUILayout.PropertyField (cameraOffsetY, true);
 			EditorGUILayout.PropertyField (distanceThreshold, new GUIContent("Threshold"), true, null);
 			EditorGUILayout.PropertyField (startY, true);
 			

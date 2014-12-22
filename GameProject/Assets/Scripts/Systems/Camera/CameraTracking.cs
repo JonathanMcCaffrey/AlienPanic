@@ -14,7 +14,7 @@ public class CameraTracking : MonoBehaviour {
 	public float startY = 0;
 	
 	//TODO Add this to editor interface?
-	public float cameraOffsetY = -1.5f;
+	public float cameraOffsetY = 1.49f;
 	public float cameraOffsetX = 6.2f;
 	
 	
