@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ButtonPlay : MonoBehaviour {
+public class ButtonResume : MonoBehaviour {
 	public GameObject pauseMenu = null;
 	
 	public void onClick() {

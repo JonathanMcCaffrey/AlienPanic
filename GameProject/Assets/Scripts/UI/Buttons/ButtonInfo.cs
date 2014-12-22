@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ButtonHelp : MonoBehaviour {
-
+public class ButtonInfo : MonoBehaviour {
+	
 	public void onClick() {
-		//TODO Any tutorial content
+		//TODO Info and credits
 	}
 }
