@@ -11,7 +11,10 @@ using System.Xml.Serialization;
 public class AssetPlacementPositionSystem : MonoBehaviour {
 	public float xPosition = 0;
 	public float yPosition = 0;
-
+	
+	public float adjustX = 0;
+	public float adjustY = 0;
+	
 	public static Vector3 selectedPosition = Vector3.zero;
 	
 	public GameObject marker = null;
@@ -30,7 +33,7 @@ public class AssetPlacementPositionSystem : MonoBehaviour {
 	}
 	
 	Vector3 FindPlacementPosition () {
-		Vector2 fixedPos = new Vector2 (Event.current.mousePosition.x, -Event.current.mousePosition.y + Screen.height);
+		Vector2 fixedPos = new Vector2 (Event.current.mousePosition.x + adjustX, -Event.current.mousePosition.y + Screen.height + adjustY);
 		var ray = Camera.current.ScreenPointToRay (fixedPos);
 		Vector3 position = ray.GetPoint (distance);
 		xPosition = position.x;

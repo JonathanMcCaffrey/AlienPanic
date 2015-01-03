@@ -1,0 +1,157 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &100000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400000}
+  - 212: {fileID: 21200000}
+  m_Layer: 0
+  m_Name: AssetPlacementPositionMarkerDebug
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &100002
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400002}
+  - 114: {fileID: 11400004}
+  - 114: {fileID: 11400002}
+  m_Layer: 0
+  m_Name: AssetPlacementSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &400000
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -34.4871902, y: 7.53650475, z: -67.0625}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 400002}
+  m_RootOrder: 0
+--- !u!4 &400002
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100002}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.96876049, y: 14.4988976, z: -.794155121}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 400000}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &11400002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4a77163c97c4cc49aa3a1a0a51ba556, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  autoSetGrid: 1
+  selectedKey: 49
+  assetList:
+  - filePath: C:/Users/Jonathan/Desktop/testBranch/GameProject/Assets/Resources/PlacementAssets\Floors\Floor_MetalRock1.prefab
+    name: Floors\Floor_MetalRock1.prefab
+    tab: Floors
+    keyCode: 49
+    gameObject: {fileID: 100008, guid: f593bbbeae52c904295ffb6c81edb63a, type: 2}
+  - filePath: C:/Users/Jonathan/Desktop/testBranch/GameProject/Assets/Resources/PlacementAssets\Floors\Floor_MetalRock2.prefab
+    name: Floors\Floor_MetalRock2.prefab
+    tab: Floors
+    keyCode: 50
+    gameObject: {fileID: 100002, guid: aa224eb9643969b4da016bfe5d34a226, type: 2}
+  - filePath: C:/Users/Jonathan/Desktop/testBranch/GameProject/Assets/Resources/PlacementAssets\Floors\Floor_Rock
+      1.prefab
+    name: Floors\Floor_Rock 1.prefab
+    tab: Floors
+    keyCode: 51
+    gameObject: {fileID: 100000, guid: 70cf0bacf4e682d4f8162422c27393e7, type: 2}
+  - filePath: C:/Users/Jonathan/Desktop/testBranch/GameProject/Assets/Resources/PlacementAssets\Floors\Floor_Rock.prefab
+    name: Floors\Floor_Rock.prefab
+    tab: Floors
+    keyCode: 52
+    gameObject: {fileID: 100016, guid: a330b0354f021344aaec2e91f350f6cd, type: 2}
+  - filePath: C:/Users/Jonathan/Desktop/testBranch/GameProject/Assets/Resources/PlacementAssets\Floors\Floor_RockGrateR.prefab
+    name: Floors\Floor_RockGrateR.prefab
+    tab: Floors
+    keyCode: 53
+    gameObject: {fileID: 100016, guid: a330b0354f021344aaec2e91f350f6cd, type: 2}
+  - filePath: C:/Users/Jonathan/Desktop/testBranch/GameProject/Assets/Resources/PlacementAssets\Floors\Ramp_MetalRock1.prefab
+    name: Floors\Ramp_MetalRock1.prefab
+    tab: Floors
+    keyCode: 54
+    gameObject: {fileID: 100002, guid: 9efe17b9b1e69d04b953c7440d518b18, type: 2}
+--- !u!114 &11400004
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 184509811b517c1459523e7d180c54f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xPosition: -34.4871902
+  yPosition: 7.53650475
+  adjustX: 40
+  adjustY: -192.789993
+  marker: {fileID: 100000}
+  distance: 10
+  isMarkerActive: 1
+--- !u!212 &21200000
+SpriteRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 9370544a90c24c649a07cde4c894f173, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 100002}
+  m_IsPrefabParent: 1
+  m_IsExploded: 1

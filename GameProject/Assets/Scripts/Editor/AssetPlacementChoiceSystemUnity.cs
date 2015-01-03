@@ -21,6 +21,9 @@ public class AssetPlacementChoiceSystemUnity : Editor {
 		
 		GUILayout.Label ("Asset Count: " + assetList.arraySize.ToString ());
 		
+		GUILayout.Label ("Selected Key: " +((KeyCode)selectedKey.intValue).ToString ());
+		
+		
 		for (int index = 0; index < assetList.arraySize; index++) {
 			EditorGUILayout.BeginVertical();
 			EditorGUILayout.PropertyField (assetList.GetArrayElementAtIndex(index), true);
@@ -29,6 +32,7 @@ public class AssetPlacementChoiceSystemUnity : Editor {
 		
 		if (keyValue != -1) {
 			selectedKey.intValue = keyValue;
+			
 		}
 		
 		serializedObject.ApplyModifiedProperties ();

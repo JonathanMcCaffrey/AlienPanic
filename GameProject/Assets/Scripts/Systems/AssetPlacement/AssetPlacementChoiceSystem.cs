@@ -87,8 +87,10 @@ public class AssetPlacementChoiceSystem : MonoBehaviour {
 	
 	bool once = true;
 	public void OnDrawGizmos() {
+		instance = this;
+		
 		if (once) {
-			instance = this;
+			
 			once = false;
 			//TODO Make this a button
 			//assetList.Clear();
@@ -98,11 +100,7 @@ public class AssetPlacementChoiceSystem : MonoBehaviour {
 		//TODO Tabbing
 		foreach (AssetPlacementData data in assetList) {
 			
-			Debug.Log("This Code: " +data.keyCode);
-			Debug.Log("Other Code: " +(KeyCode)selectedKey);
-			
 			if (data.keyCode == (KeyCode)selectedKey) {
-				Debug.Log (data.name);
 				selectedAsset = data;
 			}
 		}

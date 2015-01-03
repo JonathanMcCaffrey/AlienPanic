@@ -11,6 +11,10 @@ public class AssetPlacementPositionSystemUnity : Editor {
 	SerializedProperty yPosition;
 	SerializedProperty distance;
 	
+	SerializedProperty adjustX;
+	SerializedProperty adjustY;
+	
+	
 	SerializedProperty isMarkerActive;
 	
 	void OnEnable() {
@@ -18,9 +22,13 @@ public class AssetPlacementPositionSystemUnity : Editor {
 		xPosition = serializedObject.FindProperty ("xPosition");
 		yPosition = serializedObject.FindProperty ("yPosition");
 		distance = serializedObject.FindProperty ("distance");
+		
+		adjustX = serializedObject.FindProperty ("adjustX");
+		adjustY = serializedObject.FindProperty ("adjustY");
+		
 		isMarkerActive = serializedObject.FindProperty ("isMarkerActive");
 	}
-
+	
 	bool notReady() {
 		return !marker.objectReferenceValue;
 	}
@@ -34,7 +42,10 @@ public class AssetPlacementPositionSystemUnity : Editor {
 			
 			GUILayout.Label ("Position [X: " + xPosition.floatValue + " Y: " + yPosition.floatValue + "]");
 			
-			//EditorGUILayout.PropertyField (distance, true);
+			EditorGUILayout.PropertyField (distance, true);
+			
+			EditorGUILayout.PropertyField (adjustX, true);
+			EditorGUILayout.PropertyField (adjustY, true);
 			
 			EditorGUILayout.PropertyField (isMarkerActive, true);
 		}
