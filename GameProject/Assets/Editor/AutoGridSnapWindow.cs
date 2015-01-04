@@ -27,9 +27,9 @@ public class AutoGridSnapWindow : EditorWindow
     {
         // Allow for on the fly value changes
 	    EditorPrefs.SetBool("AutoGridSnap.doSnap", EditorGUILayout.Toggle( "Auto Snap", EditorPrefs.GetBool("AutoGridSnap.doSnap", false)));
-	    EditorPrefs.SetFloat("AutoGridSnap.MoveSnapX", EditorGUILayout.FloatField( "X Snap Value", EditorPrefs.GetFloat("AutoGridSnap.MoveSnapX", 1.0f)));
-		EditorPrefs.SetFloat("AutoGridSnap.MoveSnapY", EditorGUILayout.FloatField( "Y Snap Value", EditorPrefs.GetFloat("AutoGridSnap.MoveSnapY", 1.0f)));
-		EditorPrefs.SetFloat("AutoGridSnap.MoveSnapZ", EditorGUILayout.FloatField( "Z Snap Value", EditorPrefs.GetFloat("AutoGridSnap.MoveSnapZ", 1.0f)));
+		EditorPrefs.SetFloat (AutoGridSnap.MoveSnapXKey, EditorGUILayout.FloatField ("X Snap Value", EditorPrefs.GetFloat (AutoGridSnap.MoveSnapXKey, 1.0f)));
+		EditorPrefs.SetFloat (AutoGridSnap.MoveSnapYKey, EditorGUILayout.FloatField ("Y Snap Value", EditorPrefs.GetFloat (AutoGridSnap.MoveSnapYKey, 1.0f)));
+		EditorPrefs.SetFloat (AutoGridSnap.MoveSnapZKey, EditorGUILayout.FloatField ("Z Snap Value", EditorPrefs.GetFloat (AutoGridSnap.MoveSnapZKey, 1.0f)));
 		EditorPrefs.SetFloat("AutoGridSnap.RotationSnap", EditorGUILayout.FloatField( "Rotate Snap", EditorPrefs.GetFloat("AutoGridSnap.RotationSnap", 45.0f)));
 	}
 }

@@ -27,7 +27,6 @@ public class ButtonSmallIconUnity : Editor {
 		iconSprite = serializedObject.FindProperty ("iconSprite");
 		backgroundColor = serializedObject.FindProperty ("backgroundColor");
 		onButtonClick = serializedObject.FindProperty ("onButtonClick");
-		
 	}
 	
 	bool notReady() {
