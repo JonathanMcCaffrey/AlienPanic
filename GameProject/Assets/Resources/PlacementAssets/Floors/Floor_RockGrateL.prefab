@@ -146,7 +146,7 @@ GameObject:
   - 4: {fileID: 400016}
   - 61: {fileID: 6100000}
   m_Layer: 0
-  m_Name: Floor_Rock 1
+  m_Name: Floor_RockGrateL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

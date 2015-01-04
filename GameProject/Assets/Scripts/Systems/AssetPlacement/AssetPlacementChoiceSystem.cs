@@ -19,19 +19,19 @@ public class AssetPlacementChoiceSystem : MonoBehaviour {
 	public static AssetPlacementData selectedAsset = null; 
 	
 	public List<AssetPlacementData> assetList = new List<AssetPlacementData>(); 
-	public List<AssetPlacementData> AssetList {
-		get { return assetList; }
-	}
 	
-	//TODO Adding the tabbing interface
-	private List<TabPlacementData> tabList = new List<TabPlacementData>();
-	public List<TabPlacementData> TabList {
-		get { return tabList; }
-	}
 	
-	private string folderName = "Resources/PlacementAssets";
+	public List<TabPlacementData> tabList = new List<TabPlacementData>();
+	public List<string> tabListRawNames = new List<string>();
+	
+	//TODO Cleanup tabbing use
+	public string selectedTabString = "";
+	public int selectedTabNumber = 0;
+	
+	
+	private string folderName = "Resources\\PlacementAssets";
 	private string FolderPath() { 		
-		return Application.dataPath + "/" + folderName;
+		return Application.dataPath + "\\" + folderName;
 	}
 	
 	public static AssetPlacementChoiceSystem instance = null;
@@ -45,10 +45,12 @@ public class AssetPlacementChoiceSystem : MonoBehaviour {
 	}
 	
 	void LoadTabs () {
+		tabListRawNames.Clear ();
 		var tabPaths = Directory.GetDirectories (FolderPath ());
 		foreach (var filePath in tabPaths) {
 			var name = filePath.Remove (0, FolderPath ().Length + 1);
 			tabList.Add (new TabPlacementData(filePath, name));
+			tabListRawNames.Add (name);
 		}
 	}
 	
@@ -59,18 +61,12 @@ public class AssetPlacementChoiceSystem : MonoBehaviour {
 				var filePaths = Directory.GetFiles (tabData.FilePath);
 				foreach (string filePath in filePaths) {
 					var name = filePath.Remove (0, FolderPath ().Length + 1);
+					var localPath = "Assets\\" + filePath.Remove (0, FolderPath ().Length - folderName.Length);
+					
 					if (name.EndsWith (".prefab")) {
-						var assetData = new AssetPlacementData (filePath, name, tabData.name);
+						var assetData = new AssetPlacementData (localPath, name, tabData.name);
 						assetList.Add (assetData);
-						
-						/* //TODO Find some way to dynamically set this (gameObject)
-						var path = "PlacementAssets\\" + name;
-						path = path.Remove(path.Length - 7,7); 
-						assetData.gameObject = Resources.Load<GameObject>(path) as GameObject;
-						if(assetData.gameObject) {Debug.Log("Worked");}
-						
-						Debug.Log(path);
-						*/}
+					}
 				}
 			}
 		}
@@ -90,18 +86,17 @@ public class AssetPlacementChoiceSystem : MonoBehaviour {
 		instance = this;
 		
 		if (once) {
-			
 			once = false;
-			//TODO Make this a button
+			//TODO Make a resest button
 			//assetList.Clear();
 			LoadData();
 		}
 		
-		//TODO Tabbing
 		foreach (AssetPlacementData data in assetList) {
-			
-			if (data.keyCode == (KeyCode)selectedKey) {
-				selectedAsset = data;
+			if(data.tab == selectedTabString) {
+				if (data.keyCode == (KeyCode)selectedKey) {
+					selectedAsset = data;
+				}
 			}
 		}
 	}
