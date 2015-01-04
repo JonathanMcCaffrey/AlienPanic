@@ -2107,8 +2107,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 184509811b517c1459523e7d180c54f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xPosition: 11.7042561
-  yPosition: 5.20919228
+  xPosition: 10.7601595
+  yPosition: 4.6258297
   adjustX: 40
   adjustY: -192.789993
   marker: {fileID: 1379116132}
@@ -7595,7 +7595,7 @@ Transform:
   m_PrefabInternal: {fileID: 2033827533}
   m_GameObject: {fileID: 1379116132}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.7042561, y: 5.20919228, z: -37.67276}
+  m_LocalPosition: {x: 10.7601595, y: 4.6258297, z: -38.4743423}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 376060166}
@@ -10953,15 +10953,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: be072fcbbdf8bf54b92f2b3f54afb0b6, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 11.7042561
+      value: 10.7601595
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: be072fcbbdf8bf54b92f2b3f54afb0b6, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 5.20919228
+      value: 4.6258297
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: be072fcbbdf8bf54b92f2b3f54afb0b6, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -37.67276
+      value: -38.4743423
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400002, guid: be072fcbbdf8bf54b92f2b3f54afb0b6, type: 2}

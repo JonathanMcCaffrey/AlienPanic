@@ -10,28 +10,25 @@ using System.Xml.Serialization;
 
 
 public class AssetPlacementChoiceSystem : MonoBehaviour {
-	public enum GridSpacing { Vertical, Horizontal }
-	
-	public bool autoSetGrid = true;
-	private GridSpacing gridStack = GridSpacing.Horizontal;
+	public bool shouldReset = false;
 	
 	public int selectedKey = (int)KeyCode.None;
 	public static AssetPlacementData selectedAsset = null; 
 	
 	public List<AssetPlacementData> assetList = new List<AssetPlacementData>(); 
-	
-	
 	public List<TabPlacementData> tabList = new List<TabPlacementData>();
-	public List<string> tabListRawNames = new List<string>();
 	
-	//TODO Cleanup tabbing use
-	public string selectedTabString = "";
+	public TabPlacementData selectedTab = null;
 	public int selectedTabNumber = 0;
-	
 	
 	private string folderName = "Resources\\PlacementAssets";
 	private string FolderPath() { 		
 		return Application.dataPath + "\\" + folderName;
+	}
+	
+	static private Dictionary<string, GameObject> tabContainerDictionary = new Dictionary<string, GameObject> (); 
+	static public Dictionary<string, GameObject> TabContainerDictionary {
+		get { return tabContainerDictionary; }
 	}
 	
 	public static AssetPlacementChoiceSystem instance = null;
@@ -44,26 +41,26 @@ public class AssetPlacementChoiceSystem : MonoBehaviour {
 		}
 	}
 	
+	//TODO Refactor and put this a seperate utility class: AssetLoading
 	void LoadTabs () {
-		tabListRawNames.Clear ();
 		var tabPaths = Directory.GetDirectories (FolderPath ());
 		foreach (var filePath in tabPaths) {
 			var name = filePath.Remove (0, FolderPath ().Length + 1);
 			tabList.Add (new TabPlacementData(filePath, name));
-			tabListRawNames.Add (name);
 		}
 	}
 	
-	void LoadAssets (){
+	//TODO Refactor and put this a seperate utility class: AssetLoading
+	void LoadAssets (string searchedExtension = ".prefab"){
 		//TODO Make a less placeholderish check for this logic. like a reset button thing
 		if (assetList.Count == 0) {
 			foreach (TabPlacementData tabData in tabList) {
-				var filePaths = Directory.GetFiles (tabData.FilePath);
+				var filePaths = Directory.GetFiles (tabData.filePath);
 				foreach (string filePath in filePaths) {
 					var name = filePath.Remove (0, FolderPath ().Length + 1);
 					var localPath = "Assets\\" + filePath.Remove (0, FolderPath ().Length - folderName.Length);
 					
-					if (name.EndsWith (".prefab")) {
+					if (name.EndsWith (searchedExtension)) {
 						var assetData = new AssetPlacementData (localPath, name, tabData.name);
 						assetList.Add (assetData);
 					}
@@ -81,19 +78,33 @@ public class AssetPlacementChoiceSystem : MonoBehaviour {
 		LoadAssets ();
 	}
 	
-	bool once = true;
-	public void OnDrawGizmos() {
-		instance = this;
-		
-		if (once) {
-			once = false;
-			//TODO Make a resest button
-			//assetList.Clear();
-			LoadData();
+	void WipeData () {
+		assetList.Clear ();
+		tabList.Clear ();
+	}
+	
+	void RefreshTabContainers () {
+		string mainContainerName = "PlacedAssets";
+		var placedAssetsContainer = GameObject.Find (mainContainerName);
+		if (!placedAssetsContainer) {
+			placedAssetsContainer = new GameObject (mainContainerName);
 		}
 		
+		tabContainerDictionary.Clear ();
+		foreach (var tab in tabList) {
+			var tabContainerName = mainContainerName + "." + tab.name;
+			var tabContainer = GameObject.Find (tabContainerName);
+			if (!tabContainer) {
+				tabContainer = new GameObject (tabContainerName);
+			}
+			tabContainer.transform.parent = placedAssetsContainer.transform;
+			tabContainerDictionary.Add(tab.name, tabContainer);
+		}
+	}
+	
+	void UpdateSelectedAsset () {
 		foreach (AssetPlacementData data in assetList) {
-			if(data.tab == selectedTabString) {
+			if (selectedTab != null && data.tab == selectedTab.name) {
 				if (data.keyCode == (KeyCode)selectedKey) {
 					selectedAsset = data;
 				}
@@ -101,4 +112,16 @@ public class AssetPlacementChoiceSystem : MonoBehaviour {
 		}
 	}
 	
+	public void OnDrawGizmos() {
+		instance = this;
+		
+		if (shouldReset) {
+			shouldReset = false;
+			WipeData ();
+			LoadData();
+			RefreshTabContainers ();
+		}
+		
+		UpdateSelectedAsset ();
+	}
 }

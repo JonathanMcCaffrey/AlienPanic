@@ -6,37 +6,44 @@ using System.Collections.Generic;
 [CustomEditor(typeof(AssetPlacementChoiceSystem))]
 [CanEditMultipleObjects]
 public class AssetPlacementChoiceSystemUnity : Editor {	
-	SerializedProperty assetList;
-	SerializedProperty selectedKey;
-	
-	//TODO Use tab data instead of split data
-	SerializedProperty selectedTabString;
-	SerializedProperty selectedTabNumber;
-	
-	//TODO Do something as with asset list, and use tabs instead of raw names
-	SerializedProperty tabListRawNames;
+	SerializedProperty assetList = null;
+	SerializedProperty tabList = null;
+	SerializedProperty selectedKey = null;
+	SerializedProperty selectedTab = null;
+	SerializedProperty selectedTabNumber = null;
+	SerializedProperty shouldReset = null;
 	
 	int keyValue = -1;
 	
 	void OnEnable() {
 		assetList = serializedObject.FindProperty ("assetList");
+		tabList = serializedObject.FindProperty ("tabList");
 		selectedKey = serializedObject.FindProperty ("selectedKey");
-		
-		selectedTabString = serializedObject.FindProperty ("selectedTabString");
+		selectedTab = serializedObject.FindProperty ("selectedTab");
 		selectedTabNumber = serializedObject.FindProperty ("selectedTabNumber");
-		
-		tabListRawNames = serializedObject.FindProperty ("tabListRawNames");
+		shouldReset = serializedObject.FindProperty ("shouldReset");
 	}
 	
 	void CreateTabSelection () {
 		List<string> extractedTabNameList = new List<string> ();
-		for (int index = 0; index < tabListRawNames.arraySize; index++) {
-			extractedTabNameList.Add (tabListRawNames.GetArrayElementAtIndex (index).stringValue);
+		for (int index = 0; index < tabList.arraySize; index++) {
+			extractedTabNameList.Add (tabList.GetArrayElementAtIndex (index).FindPropertyRelative("name").stringValue);
 		}
 		
 		if (extractedTabNameList.Count > 0) {
+
 			selectedTabNumber.intValue = GUILayout.SelectionGrid (selectedTabNumber.intValue, extractedTabNameList.ToArray(), extractedTabNameList.Count);
-			selectedTabString.stringValue = extractedTabNameList [selectedTabNumber.intValue];
+			serializedObject.ApplyModifiedProperties();
+
+			selectedTab.serializedObject.Update ();
+
+			selectedTab.FindPropertyRelative("name").stringValue = tabList.GetArrayElementAtIndex(selectedTabNumber.intValue).FindPropertyRelative("name").stringValue;
+			selectedTab.FindPropertyRelative("filePath").stringValue = tabList.GetArrayElementAtIndex(selectedTabNumber.intValue).FindPropertyRelative("filePath").stringValue;
+			selectedTab.FindPropertyRelative("number").intValue = tabList.GetArrayElementAtIndex(selectedTabNumber.intValue).FindPropertyRelative("number").intValue;
+
+			selectedTab.serializedObject.ApplyModifiedProperties();
+
+			serializedObject.Update ();
 		}
 	}
 	
@@ -44,7 +51,7 @@ public class AssetPlacementChoiceSystemUnity : Editor {
 		for (int index = 0; index < assetList.arraySize; index++) {
 			var tabName = assetList.GetArrayElementAtIndex (index).FindPropertyRelative("tab").stringValue;
 			
-			if(string.Compare(tabName, selectedTabString.stringValue) == 0) {
+			if(selectedTab != null && tabName == selectedTab.FindPropertyRelative("name").stringValue) {
 				EditorGUILayout.BeginVertical ();
 				EditorGUILayout.PropertyField (assetList.GetArrayElementAtIndex (index), true);
 				
@@ -67,6 +74,12 @@ public class AssetPlacementChoiceSystemUnity : Editor {
 		}
 	}
 	
+	void CreateResetButton () {
+		if (GUILayout.Button ("Reset")) {
+			shouldReset.boolValue = true;
+		}
+	}
+	
 	public override void OnInspectorGUI() {
 		serializedObject.Update ();
 		
@@ -75,6 +88,7 @@ public class AssetPlacementChoiceSystemUnity : Editor {
 		
 		CreateTabSelection ();
 		CreateAssetSelection ();
+		CreateResetButton ();
 		
 		UpdateSelectedKey ();
 		
@@ -82,7 +96,6 @@ public class AssetPlacementChoiceSystemUnity : Editor {
 	}
 	
 	public void OnSceneGUI() {
-		//TODO Tabbing
 		if (Event.current.keyCode != KeyCode.None) {
 			keyValue  = (int)Event.current.keyCode;
 		}

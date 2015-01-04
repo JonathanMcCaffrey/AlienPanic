@@ -5,7 +5,6 @@ using UnityEditor;
 [CustomEditor(typeof(AssetPlacementPositionSystem))]
 [CanEditMultipleObjects]
 public class AssetPlacementPositionSystemUnity : Editor {
-	
 	SerializedProperty marker;
 	SerializedProperty xPosition;
 	SerializedProperty yPosition;
@@ -13,8 +12,7 @@ public class AssetPlacementPositionSystemUnity : Editor {
 	
 	SerializedProperty adjustX;
 	SerializedProperty adjustY;
-	
-	
+
 	SerializedProperty isMarkerActive;
 	
 	void OnEnable() {
@@ -39,7 +37,6 @@ public class AssetPlacementPositionSystemUnity : Editor {
 		if (notReady ()) {
 			EditorGUILayout.PropertyField (marker, true);
 		} else {
-			
 			GUILayout.Label ("Position [X: " + xPosition.floatValue + " Y: " + yPosition.floatValue + "]");
 			
 			EditorGUILayout.PropertyField (distance, true);
