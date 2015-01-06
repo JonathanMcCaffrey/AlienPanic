@@ -4,12 +4,15 @@ using System.Collections;
 public class Score : MonoBehaviour {
 	
 	// Score
-	private int score;
+	private int currentScore;
 	
 	// High Score
 	private int highScore;
-	
-	// The key for saving with PlayerPrefs
+
+	// The key for saving HighScore with PlayerPrefs
+	private string currentScoreKey = "currentScore";
+
+	// The key for saving HighScore with PlayerPrefs
 	private string highScoreKey = "highScore";
 	
 	// Use this for initialization
@@ -20,16 +23,16 @@ public class Score : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		// If the Score is higher than the High Score
-		if (highScore < score) {
-			highScore = score;
+		if (highScore < currentScore) {
+			highScore = currentScore;
 		}
 	}
 	
 	// Return to the original game state
 	private void Initialize () {
 		
-		// Set the score to 0
-		score = 0;
+		// Retrieve the current score.  If it can't be received, use zero
+		highScore = PlayerPrefs.GetInt (currentScoreKey, 0);
 		
 		// Retrieve the high score.  If it can't be received, use zero
 		highScore = PlayerPrefs.GetInt (highScoreKey, 0);
@@ -37,11 +40,15 @@ public class Score : MonoBehaviour {
 	
 	// Adding points
 	public void AddPoint (int point) {
-		score = score + point;
+		currentScore = currentScore + point;
 	}
 	
 	// Saving the High Score
 	public void Save (){
+
+		// Save the current score
+		PlayerPrefs.SetInt (currentScoreKey, highScore);
+		PlayerPrefs.Save ();
 		
 		// Save the high score
 		PlayerPrefs.SetInt (highScoreKey, highScore);
