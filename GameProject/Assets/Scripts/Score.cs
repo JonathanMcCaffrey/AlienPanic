@@ -2,6 +2,8 @@
 using System.Collections;
 
 public class Score : MonoBehaviour {
+
+	public static Score instance = null;
 	
 	// Score
 	private int currentScore;
@@ -14,6 +16,19 @@ public class Score : MonoBehaviour {
 
 	// The key for saving HighScore with PlayerPrefs
 	private string highScoreKey = "highScore";
+
+	void Awake () {
+		if (instance) {
+			//Destroy (gameObject);
+		} else {
+			
+			/*Debug.Log("Additional Player Deleted");
+
+			DontDestroyOnLoad(gameObject);*/
+			
+			instance = this;
+		}
+	}
 	
 	// Use this for initialization
 	void Start () {
@@ -25,6 +40,7 @@ public class Score : MonoBehaviour {
 		// If the Score is higher than the High Score
 		if (highScore < currentScore) {
 			highScore = currentScore;
+			SaveHighScore ();
 		}
 	}
 	
@@ -36,6 +52,8 @@ public class Score : MonoBehaviour {
 		
 		// Retrieve the high score.  If it can't be received, use zero
 		highScore = PlayerPrefs.GetInt (highScoreKey, 0);
+		
+		Debug.Log ("Loaded highscore: " + highScore);
 	}
 	
 	// Adding points
@@ -57,14 +75,29 @@ public class Score : MonoBehaviour {
 		// Return to the original game state
 		Initialize ();
 	}
+
+	public void SaveHighScore () {
+
+		Debug.Log ("Saving highscore: " + highScore);
+
+		PlayerPrefs.SetInt (highScoreKey, highScore);
+		PlayerPrefs.Save ();
+	}
+
+	//Clear the score (to be used during a game reset or end)
+	public void ResetScore () {
+		currentScore = 0;
+		SaveHighScore ();
+		Initialize ();
+	}
 	
 	void OnGUI() {
 		// Render the GUI.
 		GUI.Box(new Rect(350, 10, 100, 40), "High Score");
-		GUI.Label (new Rect(395, 30, 150, 20), string.Format ("{0:0}", highScore));
+		GUI.Label (new Rect(395, 30, 150, 20), string.Format ("{0}", highScore));
 		
 		GUI.Box(new Rect(600, 10, 100, 40), "Score");
-		GUI.Label (new Rect(645, 30, 20, 20), string.Format ("{0:0}", currentScore));
+		GUI.Label (new Rect(645, 30, 20, 20), string.Format ("{0}", currentScore));
 		
 	}
 }

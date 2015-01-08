@@ -12,6 +12,7 @@ public class DemoCollectable : MonoBehaviour {
 	void OnCollisionEnter2D (Collision2D col) {
 		if (col.gameObject.tag == "Player") {
 			gameObject.transform.localScale = new Vector3 (0f, 0f, 1);
+			Score.instance.AddPoint (10);
 			Destroy (gameObject);
 		}
 	}
