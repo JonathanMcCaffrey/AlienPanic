@@ -11,10 +11,10 @@ public class AssetPlacementWindow :  EditorWindow {
 		window.maxSize = new Vector2( 300, 200 );
 	}
 	
-	static void RefreshAutoSnap (BoxCollider2D snapSize) {
+	static void RefreshAutoSnap (Rect snapSize) {
 		if (EditorPrefs.GetBool (AssetPlacement.SnapUpdateKey)) {
-			EditorPrefs.SetFloat (AutoGridSnap.MoveSnapXKey, snapSize.size.x);
-			EditorPrefs.SetFloat (AutoGridSnap.MoveSnapYKey, snapSize.size.y);
+			EditorPrefs.SetFloat (AutoGridSnap.MoveSnapXKey, snapSize.width);
+			EditorPrefs.SetFloat (AutoGridSnap.MoveSnapYKey, snapSize.height);
 		}
 	}
 	
@@ -27,6 +27,7 @@ public class AssetPlacementWindow :  EditorWindow {
 		}
 	}
 	
+	
 	//TODO find a better hotkey
 	[MenuItem("Edit/Commands/PlaceAsset #_%_d")]
 	static void PlaceAsset() {
@@ -36,11 +37,11 @@ public class AssetPlacementWindow :  EditorWindow {
 			Selection.activeGameObject = placedAsset;
 			
 			SetTabContainerParent (placedAsset);
-			
-			//TODO Use something better than this method, for determing snap size. 
-			// Or make the BoxColiders more accurate
-			var collider2D = placedAsset.GetComponent<BoxCollider2D>();
-			RefreshAutoSnap (collider2D);
+
+			if (Utils.GameObjectFunctions.HasMesh(placedAsset)) {
+				var snapSize = Utils.GameObjectFunctions.CreateRectFromMeshes(placedAsset);
+				RefreshAutoSnap (snapSize);
+			}
 		}
 	}	
 	
