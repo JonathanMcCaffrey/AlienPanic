@@ -40,8 +40,7 @@ public class AssetPlacementChoiceSystem : MonoBehaviour {
 			instance = this;
 		}
 	}
-	
-	//TODO Refactor and put this a seperate utility class: AssetLoading
+
 	void LoadTabs () {
 		var tabPaths = Directory.GetDirectories (FolderPath ());
 		foreach (var filePath in tabPaths) {
@@ -49,10 +48,8 @@ public class AssetPlacementChoiceSystem : MonoBehaviour {
 			tabList.Add (new TabPlacementData(filePath, name));
 		}
 	}
-	
-	//TODO Refactor and put this a seperate utility class: AssetLoading
+
 	void LoadAssets (string searchedExtension = ".prefab"){
-		//TODO Make a less placeholderish check for this logic. like a reset button thing
 		if (assetList.Count == 0) {
 			foreach (TabPlacementData tabData in tabList) {
 				var filePaths = Directory.GetFiles (tabData.filePath);
