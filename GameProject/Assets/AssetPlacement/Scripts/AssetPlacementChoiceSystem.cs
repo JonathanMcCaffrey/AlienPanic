@@ -83,7 +83,8 @@ public class AssetPlacementChoiceSystem : MonoBehaviour {
 	}
 	
 	void RefreshTabContainers () {
-		string mainContainerName = "PlacedAssets";
+		//TODO Put all these names into AssetPlacementKeys
+		string mainContainerName = "AP.PlacedAssets";
 		var placedAssetsContainer = GameObject.Find (mainContainerName);
 		if (!placedAssetsContainer) {
 			placedAssetsContainer = new GameObject (mainContainerName);
@@ -128,8 +129,8 @@ public class AssetPlacementChoiceSystem : MonoBehaviour {
 	void UpdateSelectedAsset () {
 		if (assetList.Count == 0) {
 			return;
-				}
-
+		}
+		
 		var hasFoundAsset = ByButtonSelection (); 
 		if (hasFoundAsset) {
 			return;

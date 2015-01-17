@@ -8,17 +8,28 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml;
 using System.Xml.Serialization;
 
+
 public class AssetPlacementPositionSystem : MonoBehaviour {
+	//TODO Make this work in 3D?
 	public float xPosition = 0;
 	public float yPosition = 0;
-	
+
+	//TODO Find some way to auto fix the position in relation to the mouse
 	public float adjustX = 0;
 	public float adjustY = 0;
-	
+
 	public static Vector3 selectedPosition = Vector3.zero;
-	
+
+	//TODO Cool shader effect for placing assets? (Might appear laggy in editor)
+	//bool shouldShowCoolShaderEffectOverlayForPlacingAssetsWithinTheEditor = true;
+
+	//TODO Auto create marker rather than setting it. Make private
+	//TODO Make the asset for it and add it the the gui folder
+	//TODO Move all assets to AssetPlacementKeys?
 	public GameObject marker = null;
+
 	
+	//TODO Add some zplane control for the placed assets or something
 	public float distance = 500;
 	public bool isMarkerActive = false;
 	

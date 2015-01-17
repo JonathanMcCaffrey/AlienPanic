@@ -22,56 +22,12 @@ public class AssetPlacement : EditorWindow {
 			}
 		}
 	}
-	
-	public void OnSceneGUI() {
-		if (Event.current.keyCode != KeyCode.None) {
-			int index = 0;
-			foreach(var assetData in AssetPlacementChoiceSystem.instance.assetList) {
-				if(assetData.keyCode == Event.current.keyCode) { 
-					EditorPrefs.SetInt (AssetPlacementKeys.SelectedAssetNumber, index);
-					return;
-				}
-				index++;
-			}
-		}
-	}
-	
-	public void OnInspectorGUI() {
-		if (Event.current.keyCode != KeyCode.None) {
-			int index = 0;
-			foreach(var assetData in AssetPlacementChoiceSystem.instance.assetList) {
-				if(assetData.keyCode == Event.current.keyCode) { 
-					EditorPrefs.SetInt (AssetPlacementKeys.SelectedAssetNumber, index);
-					return;
-				}
-				index++;
-			}
-		}
-	}
-	
+
 	public static void Update() {
 		doSnapUpdate = EditorPrefs.GetBool (AssetPlacementKeys.SnapUpdate, false);
-		
-		/*
-		if (Event.current && Event.current.keyCode != KeyCode.None) {
-			int index = 0;
-			foreach(var assetData in AssetPlacementChoiceSystem.instance.assetList) {
-				if(assetData.keyCode == Event.current.keyCode) { 
-					EditorPrefs.SetInt (AssetPlacementKeys.SelectedAssetNumber, index);
-					return;
-				}
-				index++;
-			}
-		}*/
-		
+
 		if (AssetPlacementWindow.instance) {
 			AssetPlacementWindow.instance.Repaint();
-			
-		}
-		
-		if (AssetPlacementChoiceSystem.instance) {
-			//	AssetPlacementChoiceSystem.instance.OnDrawGizmos();	
-			
 		}
 	}
 }
