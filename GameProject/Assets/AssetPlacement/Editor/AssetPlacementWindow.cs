@@ -10,12 +10,8 @@ using System.Runtime.Serialization;
 
 
 public class AssetPlacementWindow :  EditorWindow {
-	//TODO Save these
-	bool shouldShowAll = false;
-	bool shouldShowLabels = false;
-	
 	public static AssetPlacementWindow instance = null;
-
+	
 	static void CreateAssetPlacementSystem () {
 		string systemName = "AP.AssetPlacementSystem";
 		GameObject systemContainer = null;
@@ -40,7 +36,7 @@ public class AssetPlacementWindow :  EditorWindow {
 			window.title = "AP";
 			window.minSize = new Vector2 (200, 100);
 			instance = window;
-
+			
 			CreateAssetPlacementSystem ();
 		}
 	}
@@ -92,7 +88,6 @@ public class AssetPlacementWindow :  EditorWindow {
 	}	
 	
 	//TODO find a better hotkey
-	//TODO Re-add later
 	#if !USING_SNAZZY_GRID
 	[MenuItem("Edit/Commands/ToggleAutoSnapUpdate #_%_f")]
 	#endif
@@ -130,8 +125,6 @@ public class AssetPlacementWindow :  EditorWindow {
 	}
 	
 	static void CreateAutoSnapToggle (float width, ref float distanceFromTop) {
-		//TODO Check this sometime to make sure it still works
-		//TODO Maybe start using TDD? 
 		EditorPrefs.SetBool (
 			AssetPlacementKeys.SnapUpdate,
 			EditorGUI.Toggle (
@@ -144,13 +137,20 @@ public class AssetPlacementWindow :  EditorWindow {
 	
 	void CreateShowLabelsToggle (float width, ref float distanceFromTop) {
 		float toggleHeight = 16;
+		var shouldShowLabels = EditorPrefs.GetBool (AssetPlacementKeys.ShowLabels);
 		shouldShowLabels = EditorGUI.Toggle (new Rect (0, distanceFromTop, width, toggleHeight), "Show Labels", shouldShowLabels);
+		EditorPrefs.SetBool (AssetPlacementKeys.ShowLabels, shouldShowLabels);
+		
 		distanceFromTop += toggleHeight;
 	}
 	
 	void CreateToggleTabSelection (float width, ref float distanceFromTop) {
 		float toggleHeight = 16;
+		
+		var shouldShowAll = EditorPrefs.GetBool (AssetPlacementKeys.ShowAll);
 		shouldShowAll = EditorGUI.Toggle (new Rect (0, distanceFromTop, width, toggleHeight), "Show All", shouldShowAll);
+		EditorPrefs.SetBool (AssetPlacementKeys.ShowAll, shouldShowAll);
+		
 		distanceFromTop += toggleHeight;
 		if (!shouldShowAll) {
 			float popupHeight = 20;
@@ -165,163 +165,6 @@ public class AssetPlacementWindow :  EditorWindow {
 		} else {
 			distanceFromTop += 8;
 		}
-	}
-	
-	
-	private int textureWidth = 128; 
-	private int textureHeight = 128;
-	
-	//TODO Add a retake photos button? Generic Move camera controls?
-	
-	//TODO Do something better than this
-	Vector3 cameraPosition = new Vector3 (-5.09f, 16.97f, -7.5f);
-	Vector3 cameraRotation = new Vector3 (39.80953f, 44.82499f, -14.40204f);
-	
-	
-	//TODO Make this a seperate class
-	Texture2D CreateTextureFromCamera(AssetPlacementData assetData) {
-		string fixedName = assetData.name.Replace('\\', '_'); 
-		fixedName = fixedName.Replace('/', '_');
-		fixedName = fixedName.Replace('.', '_');
-		
-		var directoryPath = Application.dataPath + "/Resources/PlacementIcons/";
-		string textureFilePath = directoryPath + fixedName + ".png";
-		if (!Directory.Exists (directoryPath)) {
-			Directory.CreateDirectory(directoryPath);
-		}
-		
-		var resourcePath = "PlacementIcons/" + fixedName;
-		if (File.Exists (textureFilePath)) {
-			var texture = Resources.Load<Texture2D>(resourcePath);
-			return texture;
-		}
-		
-		//TODO Staged asset code below. Refactor
-		
-		//TODO Refactor CreateCamera
-		string cameraName = AssetPlacementKeys.CameraRender3D;
-		GameObject cameraContainer = null;
-		cameraContainer = GameObject.Find (cameraName);
-		
-		Camera stagedCamera = null;
-		if (!cameraContainer) {
-			cameraContainer = new GameObject(cameraName);
-			stagedCamera = cameraContainer.AddComponent<Camera>();
-			stagedCamera.transform.localPosition = cameraPosition;
-			stagedCamera.transform.Rotate(cameraRotation);
-			
-			
-			
-			
-			//TODO Move and aim camera
-		} else {
-			stagedCamera = cameraContainer.GetComponent<Camera> ();
-		}
-		
-		//TODO Refactor CreateStage
-		
-		
-		//TODO Delete stage and camera after all screenshots have been taken
-		string stagedName = AssetPlacementKeys.StageRender3D;
-		GameObject stagedContainer = null;
-		stagedContainer = GameObject.Find (stagedName);
-		
-		if (!stagedContainer) {
-			stagedContainer = new GameObject(stagedName);
-		}
-		
-		
-		//TODO Create Stage Lights
-		
-		//TODO Move all this vars to another files
-		string stagedLightMain = AssetPlacementKeys.LightMainRender3D;
-		GameObject stagedLightMainContainer = null;
-		stagedLightMainContainer = GameObject.Find (stagedLightMain);
-		
-		if (!stagedLightMainContainer) {
-			stagedLightMainContainer = new GameObject(stagedLightMain);
-			stagedLightMainContainer.AddComponent<Light>();
-			
-			stagedLightMainContainer.transform.position = new Vector3(15.57f, 6.45f, 0.75f);
-			var light = stagedLightMainContainer.GetComponent<Light>();
-			light.type = LightType.Point;
-			light.range = 21;
-			light.intensity = 6.8f;
-		}
-		
-		string stagedLightSub = AssetPlacementKeys.LightSubRender3D;
-		GameObject stagedLightSubContainer = null;
-		stagedLightSubContainer = GameObject.Find (stagedLightSub);
-		
-		if (!stagedLightSubContainer) {
-			stagedLightSubContainer = new GameObject(stagedLightSub);
-			stagedLightSubContainer.AddComponent<Light>();
-			
-			stagedLightSubContainer.transform.position = new Vector3(-3.28f, -1.52f, 1.87f);
-			var light = stagedLightSubContainer.GetComponent<Light>();
-			light.type = LightType.Point;
-			light.range = 205.2f;
-			light.intensity = 0.3f;
-			light.color = Color.gray;
-		}
-		
-		
-		string stagedLightSun = AssetPlacementKeys.LightSunRender3D;
-		GameObject stageLightSunContainer = null;
-		stageLightSunContainer = GameObject.Find (stagedLightSun);
-		
-		if (!stageLightSunContainer) {
-			stageLightSunContainer = new GameObject(stagedLightSun);
-			stageLightSunContainer.AddComponent<Light>();
-			
-			stageLightSunContainer.transform.position = new Vector3(-2.35f, 5.54f, 15.01f);
-			stageLightSunContainer.transform.Rotate(new Vector3(49.5479f, 20.51822f, 120.4922f));
-			
-			var light = stageLightSunContainer.GetComponent<Light>();
-			light.type = LightType.Directional;
-			light.intensity = 0.2f;
-			light.color = Color.white;
-		}
-		
-		
-		hasMadeAnIconRenderAsset = true;
-		
-		
-		
-		//TODO Refactor: seems too long
-		
-		//TODO Refactor: CreatingAssetToScreenshot
-		var stagedAsset = PrefabUtility.InstantiatePrefab(assetData.gameObject) as GameObject; 	
-		stagedAsset.name = "StagedAsset";
-		DontDestroyOnLoad (stagedAsset);
-		stagedAsset.transform.parent = stagedContainer.transform;
-		stagedAsset.transform.localPosition = Vector3.zero;
-		SceneView.RepaintAll ();
-		
-		//TODO Refactor: CreateIconFromStage
-		RenderTexture rt = new RenderTexture(textureWidth, textureHeight, 0, RenderTextureFormat.ARGB32);
-		RenderTexture.active = rt;
-		stagedCamera.targetTexture = rt;
-		
-		//TODO Format this text better
-		Texture2D screenShot = new Texture2D (textureWidth, textureHeight, TextureFormat.ARGB32, false);
-		stagedCamera.Render ();
-		
-		screenShot.ReadPixels (new Rect (0, 0, textureWidth, textureHeight), 0, 0);
-		
-		var bytes = screenShot.EncodeToJPG ();
-		
-		RenderTexture.active = null;
-		DestroyImmediate (screenShot);
-		
-		File.WriteAllBytes (textureFilePath, bytes);
-		
-		stagedCamera.targetTexture = null;
-		RenderTexture.active = null; 
-		
-		DestroyImmediate (stagedAsset);
-		
-		return null;
 	}
 	
 	void CreateHotkeyLabel (Rect buttonRect, string keyLabel) {
@@ -358,19 +201,20 @@ public class AssetPlacementWindow :  EditorWindow {
 	
 	bool hasMadeAnIconRenderAsset = false;
 	void CreateAssetButtons (float width, ref float distanceFromTop) {
-		int index = 0;
-		float xVal = 0;
-		float yVal = 0;
+		var shouldShowAll = EditorPrefs.GetBool (AssetPlacementKeys.ShowAll);
+		var shouldShowLabels = EditorPrefs.GetBool (AssetPlacementKeys.ShowLabels);
+		
+		int assetIndex = 0;
+		float xCoord = 0;
+		float yCoord = 0;
 		
 		foreach (var assetData in AssetPlacementChoiceSystem.instance.assetList) {
 			if (assetData.tab != AssetPlacementChoiceSystem.instance.selectedTab.name && !shouldShowAll) {
-				index++;
+				assetIndex++;
 				continue;
 			}
 			
-			if(assetData.gameObject == null) {
-				continue;
-			}
+			if(assetData.gameObject == null) { continue; }
 			
 			Texture2D usedTexture = null;
 			if (assetData.gameObject.GetComponent<SpriteRenderer> () || 
@@ -382,75 +226,51 @@ public class AssetPlacementWindow :  EditorWindow {
 			else if (true ||assetData.gameObject.GetComponent<MeshRenderer> () || 
 			         assetData.gameObject.GetComponentsInChildren<MeshRenderer>().Length > 0) {
 				
-				var tempTexture = CreateTextureFromCamera(assetData);
-				if(tempTexture) {
-					usedTexture = tempTexture;
-				}
+				var tempTexture = AssetPlacementIconRenderer.CreateTextureFromCamera(assetData, ref hasMadeAnIconRenderAsset);
+				usedTexture = tempTexture; 
 			} else {
 				//TODO Add other edge cases
 			}
 			
-			var buttonStyle = EditorPrefs.GetInt (AssetPlacementKeys.SelectedAssetNumber) == index ? GUI.skin.box : GUI.skin.button;
+			var buttonStyle = EditorPrefs.GetInt (AssetPlacementKeys.SelectedAssetNumber) == assetIndex ? GUI.skin.box : GUI.skin.button;
 			
-			//TODO Add all hotkeys setup and show duplicate keys, 
-			// or visually indicate which hotkeys are currently working
-			
-			var buttonRect = new Rect ((width / 3.0f) * xVal, distanceFromTop + (width / 3.0f) * yVal, (width / 3.0f), (width / 3.0f));
+			var buttonRect = new Rect ((width / 3.0f) * xCoord, distanceFromTop + (width / 3.0f) * yCoord, (width / 3.0f), (width / 3.0f));
 			if (usedTexture && GUI.Button (buttonRect, usedTexture, buttonStyle)) {
-				EditorPrefs.SetInt (AssetPlacementKeys.SelectedAssetNumber, index);
+				EditorPrefs.SetInt (AssetPlacementKeys.SelectedAssetNumber, assetIndex);
 			}
 			
-			//TODO Consider none key. Currently shows 'e' for it, 'e' is not none
 			string keyLabel = assetData.keyCode.ToString();
-			if(keyLabel.Length > 1) {
-				keyLabel = keyLabel.Remove(0,keyLabel.Length - 1); 
-			}
+			if(keyLabel == "None") { keyLabel = "[]"; } 
+			else if(keyLabel.Length > 1) { keyLabel = keyLabel.Remove(0,keyLabel.Length - 1); }
 			
 			if(shouldShowLabels) {
-				CreateHotkeyLabel (buttonRect, keyLabel);
+				if(assetData.tab == AssetPlacementChoiceSystem.instance.selectedTab.name) {
+					CreateHotkeyLabel (buttonRect, keyLabel);
+				}
 				if(shouldShowAll) {
 					CreateTabLabel (assetData, buttonRect);
 				}
 			}
 			
-			index++;
-			xVal++;
-			if (xVal > 2) {
-				xVal = 0;
-				yVal++;
-			}
+			assetIndex++; xCoord++;
+			if (xCoord > 2) { xCoord = 0; yCoord++; }
 		}
 		
 		if (hasMadeAnIconRenderAsset) {
-			CleanUpRender3DAssets ();	
+			AssetPlacementIconRenderer.CleanUpRender3DAssets();
 		}
-	}
-	
-	void CleanUpRender3DAssets () {
-		var temp = GameObject.Find (AssetPlacementKeys.CameraRender3D);
-		if (temp) DestroyImmediate (temp);
-		temp = GameObject.Find (AssetPlacementKeys.StageRender3D);
-		if (temp) DestroyImmediate (temp);
-		temp = GameObject.Find (AssetPlacementKeys.LightMainRender3D);
-		if (temp) DestroyImmediate (temp);
-		temp = GameObject.Find (AssetPlacementKeys.LightSubRender3D);
-		if (temp) DestroyImmediate (temp);
-		temp = GameObject.Find (AssetPlacementKeys.LightSunRender3D);
-		if (temp) DestroyImmediate (temp);
 	}
 	
 	Vector2 scrollPosition = Vector2.zero;
-	
 	void CreateAssetListScrollView (float width, ref float distanceFromTop) {
 		if (AssetPlacementChoiceSystem.instance.selectedTab == null) {
-			//TODO No tab selected. Auto select one or something
 			return;
 		}
-		
 		
 		float dist = distanceFromTop;
 		int assetCount = 0;
 		foreach (var assetData in AssetPlacementChoiceSystem.instance.assetList) {
+			var shouldShowAll = EditorPrefs.GetBool (AssetPlacementKeys.ShowAll);
 			if (assetData.tab != AssetPlacementChoiceSystem.instance.selectedTab.name && !shouldShowAll) {
 				continue;
 			}
@@ -464,16 +284,23 @@ public class AssetPlacementWindow :  EditorWindow {
 		GUI.EndScrollView ();
 	}
 	
+	static GUIStyle CreateWarningFontStyle () {
+		var angryFont = new GUIStyle ();
+		angryFont.normal.textColor = Color.red;
+		angryFont.fontStyle = FontStyle.Bold;
+		return angryFont;
+	}
+	
 	public void OnGUI() {
 		instance = this;
 		
 		if (AssetPlacementChoiceSystem.instance == null) {
+			GUI.Label (new Rect(0, 0, Screen.width, 120), "[Error]\nSystem Was Deleted\nPlease Refresh Window\nTo Keep Using", CreateWarningFontStyle ());
 			return;
 		}
 		
 		if (background) {
 			float width = Screen.width;
-			
 			EditorGUI.DrawPreviewTexture (new Rect (0, 0, Screen.width, Screen.height), background);
 			
 			float distanceFromTop = 0.0f;
@@ -481,15 +308,13 @@ public class AssetPlacementWindow :  EditorWindow {
 			CreateTitleLogo (width, ref distanceFromTop);
 			
 			if(AssetPlacementChoiceSystem.instance.tabList == null || AssetPlacementChoiceSystem.instance.tabList.Count == 0) {
-				//TODO Make this font red and bold
-				GUI.Label (new Rect(0, distanceFromTop, width, 20), "No Assets Found");
+				GUI.Label (new Rect(0, distanceFromTop, width, 20), "No Assets Found", CreateWarningFontStyle ());
 				return;
 			}
 			
 			CreateAutoSnapToggle (width, ref distanceFromTop);
 			CreateShowLabelsToggle (width, ref distanceFromTop);
 			CreateToggleTabSelection (width, ref distanceFromTop);
-			
 			CreateAssetListScrollView (width, ref distanceFromTop);
 		}
 	}

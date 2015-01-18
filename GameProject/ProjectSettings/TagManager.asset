@@ -4,8 +4,6 @@
 TagManager:
   tags:
   - Obstacle
-  - IconRenderCamera
-  - IconRenderStage
   - LevelWin
   - 
   Builtin Layer 0: Default

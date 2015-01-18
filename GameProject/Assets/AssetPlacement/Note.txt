@@ -1,5 +1,5 @@
 
-Asset Placement System is for easily creating and placing assets within the unity editor.
+Asset Placement System is for easily creating and placing assets within the unity editor via hotkeys. 
 - Ask Jon for Questions on this.
 - Also, not fully done.
 

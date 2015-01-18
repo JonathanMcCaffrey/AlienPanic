@@ -138,6 +138,14 @@ public class AssetPlacementChoiceSystem : MonoBehaviour {
 			ByHotKeySelection ();
 		}
 	}
+
+	void RefreshSelectedTab () {
+		foreach (var tabData in tabList) {
+			if (tabData.name == EditorPrefs.GetString (AssetPlacementKeys.SelectedTab)) {
+				selectedTab = tabData;
+			}
+		}
+	}
 	
 	public void OnDrawGizmos() {
 		instance = this;
@@ -147,6 +155,10 @@ public class AssetPlacementChoiceSystem : MonoBehaviour {
 			WipeData ();
 			LoadData();
 			RefreshTabContainers ();
+
+			if(selectedTab == null) {
+				RefreshSelectedTab ();
+			}
 		}
 		
 		UpdateSelectedAsset ();

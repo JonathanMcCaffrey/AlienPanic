@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 
+using UnityEditor;
+
 //TODO Wrap this since it will probably break mobile
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -10,24 +12,20 @@ using System.Xml.Serialization;
 
 
 public class AssetPlacementPositionSystem : MonoBehaviour {
-	//TODO Make this work in 3D?
 	public float xPosition = 0;
 	public float yPosition = 0;
-
-	//TODO Find some way to auto fix the position in relation to the mouse
-	public float adjustX = 0;
-	public float adjustY = 0;
-
+	
+	//TODO Find some way to auto fix the position in relation to the mouse. Might not be conceptually possible
+	public float adjustX = -9.8f;
+	public float adjustY = -41.1f;
+	
 	public static Vector3 selectedPosition = Vector3.zero;
-
+	
 	//TODO Cool shader effect for placing assets? (Might appear laggy in editor)
 	//bool shouldShowCoolShaderEffectOverlayForPlacingAssetsWithinTheEditor = true;
 
-	//TODO Auto create marker rather than setting it. Make private
-	//TODO Make the asset for it and add it the the gui folder
-	//TODO Move all assets to AssetPlacementKeys?
 	public GameObject marker = null;
-
+	
 	
 	//TODO Add some zplane control for the placed assets or something
 	public float distance = 500;
@@ -52,6 +50,28 @@ public class AssetPlacementPositionSystem : MonoBehaviour {
 		selectedPosition = new Vector3 (xPosition, yPosition, distance);
 		return position;
 	}
+
+	void CreateMarker () {
+		if (marker == null && AssetPlacementChoiceSystem.instance) {
+			marker = GameObject.Find (AssetPlacementKeys.PositionMarker);
+			if (marker) {
+				return;
+			}
+			string path = "Assets/" + AssetPlacementKeys.InstallPath + "AssetPlacement/Resources/GUI/";
+			var markerTexture = AssetDatabase.LoadAssetAtPath (path + "PositionMarker.png", typeof(Texture2D)) as Texture2D;
+			if (markerTexture) {
+				marker = new GameObject (AssetPlacementKeys.PositionMarker);
+				marker.AddComponent<SpriteRenderer> ();
+				var renderer = marker.GetComponent<SpriteRenderer> ();
+				var sprite = Sprite.Create(markerTexture, new Rect(0,0,markerTexture.width,markerTexture.height), Vector2.zero);
+				sprite.name = "PositionMarker";
+				renderer.sprite = sprite;
+
+			}
+
+			marker.transform.parent = gameObject.transform;
+		}
+	}
 	
 	bool ShouldMoveMarker () {
 		if (!isMarkerActive) {
@@ -75,6 +95,8 @@ public class AssetPlacementPositionSystem : MonoBehaviour {
 	}
 	
 	public void OnDrawGizmos() {
+		CreateMarker ();
+		
 		if (Camera.current) {
 			var position = FindPlacementPosition ();
 			MoveDebugMarker (position);

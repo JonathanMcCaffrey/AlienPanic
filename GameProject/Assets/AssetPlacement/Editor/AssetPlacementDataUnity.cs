@@ -16,13 +16,9 @@ public class AssetPlacementDataUnity : PropertyDrawer {
 		
 		if (shouldRefresh.boolValue && name.stringValue != "") {
 			shouldRefresh.boolValue = false;
-			var foundValue = EditorPrefs.GetInt ("PrefabsKeys." + name.stringValue);
-
-			//TODO Saving hotkeys may not be working properly. Test again in case
-			//Debug.Log("PrefabsKeys." + name.stringValue);
-			
+			var foundValue = EditorPrefs.GetInt (AssetPlacementKeys.SavedHotkey + name.stringValue);
 			if(foundValue != 0) {
-				keyCode.intValue = foundValue;
+				keyCode.enumValueIndex = foundValue;
 			}
 		}
 		
@@ -31,6 +27,6 @@ public class AssetPlacementDataUnity : PropertyDrawer {
 		GUI.Label (new Rect (rect.x, rect.y, rect.width * 0.60f, rect.height), fixedLabel);
 		EditorGUI.PropertyField (new Rect(rect.width * 0.65f, rect.y, rect.width * 0.35f, rect.height), keyCode, GUIContent.none);
 		
-		EditorPrefs.SetInt ("PrefabsKeys." + name, keyCode.intValue);
+		EditorPrefs.SetInt (AssetPlacementKeys.SavedHotkey + name.stringValue, keyCode.enumValueIndex);
 	}
 }

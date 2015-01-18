@@ -7,21 +7,25 @@ public class AssetPlacementKeys {
 	static public string InstallPath = ""; 
 
 	//Where 'your' assets are in Assets/
-	//And assumes they are in a folder called AssetPlacement
+	//And this assumes they are in a folder called AssetPlacement
 	static public string AssetPathPath = "Resources/"; 
 
+	//Where the system will put the icons it renders from 3D assets in Assets/
+	static public string IconRenderPath = "/Resources/PlacementIcons/";
 
-	//Internal assets used by AssetPlacementSystem
-	//TODO Add all assets here
-
-	//Keys used by AssetPlacementSystem
+	//Keys used internally
 	public const string SnapUpdate = "AssetPlacement.doSnapUpdate";
 	public const string ShowAll = "AssetPlacement.ShowAll";
+	public const string ShowLabels = "AssetPlacement.ShowLabels";
+
 	public const string SelectedTab = "AssetPlacement.SelectedTab";
 	public const string SelectedKey = "AssetPlacement.SelectedKey";
 	public const string SelectedAssetNumber = "AssetPlacement.SelectedAssetNumber";
 
-	//Rendering Icon System Keys
+	public const string SavedHotkey = "AP.PrefabsKeys.";
+
+	public const string PositionMarker = "AP.PositionMarker";
+
 	public const string CameraRender3D = "AP.CameraRender3D";
 	public const string StageRender3D = "AP.StageRender3D";
 	public const string LightMainRender3D = "AP.LightMainRender3D";
