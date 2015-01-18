@@ -9,7 +9,7 @@ public class AssetPlacementIconRenderer {
 	
 	private static int textureWidth = 128; 
 	private static int textureHeight = 128;
-
+	
 	//TODO Do something better than this
 	private static Vector3 cameraPosition = new Vector3 (-5.09f, 16.97f, -7.5f);
 	private static Vector3 cameraRotation = new Vector3 (39.80953f, 44.82499f, -14.40204f);
@@ -44,6 +44,8 @@ public class AssetPlacementIconRenderer {
 			stagedCamera = cameraContainer.AddComponent<Camera> ();
 			stagedCamera.transform.localPosition = cameraPosition;
 			stagedCamera.transform.Rotate (cameraRotation);
+			
+			stagedCamera.backgroundColor = Color.magenta;// new Color(222.0f / 255.0f,222.0f / 255.0f,222.0f / 255.0f, 1.0f);
 		}
 		else {
 			stagedCamera = cameraContainer.GetComponent<Camera> ();
@@ -74,7 +76,7 @@ public class AssetPlacementIconRenderer {
 			light.range = 21;
 			light.intensity = 6.8f;
 		}
-
+		
 		return stagedLightMainContainer.GetComponent<Light> ();
 	}
 	
@@ -92,7 +94,7 @@ public class AssetPlacementIconRenderer {
 			light.intensity = 0.3f;
 			light.color = Color.gray;
 		}
-
+		
 		return stagedLightSubContainer.GetComponent<Light> ();
 	}
 	
@@ -110,7 +112,7 @@ public class AssetPlacementIconRenderer {
 			light.intensity = 0.2f;
 			light.color = Color.white;
 		}
-
+		
 		return stageLightSunContainer.GetComponent<Light> ();
 	}
 	
@@ -130,14 +132,30 @@ public class AssetPlacementIconRenderer {
 		Texture2D screenShot = new Texture2D (textureWidth, textureHeight, TextureFormat.ARGB32, false);
 		stagedCamera.Render ();
 		screenShot.ReadPixels (new Rect (0, 0, textureWidth, textureHeight), 0, 0);
-		var bytes = screenShot.EncodeToJPG ();
+		
+		for (int x = 0; x < textureWidth; x++) {
+			for (int y = 0; y < textureHeight; y++) {
+				var pixel = screenShot.GetPixel(x, y);
+				if(pixel.r == Color.magenta.r && pixel.g == Color.magenta.g && pixel.b == Color.magenta.b) {  
+ 					screenShot.SetPixel(x, y, new Color(1.0f, 1.0f, 1.0f, 0.0f));
+				}
+			}
+
+		}
+		
+		
+		screenShot.alphaIsTransparency = true;
+		
+		screenShot.Apply ();
+		
+		var bytes = screenShot.EncodeToPNG ();
 		RenderTexture.active = null;
 		EditorWindow.DestroyImmediate (screenShot);
 		File.WriteAllBytes (textureFilePath, bytes);
 		stagedCamera.targetTexture = null;
 		RenderTexture.active = null;
 	}
-
+	
 	public static Texture2D CreateTextureFromCamera(AssetPlacementData assetData, ref bool hasMadeAnIconRenderAsset) {
 		string fixedName = assetData.name.Replace('\\', '_'); 
 		fixedName = fixedName.Replace('/', '_');

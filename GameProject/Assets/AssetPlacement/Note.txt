@@ -5,7 +5,8 @@ Asset Placement System is for easily creating and placing assets within the unit
 
 [Setup]
 - Windows/AssetPlacement 
-- Set hotkeys in AssetPlacementSystem
+- Set hotkeys in AssetPlacementSystem (Choice)
+- Adjust mouse position for your zoom distance in AssetPlacement (Position)
 
 [Description]
 - Hotkeys only work with AssetPlacementSystem and Scene selected.
@@ -16,5 +17,6 @@ Asset Placement System is for easily creating and placing assets within the unit
 - Asset selection Hotkeys only work for the currently selected tab
 
 [HotKeys]
-Ctrl+Shift+F Select AssetPlacementSystem.
+Ctrl+Shift+E Select AssetPlacementSystem.
+Ctrl+Shift+F Toggle Auto Snap if using AutoGridSnap.
 Ctrl+Shift+D Create the selected asset at mouse position.
