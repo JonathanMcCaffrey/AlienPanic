@@ -90,14 +90,4 @@ public class Score : MonoBehaviour {
 		SaveHighScore ();
 		Initialize ();
 	}
-	
-	void OnGUI() {
-		// Render the GUI.
-		GUI.Box(new Rect(350, 10, 100, 40), "High Score");
-		GUI.Label (new Rect(395, 30, 150, 20), string.Format ("{0}", highScore));
-		
-		GUI.Box(new Rect(600, 10, 100, 40), "Score");
-		GUI.Label (new Rect(645, 30, 20, 20), string.Format ("{0}", currentScore));
-		
-	}
 }
