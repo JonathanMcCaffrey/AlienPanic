@@ -1,0 +1,111 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: ZFS_Flat_Free
+  m_Shader: {fileID: 4800000, guid: 330b27e262e241b4aa5bbabefada5d41, type: 3}
+  m_ShaderKeywords:
+  - _GRADIENT_OR_SOLID_COLOR_ON
+  - _MASK_ON
+  - _MAKE_SAME_AS_MASK_ON
+  - _EDGE_FAKE_ON
+  m_CustomRenderQueue: -1
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+      data:
+        first:
+          name: _MainTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Gradient_Color
+        second:
+          m_Texture: {fileID: 2800000, guid: d6b46348e3be7e84c83d9734a828e81a, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Texture
+        second:
+          m_Texture: {fileID: 2800000, guid: d75202b96f120c143b1add1cdf2721b8, type: 3}
+          m_Scale: {x: .600000024, y: .600000024}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Gradient_Texture_Decay
+        second:
+          m_Texture: {fileID: 2800000, guid: 1afc2415b297bab478597580754713c6, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Mask_Texture
+        second:
+          m_Texture: {fileID: 2800000, guid: 595df77cdf0a1b64a9da15f136642fb4, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Gradient_Edge_Fake
+        second:
+          m_Texture: {fileID: 2800000, guid: 90dd325f1880d4c4dbf7511cdec5fd07, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+    m_Floats:
+      data:
+        first:
+          name: _Gradient_Or_Solid_Color
+        second: .964705884
+      data:
+        first:
+          name: _Edge_Detection
+        second: 0
+      data:
+        first:
+          name: _Soft_Texture
+        second: 0
+      data:
+        first:
+          name: _Intensity
+        second: 1
+      data:
+        first:
+          name: _Decay
+        second: .300000012
+      data:
+        first:
+          name: _Mask
+        second: 1
+      data:
+        first:
+          name: _Make_Same_As_Mask
+        second: 1
+      data:
+        first:
+          name: _Pan_Speed
+        second: 1
+      data:
+        first:
+          name: _Brightness
+        second: 1
+      data:
+        first:
+          name: _Edge_Fake
+        second: 1
+    m_Colors:
+      data:
+        first:
+          name: _Color
+        second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _Solid_Color
+        second: {r: .176470593, g: .522920787, b: 1, a: 1}
