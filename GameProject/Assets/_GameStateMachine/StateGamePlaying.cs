@@ -34,14 +34,14 @@ public class StateGamePlaying : GameState {
 
 	//TODO: Trigger events? Maybe later...
 	void  OnTriggerEnter2D (Collider2D other) {
-		print ("StateGamePlaying::OnTriggerEnter2D() ");
+		print ("StateGamePlaying::OnTriggerEnter2D() " + other.name);
 		//Destroy(other.gameObject);
 	
 	}
 
 	//TODO: Collide with other stuff here
 	void  OnCollisionEnter2D (Collision2D other) {
-		print ("StateGamePlaying::OnCollisionEnter2D() ");
+		print ("StateGamePlaying::OnCollisionEnter2D() " + other.gameObject.name);
 
 		if (other.gameObject.tag == "LevelWin")
 			gameManager.NewGameState (gameManager.stateGameWon);
