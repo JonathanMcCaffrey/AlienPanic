@@ -8,8 +8,6 @@ public class ButtonRetry : MonoBehaviour {
 		//TODO Reset Logic
 
 		//Reset score to zero
-
 		Score.instance.ResetScore ();
-		GameManager.instance.NewGameState(GameManager.instance.stateGamePlaying);
 	}
 }

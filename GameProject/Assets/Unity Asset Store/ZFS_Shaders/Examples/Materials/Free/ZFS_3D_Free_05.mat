@@ -42,7 +42,7 @@ Material:
         first:
           name: _Gradient_Texture_Decay
         second:
-          m_Texture: {fileID: 2800000, guid: 5e5f7fdec6ba5a24dbd26d977985f37c, type: 3}
+          m_Texture: {fileID: 2800000, guid: 1afc2415b297bab478597580754713c6, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:

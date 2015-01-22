@@ -7,8 +7,8 @@ using System.Collections;
  *	(c) 2012, Jean Moreno
 **/
 
-//[RequireComponent(typeof(ParticleSystem))]
-public class AutoDestructShuriken : MonoBehaviour
+[RequireComponent(typeof(ParticleSystem))]
+public class WFX_AutoDestructShuriken : MonoBehaviour
 {
 	public bool OnlyDeactivate;
 	

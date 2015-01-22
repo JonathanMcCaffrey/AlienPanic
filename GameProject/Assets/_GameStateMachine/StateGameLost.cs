@@ -7,13 +7,9 @@ public class StateGameLost : GameState {
 		GUILayout.Label ("state: GAME LOST");
 	}
 
-	//TODO: Prepare the game for the GAME OVER and load the GAME OVER scene
+	//TODO: Prepare the game for the GAME OVER scene and load the GAME OVER scene
 	public override void StateUpdate() {
-
 		print ("StateGameLost::StateUpdate() ");
-		GameManager.instance.NewGameState(GameManager.instance.stateGameLost);
-
-		Application.LoadLevel("GameOver");
-
+		Application.LoadLevel("Game Over");
 	}
 }

@@ -13,8 +13,8 @@ using System.Collections;
  *	(c) 2012, Jean Moreno
 **/
 
-//[RequireComponent(typeof(ParticleSystemRenderer))]
-public class ParticleMeshBillboard : MonoBehaviour
+[RequireComponent(typeof(ParticleSystemRenderer))]
+public class WFX_ParticleMeshBillboard : MonoBehaviour
 {
 	Mesh mesh;
 	Vector3[] vertices;
