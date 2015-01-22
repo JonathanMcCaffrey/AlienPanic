@@ -44,12 +44,16 @@ public class DemoPlayerControl : MonoBehaviour{
 	/// </summary>
 	void Update()
 	{
+			// Stateless game pause
+			if (Input.GetKeyDown(KeyCode.P)) Time.timeScale = 0;
+			if (Input.GetKeyUp(KeyCode.P)) Time.timeScale = 1;
+	
 		if (Input.GetButtonDown ("Thrust")) {
-			movingUp = true;	
-		}
-		else if (Input.GetButtonUp ("Thrust")) {
-			movingUp = false;
-		}
+				movingUp = true;	
+			}
+			else if (Input.GetButtonUp ("Thrust")) {
+				movingUp = false;
+			}
 	}
 	
 }
