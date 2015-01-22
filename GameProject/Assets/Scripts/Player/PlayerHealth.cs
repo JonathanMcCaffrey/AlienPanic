@@ -18,5 +18,7 @@ public class PlayerHealth : Health {
 		explosion.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
 		
 		GameObject.Destroy(gameObject);
+
+		GameManager.instance.NewGameState(GameManager.instance.stateGameLost);
 	}
 }

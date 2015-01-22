@@ -6,5 +6,6 @@ public class ButtonResume : MonoBehaviour {
 	
 	public void onClick() {
 		Destroy (pauseMenu);
+		GameManager.instance.NewGameState(GameManager.instance.stateGamePlaying);
 	}
 }

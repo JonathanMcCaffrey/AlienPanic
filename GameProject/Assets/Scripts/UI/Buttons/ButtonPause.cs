@@ -5,7 +5,9 @@ public class ButtonPause : MonoBehaviour {
 	public GameObject defaultPauseMenu = null;
 	
 	public void onClick() {
+
 		//TODO Pause game logic
+		GameManager.instance.NewGameState(GameManager.instance.stateGamePaused);
 		
 		var pauseMenu = GameObject.Instantiate (defaultPauseMenu) as GameObject;
 		pauseMenu.transform.parent = gameObject.transform.parent;
