@@ -6,7 +6,7 @@ using System.IO;
 using System.Runtime.Serialization;
 
 public class AssetPlacementIconRenderer {
-	
+
 	private static int textureWidth = 128; 
 	private static int textureHeight = 128;
 	
@@ -15,7 +15,7 @@ public class AssetPlacementIconRenderer {
 	private static Vector3 cameraRotation = new Vector3 (39.80953f, 44.82499f, -14.40204f);
 	
 	private static string CreateFileDirectory (string fixedName) {
-		var directoryPath = Application.dataPath + AssetPlacementKeys.IconRenderPath;
+		var directoryPath = Application.dataPath + AssetPlacementGlobals.IconRenderPath;
 		string textureFilePath = directoryPath + fixedName + ".png";
 		if (!Directory.Exists (directoryPath)) {
 			Directory.CreateDirectory (directoryPath);
@@ -35,7 +35,7 @@ public class AssetPlacementIconRenderer {
 	}
 	
 	private static Camera CreateStageCamera() {
-		string cameraName = AssetPlacementKeys.CameraRender3D;
+		string cameraName = AssetPlacementGlobals.CameraRender3D;
 		GameObject cameraContainer = null;
 		cameraContainer = GameObject.Find (cameraName);
 		Camera stagedCamera = null;
@@ -44,17 +44,17 @@ public class AssetPlacementIconRenderer {
 			stagedCamera = cameraContainer.AddComponent<Camera> ();
 			stagedCamera.transform.localPosition = cameraPosition;
 			stagedCamera.transform.Rotate (cameraRotation);
-			
-			stagedCamera.backgroundColor = Color.magenta;// new Color(222.0f / 255.0f,222.0f / 255.0f,222.0f / 255.0f, 1.0f);
-		}
-		else {
+
+			//The transparency pick colour (.png)
+			stagedCamera.backgroundColor = Color.magenta;
+		} else {
 			stagedCamera = cameraContainer.GetComponent<Camera> ();
 		}
 		return stagedCamera;
 	}	
 	
 	private static GameObject CreateStage () {
-		string stagedName = AssetPlacementKeys.StageRender3D;
+		string stagedName = AssetPlacementGlobals.StageRender3D;
 		GameObject stagedContainer = null;
 		stagedContainer = GameObject.Find (stagedName);
 		if (!stagedContainer) {
@@ -64,7 +64,7 @@ public class AssetPlacementIconRenderer {
 	}
 	
 	private static Light CreateStageLightMain () {
-		string stagedLightMainName = AssetPlacementKeys.LightMainRender3D;
+		string stagedLightMainName = AssetPlacementGlobals.LightMainRender3D;
 		GameObject stagedLightMainContainer = null;
 		stagedLightMainContainer = GameObject.Find (stagedLightMainName);
 		if (!stagedLightMainContainer) {
@@ -81,7 +81,7 @@ public class AssetPlacementIconRenderer {
 	}
 	
 	private static Light CreateStageLightSub () {
-		string stagedLightSubName = AssetPlacementKeys.LightSubRender3D;
+		string stagedLightSubName = AssetPlacementGlobals.LightSubRender3D;
 		GameObject stagedLightSubContainer = null;
 		stagedLightSubContainer = GameObject.Find (stagedLightSubName);
 		if (!stagedLightSubContainer) {
@@ -99,7 +99,7 @@ public class AssetPlacementIconRenderer {
 	}
 	
 	private static Light CreateStageLightSun () {
-		string stagedLightSunName = AssetPlacementKeys.LightSunRender3D;
+		string stagedLightSunName = AssetPlacementGlobals.LightSunRender3D;
 		GameObject stageLightSunContainer = null;
 		stageLightSunContainer = GameObject.Find (stagedLightSunName);
 		if (!stageLightSunContainer) {
@@ -140,10 +140,8 @@ public class AssetPlacementIconRenderer {
  					screenShot.SetPixel(x, y, new Color(1.0f, 1.0f, 1.0f, 0.0f));
 				}
 			}
-
 		}
-		
-		
+
 		screenShot.alphaIsTransparency = true;
 		
 		screenShot.Apply ();
@@ -188,15 +186,15 @@ public class AssetPlacementIconRenderer {
 	}
 	
 	public static void CleanUpRender3DAssets () {
-		var temp = GameObject.Find (AssetPlacementKeys.CameraRender3D);
+		var temp = GameObject.Find (AssetPlacementGlobals.CameraRender3D);
 		if (temp) EditorWindow.DestroyImmediate (temp);
-		temp = GameObject.Find (AssetPlacementKeys.StageRender3D);
+		temp = GameObject.Find (AssetPlacementGlobals.StageRender3D);
 		if (temp) EditorWindow.DestroyImmediate (temp);
-		temp = GameObject.Find (AssetPlacementKeys.LightMainRender3D);
+		temp = GameObject.Find (AssetPlacementGlobals.LightMainRender3D);
 		if (temp) EditorWindow.DestroyImmediate (temp);
-		temp = GameObject.Find (AssetPlacementKeys.LightSubRender3D);
+		temp = GameObject.Find (AssetPlacementGlobals.LightSubRender3D);
 		if (temp) EditorWindow.DestroyImmediate (temp);
-		temp = GameObject.Find (AssetPlacementKeys.LightSunRender3D);
+		temp = GameObject.Find (AssetPlacementGlobals.LightSunRender3D);
 		if (temp) EditorWindow.DestroyImmediate (temp);
 	}
 }
