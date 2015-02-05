@@ -24,31 +24,23 @@ public class AssetPlacementSerializedHotKeys : EditorWindow {
 		}
 	}
 
-	[MenuItem( "Window/Asset Placement Window - HotKeys/KeyCode Q _Q")]
-	public static void SelectItemQ() {
-		EditorPrefs.SetInt (AssetPlacementGlobals.SelectedKey, (int)KeyCode.Q); 
+	[MenuItem( AssetPlacementGlobals.CommandPath + "Hot Keys/None &_None")]
+	public static void SelectItemNone() {
+		EditorPrefs.SetInt (AssetPlacementGlobals.SelectedKey, (int)KeyCode.None); 
 		EditorPrefs.SetInt (AssetPlacementGlobals.SelectedAssetNumber, AssetPlacementGlobals.HotKeySelectionEnabled);
-		RefreshSelectedKey(KeyCode.Q);
+		RefreshSelectedKey(KeyCode.None);
 	}
 
 
-	[MenuItem( "Window/Asset Placement Window - HotKeys/KeyCode W _W")]
-	public static void SelectItemW() {
-		EditorPrefs.SetInt (AssetPlacementGlobals.SelectedKey, (int)KeyCode.W); 
+	[MenuItem( AssetPlacementGlobals.CommandPath + "Hot Keys/B &_B")]
+	public static void SelectItemB() {
+		EditorPrefs.SetInt (AssetPlacementGlobals.SelectedKey, (int)KeyCode.B); 
 		EditorPrefs.SetInt (AssetPlacementGlobals.SelectedAssetNumber, AssetPlacementGlobals.HotKeySelectionEnabled);
-		RefreshSelectedKey(KeyCode.W);
+		RefreshSelectedKey(KeyCode.B);
 	}
 
 
-	[MenuItem( "Window/Asset Placement Window - HotKeys/KeyCode Alpha1 _Alpha1")]
-	public static void SelectItemAlpha1() {
-		EditorPrefs.SetInt (AssetPlacementGlobals.SelectedKey, (int)KeyCode.Alpha1); 
-		EditorPrefs.SetInt (AssetPlacementGlobals.SelectedAssetNumber, AssetPlacementGlobals.HotKeySelectionEnabled);
-		RefreshSelectedKey(KeyCode.Alpha1);
-	}
-
-
-	[MenuItem( "Window/Asset Placement Window - HotKeys/KeyCode Alpha2 _Alpha2")]
+	[MenuItem( AssetPlacementGlobals.CommandPath + "Hot Keys/Alpha2 &_Alpha2")]
 	public static void SelectItemAlpha2() {
 		EditorPrefs.SetInt (AssetPlacementGlobals.SelectedKey, (int)KeyCode.Alpha2); 
 		EditorPrefs.SetInt (AssetPlacementGlobals.SelectedAssetNumber, AssetPlacementGlobals.HotKeySelectionEnabled);
@@ -56,7 +48,7 @@ public class AssetPlacementSerializedHotKeys : EditorWindow {
 	}
 
 
-	[MenuItem( "Window/Asset Placement Window - HotKeys/KeyCode Alpha3 _Alpha3")]
+	[MenuItem( AssetPlacementGlobals.CommandPath + "Hot Keys/Alpha3 &_Alpha3")]
 	public static void SelectItemAlpha3() {
 		EditorPrefs.SetInt (AssetPlacementGlobals.SelectedKey, (int)KeyCode.Alpha3); 
 		EditorPrefs.SetInt (AssetPlacementGlobals.SelectedAssetNumber, AssetPlacementGlobals.HotKeySelectionEnabled);
@@ -64,7 +56,7 @@ public class AssetPlacementSerializedHotKeys : EditorWindow {
 	}
 
 
-	[MenuItem( "Window/Asset Placement Window - HotKeys/KeyCode Alpha4 _Alpha4")]
+	[MenuItem( AssetPlacementGlobals.CommandPath + "Hot Keys/Alpha4 &_Alpha4")]
 	public static void SelectItemAlpha4() {
 		EditorPrefs.SetInt (AssetPlacementGlobals.SelectedKey, (int)KeyCode.Alpha4); 
 		EditorPrefs.SetInt (AssetPlacementGlobals.SelectedAssetNumber, AssetPlacementGlobals.HotKeySelectionEnabled);
@@ -72,7 +64,7 @@ public class AssetPlacementSerializedHotKeys : EditorWindow {
 	}
 
 
-	[MenuItem( "Window/Asset Placement Window - HotKeys/KeyCode Alpha5 _Alpha5")]
+	[MenuItem( AssetPlacementGlobals.CommandPath + "Hot Keys/Alpha5 &_Alpha5")]
 	public static void SelectItemAlpha5() {
 		EditorPrefs.SetInt (AssetPlacementGlobals.SelectedKey, (int)KeyCode.Alpha5); 
 		EditorPrefs.SetInt (AssetPlacementGlobals.SelectedAssetNumber, AssetPlacementGlobals.HotKeySelectionEnabled);
@@ -80,19 +72,11 @@ public class AssetPlacementSerializedHotKeys : EditorWindow {
 	}
 
 
-	[MenuItem( "Window/Asset Placement Window - HotKeys/KeyCode Alpha6 _Alpha6")]
+	[MenuItem( AssetPlacementGlobals.CommandPath + "Hot Keys/Alpha6 &_Alpha6")]
 	public static void SelectItemAlpha6() {
 		EditorPrefs.SetInt (AssetPlacementGlobals.SelectedKey, (int)KeyCode.Alpha6); 
 		EditorPrefs.SetInt (AssetPlacementGlobals.SelectedAssetNumber, AssetPlacementGlobals.HotKeySelectionEnabled);
 		RefreshSelectedKey(KeyCode.Alpha6);
-	}
-
-
-	[MenuItem( "Window/Asset Placement Window - HotKeys/KeyCode None _None")]
-	public static void SelectItemNone() {
-		EditorPrefs.SetInt (AssetPlacementGlobals.SelectedKey, (int)KeyCode.None); 
-		EditorPrefs.SetInt (AssetPlacementGlobals.SelectedAssetNumber, AssetPlacementGlobals.HotKeySelectionEnabled);
-		RefreshSelectedKey(KeyCode.None);
 	}
 
 }

@@ -32,14 +32,14 @@ public class ButtonSmallIcon : MonoBehaviour {
 	
 	void RefreshButton () {
 		if (iconSprite) {
-			if (getIcon ().name != iconSprite.name) {
+			if (getIcon () && getIcon ().name != iconSprite.name) {
 				getIcon ().sprite2D = iconSprite;
 			}
 		}
-		if (getBackground ().color != backgroundColor) {
+		if (getBackground () && getBackground ().color != backgroundColor) {
 			getBackground ().color = backgroundColor;
 		}
-		if (getButton ().onClick != onButtonClick) {
+		if (getButton () && getButton ().onClick != onButtonClick) {
 			getButton ().onClick = onButtonClick;
 		}
 	}

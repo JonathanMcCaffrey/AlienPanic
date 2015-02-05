@@ -161,6 +161,11 @@ public class AssetPlacementChoiceSystem : MonoBehaviour {
 	public void OnDrawGizmos() {
 		instance = this;
 
+		if (EditorPrefs.GetBool (AssetPlacementGlobals.ShouldRefreshHotkeys)) {
+			EditorPrefs.SetBool (AssetPlacementGlobals.ShouldRefreshHotkeys, false);
+			shouldResetHotKeys = true;
+		}
+
 		if (shouldResetHotKeys) {
 			shouldResetHotKeys = false;
 			SaveAllHotKeys();
@@ -205,7 +210,7 @@ public class AssetPlacementChoiceSystem : MonoBehaviour {
 			if(!keyCodeList.ContainsKey(asset.keyCode)) {
 				var keyString = asset.keyCode.ToString();
 				var text = 
-					"\n\n\t[MenuItem( \"Window/Asset Placement Window - HotKeys/KeyCode " + keyString + " _" + keyString + "\")]" +
+					"\n\n\t[MenuItem( AssetPlacementGlobals.CommandPath + \"Hot Keys/" + keyString + " &_" + keyString + "\")]" +
 						"\n\tpublic static void SelectItem" + keyString + "() {" +
 						"\n\t\tEditorPrefs.SetInt (AssetPlacementGlobals.SelectedKey, (int)KeyCode." + keyString + "); " +
 						"\n\t\tEditorPrefs.SetInt (AssetPlacementGlobals.SelectedAssetNumber, AssetPlacementGlobals.HotKeySelectionEnabled);" +
@@ -220,7 +225,9 @@ public class AssetPlacementChoiceSystem : MonoBehaviour {
 		}
 		
 		content += "\n}";
-		
+
 		File.WriteAllText(directoryPath, content);
+
+		//TODO Was trying to refresh load this here with AssetData, but didn't work. Probably another method would work
 	}
 }

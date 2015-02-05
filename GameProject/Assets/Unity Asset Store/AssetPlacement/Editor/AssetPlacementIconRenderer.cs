@@ -6,14 +6,6 @@ using System.IO;
 using System.Runtime.Serialization;
 
 public class AssetPlacementIconRenderer {
-
-	private static int textureWidth = 128; 
-	private static int textureHeight = 128;
-	
-	//TODO Do something better than this
-	private static Vector3 cameraPosition = new Vector3 (-5.09f, 16.97f, -7.5f);
-	private static Vector3 cameraRotation = new Vector3 (39.80953f, 44.82499f, -14.40204f);
-	
 	private static string CreateFileDirectory (string fixedName) {
 		var directoryPath = Application.dataPath + AssetPlacementGlobals.IconRenderPath;
 		string textureFilePath = directoryPath + fixedName + ".png";
@@ -34,25 +26,6 @@ public class AssetPlacementIconRenderer {
 		}
 	}
 	
-	private static Camera CreateStageCamera() {
-		string cameraName = AssetPlacementGlobals.CameraRender3D;
-		GameObject cameraContainer = null;
-		cameraContainer = GameObject.Find (cameraName);
-		Camera stagedCamera = null;
-		if (!cameraContainer) {
-			cameraContainer = new GameObject (cameraName);
-			stagedCamera = cameraContainer.AddComponent<Camera> ();
-			stagedCamera.transform.localPosition = cameraPosition;
-			stagedCamera.transform.Rotate (cameraRotation);
-
-			//The transparency pick colour (.png)
-			stagedCamera.backgroundColor = Color.magenta;
-		} else {
-			stagedCamera = cameraContainer.GetComponent<Camera> ();
-		}
-		return stagedCamera;
-	}	
-	
 	private static GameObject CreateStage () {
 		string stagedName = AssetPlacementGlobals.StageRender3D;
 		GameObject stagedContainer = null;
@@ -63,7 +36,28 @@ public class AssetPlacementIconRenderer {
 		return stagedContainer;
 	}
 	
-	private static Light CreateStageLightMain () {
+	private static Camera CreateStageCamera(GameObject stagedContainer) {
+		string cameraName = AssetPlacementGlobals.CameraRender3D;
+		GameObject cameraContainer = null;
+		cameraContainer = GameObject.Find (cameraName);
+		Camera stagedCamera = null;
+		if (!cameraContainer) {
+			cameraContainer = new GameObject (cameraName);
+			stagedCamera = cameraContainer.AddComponent<Camera> ();
+			stagedCamera.fieldOfView = 60.0f;
+			
+			//The transparency pick colour (.png)
+			stagedCamera.backgroundColor = Color.magenta;
+		} else {
+			stagedCamera = cameraContainer.GetComponent<Camera> ();
+		}
+		
+		cameraContainer.transform.parent = stagedContainer.transform;
+		
+		return stagedCamera;
+	}	
+	
+	private static Light CreateStageLightMain (GameObject stagedContainer) {
 		string stagedLightMainName = AssetPlacementGlobals.LightMainRender3D;
 		GameObject stagedLightMainContainer = null;
 		stagedLightMainContainer = GameObject.Find (stagedLightMainName);
@@ -77,10 +71,12 @@ public class AssetPlacementIconRenderer {
 			light.intensity = 6.8f;
 		}
 		
+		stagedLightMainContainer.transform.parent = stagedContainer.transform;
+		
 		return stagedLightMainContainer.GetComponent<Light> ();
 	}
 	
-	private static Light CreateStageLightSub () {
+	private static Light CreateStageLightSub (GameObject stagedContainer) {
 		string stagedLightSubName = AssetPlacementGlobals.LightSubRender3D;
 		GameObject stagedLightSubContainer = null;
 		stagedLightSubContainer = GameObject.Find (stagedLightSubName);
@@ -95,12 +91,15 @@ public class AssetPlacementIconRenderer {
 			light.color = Color.gray;
 		}
 		
+		stagedLightSubContainer.transform.parent = stagedContainer.transform;
+		
 		return stagedLightSubContainer.GetComponent<Light> ();
 	}
 	
-	private static Light CreateStageLightSun () {
+	private static Light CreateStageLightSun (GameObject stagedContainer) {
 		string stagedLightSunName = AssetPlacementGlobals.LightSunRender3D;
 		GameObject stageLightSunContainer = null;
+		
 		stageLightSunContainer = GameObject.Find (stagedLightSunName);
 		if (!stageLightSunContainer) {
 			stageLightSunContainer = new GameObject (stagedLightSunName);
@@ -113,6 +112,8 @@ public class AssetPlacementIconRenderer {
 			light.color = Color.white;
 		}
 		
+		stageLightSunContainer.transform.parent = stagedContainer.transform;
+		
 		return stageLightSunContainer.GetComponent<Light> ();
 	}
 	
@@ -124,6 +125,9 @@ public class AssetPlacementIconRenderer {
 		SceneView.RepaintAll ();
 		return stagedAsset;
 	}
+
+	private static int textureWidth = 128; 
+	private static int textureHeight = 128;
 	
 	private static void TakeStageScreenshot (string textureFilePath, Camera stagedCamera, GameObject stagedAsset) {
 		RenderTexture rt = new RenderTexture (textureWidth, textureHeight, 0, RenderTextureFormat.ARGB32);
@@ -137,11 +141,11 @@ public class AssetPlacementIconRenderer {
 			for (int y = 0; y < textureHeight; y++) {
 				var pixel = screenShot.GetPixel(x, y);
 				if(pixel.r == Color.magenta.r && pixel.g == Color.magenta.g && pixel.b == Color.magenta.b) {  
- 					screenShot.SetPixel(x, y, new Color(1.0f, 1.0f, 1.0f, 0.0f));
+					screenShot.SetPixel(x, y, new Color(1.0f, 1.0f, 1.0f, 0.0f));
 				}
 			}
 		}
-
+		
 		screenShot.alphaIsTransparency = true;
 		
 		screenShot.Apply ();
@@ -152,6 +156,35 @@ public class AssetPlacementIconRenderer {
 		File.WriteAllBytes (textureFilePath, bytes);
 		stagedCamera.targetTexture = null;
 		RenderTexture.active = null;
+	}
+	
+	static void FocusStageCameraOnAsset (Camera stagedCamera, GameObject stagedAsset, GameObject stagedContainer) {
+		Vector3 min = Vector3.zero;
+		Vector3 max = Vector3.zero;
+
+		stagedAsset.transform.Rotate (new Vector3 (-27, -10, 0));
+		Utils.GameObjectUtils.GetMaxMinPointFromGameObject (stagedAsset, ref max, ref min);
+
+		float extraPush = max.z - min.z;
+		Vector2 point = new Vector2 (max.x - min.x, max.y - min.y);
+		float distance = Mathf.Sqrt (point.x * point.x + point.y * point.y);
+		float height = distance / 2.0f;
+		float zoomOut = 1.85f;
+		Vector3 distanceVector = new Vector3 (0, 0, -height * zoomOut - extraPush);
+
+		stagedCamera.gameObject.transform.position = distanceVector;
+
+		Vector3 reverseTransformVector = new Vector3 ((max.x + min.x) / 2.0f, (max.y + min.y) / 2.0f, (max.z + min.z) / 2.0f);
+
+		stagedCamera.gameObject.transform.position = new Vector3 (stagedCamera.gameObject.transform.position.x + reverseTransformVector.x, 
+		                                                          stagedCamera.gameObject.transform.position.y + reverseTransformVector.y, 
+		                                                          stagedCamera.gameObject.transform.position.z + reverseTransformVector.z); 
+
+		stagedCamera.gameObject.transform.LookAt (reverseTransformVector);
+		
+		stagedContainer.transform.position = new Vector3 (-5000, -5000, -5000);
+		
+		SceneView.RepaintAll ();
 	}
 	
 	public static Texture2D CreateTextureFromCamera(AssetPlacementData assetData, ref bool hasMadeAnIconRenderAsset) {
@@ -167,18 +200,19 @@ public class AssetPlacementIconRenderer {
 		} else {
 			hasMadeAnIconRenderAsset = true;
 			
-			var stagedCamera = CreateStageCamera ();
 			var stagedContainer = CreateStage ();
+			var stagedCamera = CreateStageCamera (stagedContainer);
 			var stagedAsset = CreateStagedAsset (assetData, stagedContainer); 	
 			
-			CreateStageLightMain ();
-			CreateStageLightSub ();
-			CreateStageLightSun ();
+			CreateStageLightMain (stagedContainer);
+			CreateStageLightSub (stagedContainer);
+			CreateStageLightSun (stagedContainer);
 			
-			//TODO Move and aim camera to point at the stage asset
-			
+			FocusStageCameraOnAsset (stagedCamera, stagedAsset, stagedContainer);
 			TakeStageScreenshot (textureFilePath, stagedCamera, stagedAsset);
 			
+			AssetDatabase.ImportAsset(textureFilePath);
+
 			EditorWindow.DestroyImmediate (stagedAsset);
 			
 			return null;
@@ -186,6 +220,8 @@ public class AssetPlacementIconRenderer {
 	}
 	
 	public static void CleanUpRender3DAssets () {
+		AssetDatabase.Refresh();
+
 		var temp = GameObject.Find (AssetPlacementGlobals.CameraRender3D);
 		if (temp) EditorWindow.DestroyImmediate (temp);
 		temp = GameObject.Find (AssetPlacementGlobals.StageRender3D);
