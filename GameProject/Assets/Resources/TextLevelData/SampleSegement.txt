@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<node xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" text="PlacementAssets" x="0" y="0" z="0">
+  <children>
+    <child text="Ceilings" x="0" y="0" z="0">
+      <children />
+    </child>
+    <child text="Decor" x="0" y="0" z="0">
+      <children />
+    </child>
+    <child text="Floors" x="0" y="0" z="0">
+      <children>
+        <child text="Floor_MetalRock1" x="-19.2" y="-7.9" z="1120">
+          <children />
+        </child>
+        <child text="Floor_MetalRock1" x="-12.8" y="-7.9" z="1120">
+          <children />
+        </child>
+        <child text="Floor_MetalRock1" x="-12.8" y="-7.9" z="1120">
+          <children />
+        </child>
+        <child text="Floor_MetalRock1" x="-16" y="-7.9" z="1120">
+          <children />
+        </child>
+        <child text="Floor_MetalRock1" x="-6.4" y="-7.9" z="1120">
+          <children />
+        </child>
+        <child text="Floor_MetalRock1" x="-9.6" y="-7.9" z="1120">
+          <children />
+        </child>
+        <child text="Floor_MetalRock1" x="-3.2" y="-7.9" z="1120">
+          <children />
+        </child>
+        <child text="Floor_MetalRock2" x="-22.5" y="-7.9" z="1120">
+          <children />
+        </child>
+        <child text="Floor_MetalRock2" x="-25.7" y="-7.9" z="1120">
+          <children />
+        </child>
+        <child text="Floor_MetalRock2" x="0" y="-7.9" z="1120">
+          <children />
+        </child>
+        <child text="Floor_MetalRock2" x="3.2" y="-7.9" z="1120">
+          <children />
+        </child>
+        <child text="Floor_MetalRock2" x="-28.9" y="-7.9" z="1120">
+          <children />
+        </child>
+        <child text="Floor_MetalRock2" x="6.4" y="-7.9" z="1120">
+          <children />
+        </child>
+        <child text="Ramp_MetalRock1" x="-48.1" y="6.7" z="1120">
+          <children />
+        </child>
+        <child text="Ramp_MetalRock1" x="0" y="6.7" z="1120">
+          <children />
+        </child>
+        <child text="Floor_MetalRock1" x="-32.1" y="6.7" z="1120">
+          <children />
+        </child>
+        <child text="Floor_MetalRock1" x="-28.9" y="6.7" z="1120">
+          <children />
+        </child>
+        <child text="Floor_MetalRock1" x="-19.2" y="6.7" z="1120">
+          <children />
+        </child>
+        <child text="Floor_MetalRock1" x="-22.5" y="6.7" z="1120">
+          <children />
+        </child>
+        <child text="Floor_MetalRock1" x="-25.7" y="6.7" z="1120">
+          <children />
+        </child>
+        <child text="Floor_MetalRock1" x="-16" y="6.7" z="1120">
+          <children />
+        </child>
+        <child text="Floor_MetalRock1" x="-12.8" y="6.7" z="1120">
+          <children />
+        </child>
+        <child text="Floor_MetalRock1" x="-9.6" y="6.7" z="1120">
+          <children />
+        </child>
+        <child text="Floor_MetalRock1" x="-6.4" y="6.7" z="1120">
+          <children />
+        </child>
+        <child text="Floor_MetalRock1" x="-3.2" y="6.7" z="1120">
+          <children />
+        </child>
+        <child text="Floor_MetalRock2" x="-51.3" y="6.7" z="1120">
+          <children />
+        </child>
+        <child text="Floor_MetalRock1" x="16" y="6.7" z="1120">
+          <children />
+        </child>
+        <child text="Floor_MetalRock1" x="22.5" y="6.7" z="1120">
+          <children />
+        </child>
+        <child text="Floor_MetalRock1" x="19.2" y="6.7" z="1120">
+          <children />
+        </child>
+        <child text="Floor_MetalRock1" x="-32.1" y="-7.9" z="1120">
+          <children />
+        </child>
+        <child text="Floor_MetalRock1" x="-48.1" y="-7.9" z="1120">
+          <children />
+        </child>
+        <child text="Floor_MetalRock1" x="-51.3" y="-7.9" z="1120">
+          <children />
+        </child>
+        <child text="Floor_MetalRock1" x="-54.5" y="-7.9" z="1120">
+          <children />
+        </child>
+        <child text="Floor_MetalRock1" x="25.7" y="-7.9" z="1120">
+          <children />
+        </child>
+        <child text="Floor_MetalRock1" x="32.1" y="-7.9" z="1120">
+          <children />
+        </child>
+        <child text="Floor_MetalRock1" x="28.9" y="-7.9" z="1120">
+          <children />
+        </child>
+        <child text="Floor_Rock" x="9.6" y="-7.9" z="1120">
+          <children />
+        </child>
+        <child text="Floor_MetalRock2" x="22.5" y="-7.9" z="1120">
+          <children />
+        </child>
+        <child text="Floor_MetalRock2" x="19.2" y="-7.9" z="1120">
+          <children />
+        </child>
+        <child text="Floor_RockGrateR" x="-49.1" y="22.1" z="1120">
+          <children />
+        </child>
+        <child text="Floor_MetalRock1" x="-36.3" y="22.1" z="1120">
+          <children />
+        </child>
+        <child text="Floor_MetalRock1" x="-39.5" y="22.1" z="1120">
+          <children />
+        </child>
+        <child text="Floor_MetalRock1" x="-29.9" y="22.1" z="1120">
+          <children />
+        </child>
+        <child text="Floor_MetalRock1" x="-33.1" y="22.1" z="1120">
+          <children />
+        </child>
+        <child text="Floor_MetalRock1" x="-26.7" y="22.1" z="1120">
+          <children />
+        </child>
+        <child text="Floor_MetalRock1" x="-20.3" y="22.1" z="1120">
+          <children />
+        </child>
+        <child text="Floor_MetalRock1" x="-23.5" y="22.1" z="1120">
+          <children />
+        </child>
+        <child text="Floor_MetalRock1" x="-3.6" y="24.3" z="1120">
+          <children />
+        </child>
+        <child text="Floor_MetalRock1" x="2.8" y="24.3" z="1120">
+          <children />
+        </child>
+        <child text="Floor_MetalRock1" x="-0.4" y="24.3" z="1120">
+          <children />
+        </child>
+        <child text="Floor_MetalRock1" x="-6.8" y="24.3" z="1120">
+          <children />
+        </child>
+      </children>
+    </child>
+    <child text="Lights" x="0" y="0" z="0">
+      <children />
+    </child>
+    <child text="Misc" x="0" y="0" z="0">
+      <children>
+        <child text="Token" x="-47.9012222" y="15.6983252" z="1120">
+          <children />
+        </child>
+        <child text="Token" x="-45.59253" y="18.0070171" z="1120">
+          <children />
+        </child>
+        <child text="Token" x="-41.5774155" y="18.5089054" z="1120">
+          <children />
+        </child>
+        <child text="Token" x="-35.65512" y="17.605505" z="1120">
+          <children />
+        </child>
+        <child text="Token" x="-33.24605" y="14.6945457" z="1120">
+          <children />
+        </child>
+        <child text="Token" x="-0.623232841" y="17.20399" z="1120">
+          <children />
+        </child>
+        <child text="Token" x="3.8937726" y="19.5126839" z="1120">
+          <children />
+        </child>
+        <child text="Token" x="9.715689" y="20.2153282" z="1120">
+          <children />
+        </child>
+        <child text="Token" x="13.2289152" y="18.6092834" z="1120">
+          <children />
+        </child>
+        <child text="Token" x="15.6379852" y="15.096056" z="1120">
+          <children />
+        </child>
+        <child text="Token" x="-22.761816" y="28.7649651" z="1120">
+          <children />
+        </child>
+        <child text="Token" x="-17.6071644" y="29.5667973" z="1120">
+          <children />
+        </child>
+        <child text="Token" x="-13.7125368" y="30.7122784" z="1120">
+          <children />
+        </child>
+        <child text="Token" x="-8.672431" y="32.65959" z="1120">
+          <children />
+        </child>
+        <child text="Token" x="-3.2886827" y="32.4304962" z="1120">
+          <children />
+        </child>
+        <child text="Token" x="-20.9313812" y="0.913203359" z="1120">
+          <children />
+        </child>
+        <child text="Token" x="-16.358366" y="0.6660139" z="1120">
+          <children />
+        </child>
+        <child text="Token" x="-11.04378" y="0.542419136" z="1120">
+          <children />
+        </child>
+        <child text="Token" x="-6.47076464" y="0.6660139" z="1120">
+          <children />
+        </child>
+        <child text="Token" x="9.349399" y="0.9132047" z="1120">
+          <children />
+        </child>
+        <child text="Token" x="13.55163" y="0.2952288" z="1120">
+          <children />
+        </child>
+        <child text="Token" x="18.3718357" y="-0.0755564943" z="1120">
+          <children />
+        </child>
+        <child text="Token" x="-54.6728172" y="24.3962574" z="1120">
+          <children />
+        </child>
+        <child text="Token" x="-52.44811" y="27.1153469" z="1120">
+          <children />
+        </child>
+        <child text="Token" x="-47.87509" y="29.09287" z="1120">
+          <children />
+        </child>
+        <child text="Token" x="-44.41443" y="-1.80588686" z="1120">
+          <children />
+        </child>
+        <child text="Token" x="-41.20096" y="-3.16543221" z="1120">
+          <children />
+        </child>
+        <child text="Token" x="-38.111084" y="-3.90700173" z="1120">
+          <children />
+        </child>
+        <child text="Token" x="-35.1448021" y="-2.053077" z="1120">
+          <children />
+        </child>
+      </children>
+    </child>
+    <child text="Objects" x="0" y="0" z="0">
+      <children />
+    </child>
+    <child text="Sounds" x="0" y="0" z="0">
+      <children />
+    </child>
+    <child text="Walls" x="0" y="0" z="0">
+      <children />
+    </child>
+  </children>
+</node>

@@ -15,6 +15,10 @@ public class CameraTrackingUnity : Editor {
 	SerializedProperty quadrants;
 	
 	SerializedProperty thresholdDisplay;
+
+	SerializedProperty isVisible;
+	SerializedProperty isEditorGuide;
+
 	
 	void OnEnable() {
 		cameraOffsetY = serializedObject.FindProperty ("cameraOffsetY");
@@ -26,6 +30,9 @@ public class CameraTrackingUnity : Editor {
 		quadrants = serializedObject.FindProperty ("quadrants");
 		
 		thresholdDisplay = serializedObject.FindProperty ("thresholdDisplay");
+
+		isVisible = serializedObject.FindProperty ("isVisible");
+		isEditorGuide = serializedObject.FindProperty ("isEditorGuide");
 	}
 	
 	bool notReady() {
@@ -75,8 +82,11 @@ public class CameraTrackingUnity : Editor {
 			EditorGUILayout.PropertyField (cameraOffsetY, true);
 			EditorGUILayout.PropertyField (distanceThreshold, new GUIContent("Threshold"), true, null);
 			EditorGUILayout.PropertyField (startY, true);
-			
+
 			CreateQuadrantUI ();
+
+			EditorGUILayout.PropertyField (isVisible, true);
+			EditorGUILayout.PropertyField (isEditorGuide, true);
 		}
 		
 		serializedObject.ApplyModifiedProperties ();

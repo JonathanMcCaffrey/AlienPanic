@@ -6,6 +6,8 @@ public class CameraTracking : MonoBehaviour {
 	
 	public GameObject defaultQuadrant = null;
 	public GameObject quadrantContainer = null;
+	public bool isVisible = false;
+	public bool isEditorGuide = false;
 	
 	
 	[Range(0.01f, 1.0f)]
@@ -86,7 +88,7 @@ public class CameraTracking : MonoBehaviour {
 			}
 		}
 	}	
-
+	
 	void TransitionDown (ref bool isTransitioning) {
 		if (CurrentQuadrant > 0) {
 			if (PlayerY () < getQuadMin (CurrentQuadrant)) {
@@ -120,15 +122,26 @@ public class CameraTracking : MonoBehaviour {
 	void RefreshQuadrantDisplay () {
 		var quadList = quadrantContainer.GetComponentsInChildren<CameraQuadrant> ();
 		quadrants.Clear ();
-		int quadIndex = 0;
+		float quadIndex = 0;
+		float quadCount = quadList.Length;
+
 		foreach (var quad in quadList) {
 			if (quadrants.Contains (quad.gameObject)) {
 				continue;
 			}
 			quadrants.Add (quad.gameObject);
 			float yVal = quadIndex * QuadHeight() + startY;
-			quad.gameObject.transform.position = new Vector3 (0, yVal, 0);
+			quad.gameObject.transform.position = new Vector3 (0, yVal, 5000);
+			quad.transform.localScale = new Vector3 (isEditorGuide ? 5000 : 1, 1, 1);
 			quadIndex++;
+			
+			if(!isVisible) {
+				quad.gameObject.GetComponent<SpriteRenderer>().color = new Color(0,0,0,0);
+			} if(isEditorGuide) {
+				quad.gameObject.GetComponent<SpriteRenderer>().color = new Color(0.5f, quadIndex / quadCount, (quadCount - quadIndex) / quadCount,0.8f);
+			} else {
+				quad.gameObject.GetComponent<SpriteRenderer>().color = new Color(0,0.8f,0.8f,0.8f);
+			}
 		}
 	}
 	
@@ -136,9 +149,15 @@ public class CameraTracking : MonoBehaviour {
 		if (thresholdDisplay) {
 			if (quadrants.Count >= 2) {
 				var y = (quadrants [0].transform.localPosition.y + quadrants [1].transform.localPosition.y) / 2.0f;
-				thresholdDisplay.transform.position = new Vector3 (0, y, 0);
-				thresholdDisplay.transform.localScale = new Vector3 (1, distanceThreshold, 0);
+				thresholdDisplay.transform.position = new Vector3 (0, y, 5000);
+				thresholdDisplay.transform.localScale = new Vector3 (isEditorGuide ? 5000 : 1, distanceThreshold, 1);
 				thresholdDisplay.SetActive (true);
+				
+				if(isEditorGuide || !isVisible) {
+					thresholdDisplay.GetComponent<SpriteRenderer>().color = new Color(0,0,0,0);
+				} else {
+					thresholdDisplay.GetComponent<SpriteRenderer>().color = new Color(0,0.8f,0.8f,1);
+				}
 			}
 			else {
 				thresholdDisplay.SetActive (false);
