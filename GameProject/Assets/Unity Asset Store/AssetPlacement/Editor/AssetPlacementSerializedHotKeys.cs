@@ -32,11 +32,11 @@ public class AssetPlacementSerializedHotKeys : EditorWindow {
 	}
 
 
-	[MenuItem( AssetPlacementGlobals.CommandPath + "Hot Keys/B &_B")]
-	public static void SelectItemB() {
-		EditorPrefs.SetInt (AssetPlacementGlobals.SelectedKey, (int)KeyCode.B); 
+	[MenuItem( AssetPlacementGlobals.CommandPath + "Hot Keys/Alpha1 &_Alpha1")]
+	public static void SelectItemAlpha1() {
+		EditorPrefs.SetInt (AssetPlacementGlobals.SelectedKey, (int)KeyCode.Alpha1); 
 		EditorPrefs.SetInt (AssetPlacementGlobals.SelectedAssetNumber, AssetPlacementGlobals.HotKeySelectionEnabled);
-		RefreshSelectedKey(KeyCode.B);
+		RefreshSelectedKey(KeyCode.Alpha1);
 	}
 
 

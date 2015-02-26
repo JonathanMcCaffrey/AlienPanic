@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<node xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" text="PlacementAssets" x="0" y="0" z="0">
+  <children>
+    <child text="Ceilings" x="0" y="0" z="0">
+      <children />
+    </child>
+    <child text="Decor" x="0" y="0" z="0">
+      <children />
+    </child>
+    <child text="Floors" x="0" y="0" z="0">
+      <children>
+        <child text="Floor_MetalRock2" x="-86.61946" y="19.4845963" z="500">
+          <children />
+        </child>
+        <child text="Floor_MetalRock2" x="-83.41133" y="19.4845963" z="500">
+          <children />
+        </child>
+        <child text="Floor_MetalRock2" x="-86.61946" y="19.4845963" z="500">
+          <children />
+        </child>
+        <child text="Floor_MetalRock2" x="-93.03572" y="19.4845963" z="500">
+          <children />
+        </child>
+        <child text="Floor_MetalRock2" x="-89.82759" y="19.4845963" z="500">
+          <children />
+        </child>
+        <child text="Floor_MetalRock1" x="-80.20321" y="19.4845963" z="500">
+          <children />
+        </child>
+        <child text="Floor_MetalRock1" x="-76.99508" y="19.4845963" z="500">
+          <children />
+        </child>
+        <child text="Floor_MetalRock1" x="-96.24384" y="19.4845963" z="500">
+          <children />
+        </child>
+        <child text="Floor_MetalRock1" x="-99.45197" y="19.4845963" z="500">
+          <children />
+        </child>
+      </children>
+    </child>
+    <child text="Lights" x="0" y="0" z="0">
+      <children />
+    </child>
+    <child text="Misc" x="0" y="0" z="0">
+      <children />
+    </child>
+    <child text="Objects" x="0" y="0" z="0">
+      <children />
+    </child>
+    <child text="Sounds" x="0" y="0" z="0">
+      <children />
+    </child>
+    <child text="Walls" x="0" y="0" z="0">
+      <children />
+    </child>
+  </children>
+</node>
