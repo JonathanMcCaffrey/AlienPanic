@@ -53,7 +53,7 @@ public class Score : MonoBehaviour {
 		// Retrieve the high score.  If it can't be received, use zero
 		highScore = PlayerPrefs.GetInt (highScoreKey, 0);
 		
-		Debug.Log ("Loaded highscore: " + highScore);
+		Debug.Log ("Score:: Initialize() -- Loaded highscore: " + highScore);
 	}
 	
 	// Adding points
@@ -78,7 +78,7 @@ public class Score : MonoBehaviour {
 
 	public void SaveHighScore () {
 
-		Debug.Log ("Saving highscore: " + highScore);
+		Debug.Log ("Score:: SaveHighScore() -- Saving highscore: " + highScore);
 
 		PlayerPrefs.SetInt (highScoreKey, highScore);
 		PlayerPrefs.Save ();

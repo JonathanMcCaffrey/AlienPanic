@@ -16,7 +16,7 @@ public class StateGamePlaying : GameState {
 	public override void StateGUI() {
 
 		// Render the GUI.
-		GUI.Label (new Rect(20, 10, 150, 20), string.Format ("state: GAME PLAYING"));
+		//GUI.Label (new Rect(20, 10, 150, 20), string.Format ("state: GAME PLAYING"));
 	}
 
 	public override void StateUpdate() {
