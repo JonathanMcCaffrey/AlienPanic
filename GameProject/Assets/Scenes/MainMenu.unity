@@ -406,15 +406,15 @@ Prefab:
         type: 3}
     - target: {fileID: 400004, guid: b492525fb78fcdc4eb3a3c5254c36e79, type: 2}
       propertyPath: m_LocalScale.x
-      value: .00336700329
+      value: .00185873604
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: b492525fb78fcdc4eb3a3c5254c36e79, type: 2}
       propertyPath: m_LocalScale.y
-      value: .00336700329
+      value: .00185873604
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: b492525fb78fcdc4eb3a3c5254c36e79, type: 2}
       propertyPath: m_LocalScale.z
-      value: .00336700329
+      value: .00185873604
       objectReference: {fileID: 0}
     - target: {fileID: 100008, guid: b492525fb78fcdc4eb3a3c5254c36e79, type: 2}
       propertyPath: m_TagString
@@ -470,17 +470,17 @@ Transform:
   m_GameObject: {fileID: 433883374}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 10, y: -60, z: 0}
-  m_LocalScale: {x: .00336700329, y: .00336700329, z: .00336700329}
+  m_LocalScale: {x: .00185873604, y: .00185873604, z: .00185873604}
   m_Children:
   - {fileID: 952478821}
   - {fileID: 1280009714}
   - {fileID: 1029627448}
   - {fileID: 1741951279}
   - {fileID: 2132749756}
-  - {fileID: 2027017382}
-  - {fileID: 445698248}
-  - {fileID: 1228864015}
   - {fileID: 1440906673}
+  - {fileID: 2027017382}
+  - {fileID: 1228864015}
+  - {fileID: 445698248}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!54 &433883376
@@ -652,7 +652,7 @@ Transform:
   m_Children:
   - {fileID: 1349673291}
   m_Father: {fileID: 433883375}
-  m_RootOrder: 6
+  m_RootOrder: 8
 --- !u!114 &445698249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1868,7 +1868,7 @@ Transform:
   m_Children:
   - {fileID: 1755170307}
   m_Father: {fileID: 433883375}
-  m_RootOrder: 8
+  m_RootOrder: 5
 --- !u!114 &1440906674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2517,7 +2517,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 433883375}
-  m_RootOrder: 5
+  m_RootOrder: 6
 --- !u!81 &2027017383
 AudioListener:
   m_ObjectHideFlags: 0
@@ -2585,7 +2585,7 @@ Camera:
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
