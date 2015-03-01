@@ -4,6 +4,9 @@ using System.Collections;
 public class Health : MonoBehaviour {
 	public int maxHealth = 1;
 	private int healthRemaining = 1;
+	public int HealthRemaining { 
+		get { return healthRemaining; }
+	}
 
 	// Use this for initialization
 	void Start () {
@@ -18,9 +21,17 @@ public class Health : MonoBehaviour {
 		healthRemaining += healthAdjustment;
 		healthRemaining = Mathf.Clamp(healthRemaining, 0, maxHealth);
 
-		if (healthRemaining == 0) {
+		if (!IsAlive ()) {
 			OnDeath ();
 		}
+	}
+
+	/// <summary>
+	/// Determines whether the actor is alive.
+	/// </summary>
+	/// <returns><c>true</c> if this actor is alive; otherwise, <c>false</c>.</returns>
+	public bool IsAlive() {
+		return (healthRemaining > 0);
 	}
 
 	/// <summary>
