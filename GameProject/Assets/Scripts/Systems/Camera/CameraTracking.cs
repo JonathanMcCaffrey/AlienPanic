@@ -124,7 +124,7 @@ public class CameraTracking : MonoBehaviour {
 		quadrants.Clear ();
 		float quadIndex = 0;
 		float quadCount = quadList.Length;
-
+		
 		foreach (var quad in quadList) {
 			if (quadrants.Contains (quad.gameObject)) {
 				continue;
@@ -137,7 +137,7 @@ public class CameraTracking : MonoBehaviour {
 			
 			if(!isVisible) {
 				quad.gameObject.GetComponent<SpriteRenderer>().color = new Color(0,0,0,0);
-			} if(isEditorGuide) {
+			} else if(isEditorGuide) {
 				quad.gameObject.GetComponent<SpriteRenderer>().color = new Color(0.5f, quadIndex / quadCount, (quadCount - quadIndex) / quadCount,0.8f);
 			} else {
 				quad.gameObject.GetComponent<SpriteRenderer>().color = new Color(0,0.8f,0.8f,0.8f);

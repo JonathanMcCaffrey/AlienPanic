@@ -10,7 +10,7 @@ public class AssetPlacementGlobals {
 	#if ProjectSelection
 	public const string InstallPath = ""; 
 	#else
-	public const string InstallPath = "Unity Asset Store/"; 
+	public const string InstallPath = "Scripts/"; 
 	#endif
 	
 	//Where 'your' assets are in Assets/
@@ -26,9 +26,9 @@ public class AssetPlacementGlobals {
 	public const string IconRenderPath = "/Resources/PlacementIcons/";
 	
 	public const string HotKeysPath = "/" + InstallPath + "AssetPlacement/Editor/AssetPlacementSerializedHotKeys.cs";
-
+	
 	public const string CommandPath = "Window/Asset Placement/";
-
+	
 	//Keys used internally
 	public const string SnapUpdate = "AssetPlacement.doSnapUpdate";
 	public const string ShowAll = "AssetPlacement.ShowAll";
@@ -38,7 +38,8 @@ public class AssetPlacementGlobals {
 	public const string SelectedKey = "AssetPlacement.SelectedKey";
 	public const string SelectedAssetNumber = "AssetPlacement.SelectedAssetNumber";
 	
-	public const string SavedHotkey = "AP.SavedHotkey.";
+	public const string SavedHotkeyDisplayName = "AP.SavedHotkeyDisplayName.";
+	public const string SavedHotkeyDisplayIndex = "AP.SavedHotkeyDisplayIndex.";
 	public const string ShouldRefreshHotkeys = "AP.ShouldRefreshHotkeys.";
 	
 	

@@ -11,9 +11,9 @@ using System.Xml.Serialization;
 using UnityEditor;
 
 public class AssetPlacementChoiceSystem : MonoBehaviour {
-	public bool shouldResetAssets = false;
-	public bool shouldResetHotKeys = false;
-
+	public bool shouldResetAssets = true;
+	public bool shouldResetHotKeys = true;
+	
 	public static AssetPlacementData selectedAsset = null; 
 	
 	public List<AssetPlacementData> assetList = new List<AssetPlacementData>();
@@ -63,6 +63,18 @@ public class AssetPlacementChoiceSystem : MonoBehaviour {
 					if (name.EndsWith (searchedExtension)) {
 						var assetData = new AssetPlacementData (localPath, name, tabData.name);
 						assetList.Add (assetData);
+						
+						string fixedPath = localPath; 
+						fixedPath = fixedPath.Replace('\\', '/');
+						
+						var prefab = AssetDatabase.LoadAssetAtPath(fixedPath, typeof(GameObject)) as GameObject;
+						assetData.gameObject = prefab;
+						
+						var foundHotKey = EditorPrefs.GetString (AssetPlacementGlobals.SavedHotkeyDisplayName + assetData.name);
+						if(foundHotKey.Length > 0) {
+							foundHotKey = foundHotKey.Replace(" ", string.Empty);
+							assetData.keyCode = (KeyCode)System.Enum.Parse( typeof( KeyCode ), foundHotKey );
+						}
 					}
 				}
 			}
@@ -73,7 +85,7 @@ public class AssetPlacementChoiceSystem : MonoBehaviour {
 		if (!Directory.Exists (FolderPath ())) {
 			Directory.CreateDirectory (FolderPath ());
 		}
-
+		
 		LoadTabs ();
 		LoadAssets ();
 	}
@@ -148,36 +160,38 @@ public class AssetPlacementChoiceSystem : MonoBehaviour {
 		}
 	}
 	
-	public void ForceRefresh () {
-		WipeData ();
-		LoadData ();
-		RefreshTabContainers ();
-		if (selectedTab == null) {
+	public void Refresh () {
+		if (shouldResetAssets) {
+			
+			shouldResetAssets = false;
+			
+			WipeData ();
+			LoadData ();
+			RefreshTabContainers ();
 			RefreshSelectedTab ();
 		}
 	}
 	
 	public void OnDrawGizmos() {
 		instance = this;
-
+		
 		if (EditorPrefs.GetBool (AssetPlacementGlobals.ShouldRefreshHotkeys)) {
 			EditorPrefs.SetBool (AssetPlacementGlobals.ShouldRefreshHotkeys, false);
 			shouldResetHotKeys = true;
 		}
-
+		
 		if (shouldResetHotKeys) {
 			shouldResetHotKeys = false;
 			SaveAllHotKeys();
 		}
-
+		
 		if (shouldResetAssets) {
-			shouldResetAssets = false;
-			ForceRefresh ();
+			Refresh ();
 		}
 		
 		UpdateSelectedAsset ();
 	}
-
+	
 	string refreshSelectedKeyFunctionString = "\n\tstatic void RefreshSelectedKey (KeyCode hotkeyCode) {" +
 		"\n\t\tif (hotkeyCode != KeyCode.None) {" +
 			"\n\t\t\tint index = 0;" +
@@ -196,18 +210,18 @@ public class AssetPlacementChoiceSystem : MonoBehaviour {
 			"\n\t\t\t}" +
 			"\n\t\t}" +
 			"\n\t}";
-
+	
 	public void SaveAllHotKeys() {
 		var directoryPath = Application.dataPath + AssetPlacementGlobals.HotKeysPath;
 		string content = "//This code is generated dynamically. Don't edit\nusing UnityEditor; \nusing UnityEngine; \n\npublic class AssetPlacementSerializedHotKeys : EditorWindow {";
-
+		
 		content += refreshSelectedKeyFunctionString;
-
+		
 		Dictionary<KeyCode, string> keyCodeList = new Dictionary<KeyCode, string>();
 		
 		foreach (var asset in assetList) {
 			if(!keyCodeList.ContainsKey(asset.keyCode)) {
-				var keyString = asset.keyCode.ToString();
+				var keyString = ((KeyCode)asset.keyCode).ToString();
 				var text = 
 					"\n\n\t[MenuItem( AssetPlacementGlobals.CommandPath + \"Hot Keys/" + keyString + " &_" + keyString + "\")]" +
 						"\n\tpublic static void SelectItem" + keyString + "() {" +
@@ -224,9 +238,9 @@ public class AssetPlacementChoiceSystem : MonoBehaviour {
 		}
 		
 		content += "\n}";
-
+		
 		File.WriteAllText(directoryPath, content);
-
+		
 		//TODO Was trying to refresh load this here with AssetData, but didn't work. Probably another method would work
 	}
 }
