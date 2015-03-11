@@ -25,7 +25,7 @@ public class AssetPlacementChoiceSystem : MonoBehaviour {
 	
 	private string folderName = AssetPlacementGlobals.AssetPathPath + "PlacementAssets";
 	private string FolderPath() { 		
-		return Application.dataPath + "\\" + folderName;
+		return Application.dataPath + "/" + folderName;
 	}
 	
 	private Dictionary<string, GameObject> tabContainerDictionary = new Dictionary<string, GameObject> (); 
