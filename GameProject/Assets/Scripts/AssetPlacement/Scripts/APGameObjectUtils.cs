@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
+
+using UnityEngine;
 using System.Collections;
 
 namespace Utils {
@@ -61,3 +63,5 @@ namespace Utils {
 		}
 	}
 }
+
+#endif

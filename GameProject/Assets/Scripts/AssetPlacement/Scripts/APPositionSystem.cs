@@ -1,3 +1,5 @@
+#if UNITY_EDITOR
+
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,7 +13,7 @@ using System.Xml;
 using System.Xml.Serialization;
 
 
-public class AssetPlacementPositionSystem : MonoBehaviour {
+public class APPositionSystem : MonoBehaviour {
 	public float xPosition = 0;
 	public float yPosition = 0;
 	
@@ -29,7 +31,7 @@ public class AssetPlacementPositionSystem : MonoBehaviour {
 	private float distance = 500;
 	public bool isMarkerActive = false;
 	
-	public static AssetPlacementPositionSystem instance = null;
+	public static APPositionSystem instance = null;
 	void Awake() {
 		if (instance && instance != this) {
 			Destroy (gameObject);
@@ -53,19 +55,19 @@ public class AssetPlacementPositionSystem : MonoBehaviour {
 
 	Texture2D markerTexture = null;
 	void CreateMarker () {
-		if (marker == null && AssetPlacementChoiceSystem.instance) {
-			marker = GameObject.Find (AssetPlacementGlobals.PositionMarker);
+		if (marker == null && APChoiceSystem.instance) {
+			marker = GameObject.Find (APGlobals.PositionMarker);
 			if (marker) {
 				return;
 			}
-			string path = "Assets/" + AssetPlacementGlobals.InstallPath + "AssetPlacement/Resources/GUI/";
+			string path = "Assets/" + APGlobals.InstallPath + "AssetPlacement/Resources/GUI/";
 
 			if(markerTexture == null) {
 				markerTexture = AssetDatabase.LoadAssetAtPath (path + "PositionMarker.png", typeof(Texture2D)) as Texture2D;
 			}
 
 			if (markerTexture) {
-				marker = new GameObject (AssetPlacementGlobals.PositionMarker);
+				marker = new GameObject (APGlobals.PositionMarker);
 				marker.AddComponent<SpriteRenderer> ();
 				var renderer = marker.GetComponent<SpriteRenderer> ();
 				var sprite = Sprite.Create(markerTexture, new Rect(0,0,markerTexture.width,markerTexture.height), new Vector2(0.5f, 0.5f));
@@ -107,3 +109,5 @@ public class AssetPlacementPositionSystem : MonoBehaviour {
 		}
 	}
 }
+
+#endif

@@ -1,3 +1,5 @@
+#if UNITY_EDITOR
+
 using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
@@ -16,10 +18,12 @@ public class AssetPlacement : EditorWindow {
 	}
 	
 	public static void Update() {
-		doSnapUpdate = EditorPrefs.GetBool (AssetPlacementGlobals.SnapUpdate, false);
+		doSnapUpdate = EditorPrefs.GetBool (APGlobals.SnapUpdate, false);
 
-		if (AssetPlacementWindow.instance) {
-			AssetPlacementWindow.instance.Repaint();
+		if (APWindow.instance) {
+			APWindow.instance.Repaint();
 		}
 	}
 }
+
+#endif

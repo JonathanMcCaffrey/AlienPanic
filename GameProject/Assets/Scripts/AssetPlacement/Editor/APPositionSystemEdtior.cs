@@ -1,10 +1,12 @@
+#if UNITY_EDITOR
+
 using UnityEngine;
 using System.Collections;
 using UnityEditor;
 
-[CustomEditor(typeof(AssetPlacementPositionSystem))]
+[CustomEditor(typeof(APPositionSystem))]
 [CanEditMultipleObjects]
-public class AssetPlacementPositionSystemEdtior : Editor {
+public class APPositionSystemEdtior : Editor {
 	SerializedProperty marker;
 	SerializedProperty xPosition;
 	SerializedProperty yPosition;
@@ -48,3 +50,4 @@ public class AssetPlacementPositionSystemEdtior : Editor {
 	}
 }
 
+#endif

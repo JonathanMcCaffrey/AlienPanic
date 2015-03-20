@@ -1,13 +1,15 @@
-﻿using UnityEngine;
+#if UNITY_EDITOR
+
+using UnityEngine;
 using UnityEditor;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization;
 
-public class AssetPlacementIconRenderer {
+public class APIconRenderer {
 	private static string CreateFileDirectory (string fixedName) {
-		var directoryPath = Application.dataPath + AssetPlacementGlobals.IconRenderPath;
+		var directoryPath = Application.dataPath + APGlobals.IconRenderPath;
 		string textureFilePath = directoryPath + fixedName + ".png";
 		if (!Directory.Exists (directoryPath)) {
 			Directory.CreateDirectory (directoryPath);
@@ -27,7 +29,7 @@ public class AssetPlacementIconRenderer {
 	}
 	
 	private static GameObject CreateStage () {
-		string stagedName = AssetPlacementGlobals.StageRender3D;
+		string stagedName = APGlobals.StageRender3D;
 		GameObject stagedContainer = null;
 		stagedContainer = GameObject.Find (stagedName);
 		if (!stagedContainer) {
@@ -37,7 +39,7 @@ public class AssetPlacementIconRenderer {
 	}
 	
 	private static Camera CreateStageCamera(GameObject stagedContainer) {
-		string cameraName = AssetPlacementGlobals.CameraRender3D;
+		string cameraName = APGlobals.CameraRender3D;
 		GameObject cameraContainer = null;
 		cameraContainer = GameObject.Find (cameraName);
 		Camera stagedCamera = null;
@@ -58,7 +60,7 @@ public class AssetPlacementIconRenderer {
 	}	
 	
 	private static Light CreateStageLightMain (GameObject stagedContainer) {
-		string stagedLightMainName = AssetPlacementGlobals.LightMainRender3D;
+		string stagedLightMainName = APGlobals.LightMainRender3D;
 		GameObject stagedLightMainContainer = null;
 		stagedLightMainContainer = GameObject.Find (stagedLightMainName);
 		if (!stagedLightMainContainer) {
@@ -77,7 +79,7 @@ public class AssetPlacementIconRenderer {
 	}
 	
 	private static Light CreateStageLightSub (GameObject stagedContainer) {
-		string stagedLightSubName = AssetPlacementGlobals.LightSubRender3D;
+		string stagedLightSubName = APGlobals.LightSubRender3D;
 		GameObject stagedLightSubContainer = null;
 		stagedLightSubContainer = GameObject.Find (stagedLightSubName);
 		if (!stagedLightSubContainer) {
@@ -97,7 +99,7 @@ public class AssetPlacementIconRenderer {
 	}
 	
 	private static Light CreateStageLightSun (GameObject stagedContainer) {
-		string stagedLightSunName = AssetPlacementGlobals.LightSunRender3D;
+		string stagedLightSunName = APGlobals.LightSunRender3D;
 		GameObject stageLightSunContainer = null;
 		
 		stageLightSunContainer = GameObject.Find (stagedLightSunName);
@@ -117,7 +119,7 @@ public class AssetPlacementIconRenderer {
 		return stageLightSunContainer.GetComponent<Light> ();
 	}
 	
-	private static GameObject CreateStagedAsset (AssetPlacementData assetData, GameObject stagedContainer) {
+	private static GameObject CreateStagedAsset (APData assetData, GameObject stagedContainer) {
 		var stagedAsset = PrefabUtility.InstantiatePrefab (assetData.gameObject) as GameObject;
 		stagedAsset.name = "StagedAsset";
 		stagedAsset.transform.parent = stagedContainer.transform;
@@ -187,7 +189,7 @@ public class AssetPlacementIconRenderer {
 		SceneView.RepaintAll ();
 	}
 	
-	public static Texture2D CreateTextureFromCamera(AssetPlacementData assetData, ref bool hasMadeAnIconRenderAsset) {
+	public static Texture2D CreateTextureFromCamera(APData assetData, ref bool hasMadeAnIconRenderAsset) {
 		string fixedName = assetData.name.Replace('\\', '_'); 
 		fixedName = fixedName.Replace('/', '_');
 		fixedName = fixedName.Replace('.', '_');
@@ -222,15 +224,18 @@ public class AssetPlacementIconRenderer {
 	public static void CleanUpRender3DAssets () {
 		AssetDatabase.Refresh();
 
-		var temp = GameObject.Find (AssetPlacementGlobals.CameraRender3D);
+		var temp = GameObject.Find (APGlobals.CameraRender3D);
 		if (temp) EditorWindow.DestroyImmediate (temp);
-		temp = GameObject.Find (AssetPlacementGlobals.StageRender3D);
+		temp = GameObject.Find (APGlobals.StageRender3D);
 		if (temp) EditorWindow.DestroyImmediate (temp);
-		temp = GameObject.Find (AssetPlacementGlobals.LightMainRender3D);
+		temp = GameObject.Find (APGlobals.LightMainRender3D);
 		if (temp) EditorWindow.DestroyImmediate (temp);
-		temp = GameObject.Find (AssetPlacementGlobals.LightSubRender3D);
+		temp = GameObject.Find (APGlobals.LightSubRender3D);
 		if (temp) EditorWindow.DestroyImmediate (temp);
-		temp = GameObject.Find (AssetPlacementGlobals.LightSunRender3D);
+		temp = GameObject.Find (APGlobals.LightSunRender3D);
 		if (temp) EditorWindow.DestroyImmediate (temp);
 	}
 }
+
+
+#endif

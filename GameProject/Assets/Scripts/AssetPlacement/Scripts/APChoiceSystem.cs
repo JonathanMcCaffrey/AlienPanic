@@ -1,8 +1,8 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
+
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-
-//TODO Wrap this since it will probably break mobile
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml;
@@ -10,20 +10,24 @@ using System.Xml.Serialization;
 
 using UnityEditor;
 
-public class AssetPlacementChoiceSystem : MonoBehaviour {
+public class APChoiceSystem : MonoBehaviour {
 	public bool shouldResetAssets = true;
 	public bool shouldResetHotKeys = true;
 	
-	public static AssetPlacementData selectedAsset = null; 
+	public static APData selectedAsset = null; 
 	
-	public List<AssetPlacementData> assetList = new List<AssetPlacementData>();
-	public List<TabPlacementData> tabList = new List<TabPlacementData>();
+	public List<APData> assetList = new List<APData>();
+	public List<APTabPlacementData> tabList = new List<APTabPlacementData>();
 	//Duplicated tab name data for ease of use only. Otherwise, use tabList
 	public List<string> tabNames = new List<string>();
 	
-	public TabPlacementData selectedTab = null;
+	public int selectedTabIndex = 0;
+	public APTabPlacementData getSelectedTab() {
+		return tabList [selectedTabIndex];
+	}
 	
-	private string folderName = AssetPlacementGlobals.AssetPathPath + "PlacementAssets";
+	
+	private string folderName = APGlobals.AssetPath + "PlacementAssets";
 	private string FolderPath() { 		
 		return Application.dataPath + "/" + folderName;
 	}
@@ -33,7 +37,7 @@ public class AssetPlacementChoiceSystem : MonoBehaviour {
 		get { return tabContainerDictionary; }
 	}
 	
-	public static AssetPlacementChoiceSystem instance = null;
+	public static APChoiceSystem instance = null;
 	void Awake() {
 		if (instance && instance != this) {
 			Destroy (gameObject);
@@ -47,21 +51,21 @@ public class AssetPlacementChoiceSystem : MonoBehaviour {
 		var tabPaths = Directory.GetDirectories (FolderPath ());
 		foreach (var filePath in tabPaths) {
 			var name = filePath.Remove (0, FolderPath ().Length + 1);
-			tabList.Add (new TabPlacementData(filePath, name));
+			tabList.Add (new APTabPlacementData(filePath, name));
 			tabNames.Add(name);
 		}
 	}
 	
 	void LoadAssets (string searchedExtension = ".prefab"){
 		if (assetList.Count == 0) {
-			foreach (TabPlacementData tabData in tabList) {
+			foreach (APTabPlacementData tabData in tabList) {
 				var filePaths = Directory.GetFiles (tabData.filePath);
 				foreach (string filePath in filePaths) {
 					var name = filePath.Remove (0, FolderPath ().Length + 1);
-					var localPath = "Assets\\" + filePath.Remove (0, FolderPath ().Length - folderName.Length);
+					var localPath = "Assets/" + filePath.Remove (0, FolderPath ().Length - folderName.Length);
 					
 					if (name.EndsWith (searchedExtension)) {
-						var assetData = new AssetPlacementData (localPath, name, tabData.name);
+						var assetData = new APData (localPath, name, tabData.name);
 						assetList.Add (assetData);
 						
 						string fixedPath = localPath; 
@@ -70,7 +74,7 @@ public class AssetPlacementChoiceSystem : MonoBehaviour {
 						var prefab = AssetDatabase.LoadAssetAtPath(fixedPath, typeof(GameObject)) as GameObject;
 						assetData.gameObject = prefab;
 						
-						var foundHotKey = EditorPrefs.GetString (AssetPlacementGlobals.SavedHotkeyDisplayName + assetData.name);
+						var foundHotKey = EditorPrefs.GetString (APGlobals.SavedHotkeyDisplayName + assetData.name);
 						if(foundHotKey.Length > 0) {
 							foundHotKey = foundHotKey.Replace(" ", string.Empty);
 							assetData.keyCode = (KeyCode)System.Enum.Parse( typeof( KeyCode ), foundHotKey );
@@ -96,7 +100,6 @@ public class AssetPlacementChoiceSystem : MonoBehaviour {
 	}
 	
 	public void RefreshTabContainers () {
-		//TODO Put all these names into AssetPlacementKeys
 		string mainContainerName = "AP.PlacedAssets";
 		var placedAssetsContainer = GameObject.Find (mainContainerName);
 		if (!placedAssetsContainer) {
@@ -116,8 +119,8 @@ public class AssetPlacementChoiceSystem : MonoBehaviour {
 	}
 	
 	bool ByButtonSelection () {
-		var selectedAssetNumber = EditorPrefs.GetInt (AssetPlacementGlobals.SelectedAssetNumber);
-		if (selectedAssetNumber != AssetPlacementGlobals.HotKeySelectionEnabled) {
+		var selectedAssetNumber = EditorPrefs.GetInt (APGlobals.SelectedAssetNumber);
+		if (selectedAssetNumber != APGlobals.HotKeySelectionEnabled) {
 			selectedAsset = assetList [selectedAssetNumber];
 			return true;
 		}
@@ -126,12 +129,12 @@ public class AssetPlacementChoiceSystem : MonoBehaviour {
 	
 	void ByHotKeySelection () {
 		int index = 0;
-		foreach (AssetPlacementData data in assetList) {
-			if (selectedTab != null && data.tab == selectedTab.name) {
-				if (data.keyCode == (KeyCode)EditorPrefs.GetInt(AssetPlacementGlobals.SelectedKey)) {
+		foreach (APData data in assetList) {
+			if (getSelectedTab() != null && data.tab == getSelectedTab().name) {
+				if (data.keyCode == (KeyCode)EditorPrefs.GetInt(APGlobals.SelectedKey)) {
 					selectedAsset = data;
 					
-					EditorPrefs.SetInt (AssetPlacementGlobals.SelectedAssetNumber, index);
+					EditorPrefs.SetInt (APGlobals.SelectedAssetNumber, index);
 				}
 			}
 			
@@ -153,16 +156,17 @@ public class AssetPlacementChoiceSystem : MonoBehaviour {
 	}
 	
 	void RefreshSelectedTab () {
+		int index = 0;
 		foreach (var tabData in tabList) {
-			if (tabData.name == EditorPrefs.GetString (AssetPlacementGlobals.SelectedTab)) {
-				selectedTab = tabData;
+			if (tabData.name == EditorPrefs.GetString (APGlobals.SelectedTab)) {
+				selectedTabIndex = index;
 			}
+			index++;
 		}
 	}
 	
 	public void Refresh () {
 		if (shouldResetAssets) {
-			
 			shouldResetAssets = false;
 			
 			WipeData ();
@@ -175,8 +179,8 @@ public class AssetPlacementChoiceSystem : MonoBehaviour {
 	public void OnDrawGizmos() {
 		instance = this;
 		
-		if (EditorPrefs.GetBool (AssetPlacementGlobals.ShouldRefreshHotkeys)) {
-			EditorPrefs.SetBool (AssetPlacementGlobals.ShouldRefreshHotkeys, false);
+		if (EditorPrefs.GetBool (APGlobals.ShouldRefreshHotkeys)) {
+			EditorPrefs.SetBool (APGlobals.ShouldRefreshHotkeys, false);
 			shouldResetHotKeys = true;
 		}
 		
@@ -195,13 +199,13 @@ public class AssetPlacementChoiceSystem : MonoBehaviour {
 	string refreshSelectedKeyFunctionString = "\n\tstatic void RefreshSelectedKey (KeyCode hotkeyCode) {" +
 		"\n\t\tif (hotkeyCode != KeyCode.None) {" +
 			"\n\t\t\tint index = 0;" +
-			"\n\t\t\tforeach (var assetData in AssetPlacementChoiceSystem.instance.assetList) {" +
-			"\n\t\t\t\tif(AssetPlacementChoiceSystem.instance.selectedTab.name == assetData.tab) {" +
+			"\n\t\t\tforeach (var assetData in APChoiceSystem.instance.assetList) {" +
+			"\n\t\t\t\tif(APChoiceSystem.instance.getSelectedTab().name == assetData.tab) {" +
 			"\n\t\t\t\t\tif (assetData.keyCode == hotkeyCode) {" +
-			"\n\t\t\t\t\t\tEditorPrefs.SetInt (AssetPlacementGlobals.SelectedAssetNumber, index);" +
-			"\n\t\t\t\t\t\tEditorPrefs.SetInt (AssetPlacementGlobals.SelectedKey, (int)hotkeyCode);" +
-			"\n\n\t\t\t\t\t\tif(AssetPlacementChoiceSystem.instance) {" +
-			"\n\t\t\t\t\t\t\tAssetPlacementChoiceSystem.instance.OnDrawGizmos();" +
+			"\n\t\t\t\t\t\tEditorPrefs.SetInt (APGlobals.SelectedAssetNumber, index);" +
+			"\n\t\t\t\t\t\tEditorPrefs.SetInt (APGlobals.SelectedKey, (int)hotkeyCode);" +
+			"\n\n\t\t\t\t\t\tif(APChoiceSystem.instance) {" +
+			"\n\t\t\t\t\t\t\tAPChoiceSystem.instance.OnDrawGizmos();" +
 			"\n\t\t\t\t\t\t}" +
 			"\n\n\t\t\t\t\t\treturn;" +
 			"\n\t\t\t\t\t}" +
@@ -212,8 +216,8 @@ public class AssetPlacementChoiceSystem : MonoBehaviour {
 			"\n\t}";
 	
 	public void SaveAllHotKeys() {
-		var directoryPath = Application.dataPath + AssetPlacementGlobals.HotKeysPath;
-		string content = "//This code is generated dynamically. Don't edit\nusing UnityEditor; \nusing UnityEngine; \n\npublic class AssetPlacementSerializedHotKeys : EditorWindow {";
+		var directoryPath = Application.dataPath + APGlobals.HotKeysPath;
+		string content = "#if UNITY_EDITOR\n//This code is generated dynamically. Don't edit here\n//Edit at APChoiceSystem.cs line: 195\nusing UnityEditor; \nusing UnityEngine; \n\npublic class APSerializedHotKeys : EditorWindow {";
 		
 		content += refreshSelectedKeyFunctionString;
 		
@@ -223,10 +227,10 @@ public class AssetPlacementChoiceSystem : MonoBehaviour {
 			if(!keyCodeList.ContainsKey(asset.keyCode)) {
 				var keyString = ((KeyCode)asset.keyCode).ToString();
 				var text = 
-					"\n\n\t[MenuItem( AssetPlacementGlobals.CommandPath + \"Hot Keys/" + keyString + " &_" + keyString + "\")]" +
+					"\n\n\t[MenuItem( APGlobals.CommandPath + \"Hot Keys/" + keyString + " &_" + keyString + "\")]" +
 						"\n\tpublic static void SelectItem" + keyString + "() {" +
-						"\n\t\tEditorPrefs.SetInt (AssetPlacementGlobals.SelectedKey, (int)KeyCode." + keyString + "); " +
-						"\n\t\tEditorPrefs.SetInt (AssetPlacementGlobals.SelectedAssetNumber, AssetPlacementGlobals.HotKeySelectionEnabled);" +
+						"\n\t\tEditorPrefs.SetInt (APGlobals.SelectedKey, (int)KeyCode." + keyString + "); " +
+						"\n\t\tEditorPrefs.SetInt (APGlobals.SelectedAssetNumber, APGlobals.HotKeySelectionEnabled);" +
 						"\n\t\tRefreshSelectedKey(KeyCode." + keyString + ");" +
 						//"\n\t\tDebug.Log(\"" + keyString + "\");" +
 						"\n\t}\n";
@@ -237,10 +241,10 @@ public class AssetPlacementChoiceSystem : MonoBehaviour {
 			}
 		}
 		
-		content += "\n}";
+		content += "\n} \n#endif";
 		
 		File.WriteAllText(directoryPath, content);
-		
-		//TODO Was trying to refresh load this here with AssetData, but didn't work. Probably another method would work
 	}
 }
+
+#endif
