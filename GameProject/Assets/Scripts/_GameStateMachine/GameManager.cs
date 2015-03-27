@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		NewGameState (stateNotSet);
+		ChangeState (stateNotSet);
 	}
 	
 	// Update is called once per frame
@@ -88,8 +88,8 @@ public class GameManager : MonoBehaviour {
 	public GameState getGameState() {
 		return currentState;
 	}
-
-	public void NewGameState (GameState newState) {
+	
+	public void ChangeState (GameState newState) {
 		currentState = newState;
 	}
 

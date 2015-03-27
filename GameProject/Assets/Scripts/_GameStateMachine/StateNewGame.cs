@@ -10,8 +10,9 @@ public class StateNewGame : GameState {
 	// Starting a new game, for now loads Level_1
 	
 	public override void StateUpdate() {
-		print ("StateNewGame::StateUpdate() ");
+		print ("StateNewGame::StateUpdate() -- Starting a new game");
+		//TODO: reset the current score and other non high-score playerdata
 
-		Application.LoadLevel("Level_1");
+		Application.LoadLevel("Level 0");
 	}
 }
