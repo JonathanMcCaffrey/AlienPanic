@@ -38,9 +38,9 @@ public class Parasite : MonoBehaviour {
 
 	void FixedUpdate() {
 		// Apply the drag
-		if (host && host.rigidbody2D) {
-			Vector2 pullDirection = host.rigidbody2D.velocity.normalized * -1.0f;
-			host.rigidbody2D.AddForce(pullDirection * dragOnHost);
+		if (host && host.GetComponent<Rigidbody2D>()) {
+			Vector2 pullDirection = host.GetComponent<Rigidbody2D>().velocity.normalized * -1.0f;
+			host.GetComponent<Rigidbody2D>().AddForce(pullDirection * dragOnHost);
 
 			thrashTimer += Time.deltaTime;
 			if (thrashTimer >= secondsBetweenThrashes) {
@@ -93,6 +93,6 @@ public class Parasite : MonoBehaviour {
 		Vector2 direction = new Vector2(Random.Range(-1.0f, 1.0f), Random.Range (-1.0f, 1.0f));
 		direction.Normalize ();
 
-		host.rigidbody2D.AddForce(direction * thrashForce, ForceMode2D.Impulse);
+		host.GetComponent<Rigidbody2D>().AddForce(direction * thrashForce, ForceMode2D.Impulse);
 	}
 }

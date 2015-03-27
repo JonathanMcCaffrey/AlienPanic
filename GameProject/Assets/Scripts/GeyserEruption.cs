@@ -15,8 +15,8 @@ public class GeyserEruption : MonoBehaviour {
 	}
 
 	void OnTriggerStay2D(Collider2D col) {
-		if (col.rigidbody2D) {
-			col.rigidbody2D.AddForce(force);
+		if (col.GetComponent<Rigidbody2D>()) {
+			col.GetComponent<Rigidbody2D>().AddForce(force);
 		}
 	}
 }

@@ -7,6 +7,6 @@ public class MoveLeft : MonoBehaviour
 	
 	void Start ()
 	{
-		rigidbody2D.velocity = (-1) * (transform.right * speed);
+		GetComponent<Rigidbody2D>().velocity = (-1) * (transform.right * speed);
 	}
 }

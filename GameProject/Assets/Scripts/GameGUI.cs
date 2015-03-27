@@ -32,7 +32,7 @@ public class GameGUI : MonoBehaviour {
 		// Update the player stats.
 		if (player) {
 			playerDistance = player.transform.position.x - playerStartXCoord;
-			playerVelocity = new Vector2(player.rigidbody2D.velocity.x, player.rigidbody2D.velocity.y);
+			playerVelocity = new Vector2(player.GetComponent<Rigidbody2D>().velocity.x, player.GetComponent<Rigidbody2D>().velocity.y);
 		}
 		// Render the GUI.
 		GUI.Box(new Rect(10, 10, 200, 100), "Stats");

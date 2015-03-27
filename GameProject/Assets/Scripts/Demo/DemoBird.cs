@@ -40,7 +40,7 @@ public class DemoBird {
 	public void destroyBird()
 	{
 		//Get the camera bounds to destroy if the object is outside the camera bounds.
-		Bounds currentBounds = bounds(Camera.main.camera);
+		Bounds currentBounds = bounds(Camera.main.GetComponent<Camera>());
 
 		//Destory if offScreen
 		//if((!(bird.renderer.isVisible) && hasRendered == true))
@@ -57,11 +57,11 @@ public class DemoBird {
 	{
 		//Fill the default main camera
 		if(camera == null)
-			camera = Camera.main.camera;
+			camera = Camera.main.GetComponent<Camera>();
 		
 		float screenAspect = (float)Screen.width / (float)Screen.height;
-		float cameraHeight = Camera.main.camera.orthographicSize * 2;
-		Bounds bounds = new Bounds(Camera.main.camera.transform.position,
+		float cameraHeight = Camera.main.GetComponent<Camera>().orthographicSize * 2;
+		Bounds bounds = new Bounds(Camera.main.GetComponent<Camera>().transform.position,
 		                           new Vector3(cameraHeight * screenAspect, cameraHeight, 0));
 		
 		return bounds;

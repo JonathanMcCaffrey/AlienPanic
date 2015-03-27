@@ -16,11 +16,11 @@ public class Magnet : MonoBehaviour {
 	void OnTriggerStay2D(Collider2D col) {
 		if (col.gameObject.tag == "Player") {
 			Vector2 toPlayer = (transform.position - col.transform.position);
-			float forceMagnitude = 1.0f - (toPlayer.magnitude/((CircleCollider2D)collider2D).radius); 
+			float forceMagnitude = 1.0f - (toPlayer.magnitude/((CircleCollider2D)GetComponent<Collider2D>()).radius); 
 			//forceMagnitude *= forceMagnitude; //Use squared falloff
 			forceMagnitude *= maximumForce;
 			Vector2 force = toPlayer.normalized * forceMagnitude;
-			col.rigidbody2D.AddForce(force);
+			col.GetComponent<Rigidbody2D>().AddForce(force);
 		}
 	}
 }
