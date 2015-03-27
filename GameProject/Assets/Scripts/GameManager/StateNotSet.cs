@@ -21,7 +21,7 @@ public class StateNotSet : GameState {
 		// Change the game state to stateGamePlaying if the Character object is in the scene
 		if (GameObject.Find("Character")) {
 			print ("StateNotSet::StateUpdate() -- Character found, changing state to stateGamePlaying");
-			gameManager.NewGameState(gameManager.stateGamePlaying);
+			gameManager.ChangeState(gameManager.stateGamePlaying);
 		}
 	}
 }

@@ -20,7 +20,7 @@ public class PlayerHealth : Health {
 		GameObject.Destroy(gameObject);
 
 		if (GameManager.instance) {
-			GameManager.instance.NewGameState(GameManager.instance.stateGameLost);
+			GameManager.instance.ChangeState(GameManager.instance.stateGameLost);
 		}
 	}
 }

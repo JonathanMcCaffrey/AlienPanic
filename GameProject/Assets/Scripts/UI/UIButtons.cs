@@ -1,10 +1,14 @@
-﻿using UnityEngine;
+﻿//
+// Buttons!
+//
+
+using UnityEngine;
 using System.Collections;
 
 public class UIButtons : MonoBehaviour 
 {
 	public void StartNewGame() {		
-		GameManager.instance.NewGameState(GameManager.instance.stateNewGame);
+		GameManager.instance.ChangeState(GameManager.instance.stateNewGame);
 		//TODO: butter scrolls like butter
 	}
 
@@ -13,17 +17,23 @@ public class UIButtons : MonoBehaviour
 		//TODO: Get current level
 		// restart current level
 		//TODO: Use the manager instead of Application.LoadLevel
-		GameManager.instance.NewGameState(GameManager.instance.stateGamePlaying);
+		GameManager.instance.ChangeState(GameManager.instance.stateGamePlaying);
 		Debug.Log ("ResetGame:: Restart -- Loading scene Level_1");
 		Application.LoadLevel ("Level 0");
-		Application.LoadLevel (PlayerPrefs.GetString("Current Level", "Level 1"));
+		// Application.LoadLevel (PlayerPrefs.GetString("CurrentLevel", "Level 0"));
 		
 	}
 	
 	public void MainMenu() {	
-		GameManager.instance.NewGameState(GameManager.instance.stateGameMenu);
-		Application.LoadLevel("MainMenu");
+		GameManager.instance.ChangeState(GameManager.instance.stateGameMenu);
 		Debug.Log ("ResetGame:: MainMenu() -- Loading MainMenu");
+		Application.LoadLevel("MainMenu");
+	}
+
+	public void NextLevel() {
+		//TODO: fix this super hacky
+		Application.LoadLevel(Application.loadedLevel+1);
+		// PlayerPrefs.GetString("CurrentLevel");
 	}
 	
 }

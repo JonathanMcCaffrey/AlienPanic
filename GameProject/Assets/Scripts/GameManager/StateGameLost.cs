@@ -11,7 +11,7 @@ public class StateGameLost : GameState {
 	public override void StateUpdate() {
 
 		print ("StateGameLost::StateUpdate() ");
-		GameManager.instance.NewGameState(GameManager.instance.stateGameLost);
+		GameManager.instance.ChangeState(GameManager.instance.stateGameLost);
 
 		Application.LoadLevel("GameOver");
 

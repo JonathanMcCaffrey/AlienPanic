@@ -11,7 +11,7 @@ public class StateGameMenu : GameState {
 		print ("StateGameMenu::StateUpdate() ");
 		Application.LoadLevel("MainMenu");
 		
-		GameManager.instance.NewGameState(GameManager.instance.stateGameMenu);
+		GameManager.instance.ChangeState(GameManager.instance.stateGameMenu);
 		
 	}
 }

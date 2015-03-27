@@ -13,7 +13,9 @@ public class StateGameWon : GameState {
 	//TODO: Save the game, or other stuff before loading the win scene
 
 	public override void StateUpdate() {
-		print ("StateGameWon::StateUpdate() ");
-		Application.LoadLevel("GameOver"); // TODO: change this to YOU WIN
+		print ("StateGameWon::StateUpdate() -- Saving current level");
+		PlayerPrefs.SetString("CurrentLevel", Application.loadedLevelName);
+		Application.LoadLevel("Level Complete");
+		//TODO: things
 	}
 }
