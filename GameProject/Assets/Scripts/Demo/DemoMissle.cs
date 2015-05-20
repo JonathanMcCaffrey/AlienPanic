@@ -8,7 +8,7 @@ public class DemoMissle : MonoBehaviour {
 	private bool once = true;
 	void Update () {
 		if (!once) {
-			if(!renderer.isVisible) {
+			if(!GetComponent<Renderer>().isVisible) {
 				Destroy(gameObject);
 			}
 		}
@@ -19,7 +19,7 @@ public class DemoMissle : MonoBehaviour {
 			float diff = (Mathf.Sin(Time.time) * 3.0f) - 1.5f;
 			
 			transform.position = new Vector3 (transform.position.x, player.transform.position.y + diff + 1.0f, -1);
-			rigidbody2D.AddForce (new Vector2 (-30, 0), ForceMode2D.Force);
+			GetComponent<Rigidbody2D>().AddForce (new Vector2 (-30, 0), ForceMode2D.Force);
 			once = false;
 		}
 	}

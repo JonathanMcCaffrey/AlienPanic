@@ -36,7 +36,7 @@ public class DemoCollectable : MonoBehaviour {
 		gameObject.transform.position = new Vector3 (gameObject.transform.position.x, startPosition + Mathf.Sin(time) * moveSize, gameObject.transform.position.z);
 
 		if (!once) {
-			if(!renderer.isVisible) {
+			if(!GetComponent<Renderer>().isVisible) {
 				Destroy(gameObject);
 			}
 		}

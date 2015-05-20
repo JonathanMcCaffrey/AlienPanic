@@ -67,19 +67,19 @@ public class NcBillboard : NcEffectBehaviour
 
 	void Update()
 	{
-		if (Camera.mainCamera == null)
+		if (Camera.main == null)
 			return;
 		Vector3		vecUp;
 
-		// Ä«¸Þ¶ó ¾÷º¤ÅÍ¸¦ ¹«½ÃÇÏ°í ¿ÀÁ§ÀÇ ¾÷º¤ÅÍ¸¦ À¯ÁöÇÑ´Ù
+		// Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½
 		if (m_bFixedObjectUp)
 //  			vecUp		= m_qOiginal * Vector3.up;
 			vecUp		= transform.up;
-		else vecUp		= Camera.mainCamera.transform.rotation * Vector3.up;
+		else vecUp		= Camera.main.transform.rotation * Vector3.up;
 
 		if (m_bCameraLookAt)
-			transform.LookAt(Camera.mainCamera.transform,	vecUp);
-		else transform.LookAt(transform.position + Camera.mainCamera.transform.rotation * Vector3.back, vecUp);
+			transform.LookAt(Camera.main.transform,	vecUp);
+		else transform.LookAt(transform.position + Camera.main.transform.rotation * Vector3.back, vecUp);
 
 		switch (m_FrontAxis)
 		{
