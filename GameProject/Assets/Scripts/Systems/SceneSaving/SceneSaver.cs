@@ -1,16 +1,15 @@
-﻿using UnityEngine;
+﻿
+#if UNITY_EDITOR
+
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml;
 using System.Xml.Serialization;
 using System;
-
-//TODO Wrap this for mobile
 using System.IO;
 using UnityEditor;
-
-
 
 public class SceneSaver : MonoBehaviour {	
 	public GameObject selectedNode = null;
@@ -141,3 +140,4 @@ public class AssetNodeData {
 	}
 }
 
+#endif
