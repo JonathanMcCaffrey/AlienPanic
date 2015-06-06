@@ -190,8 +190,7 @@ public class APIconRenderer {
 	}
 	
 	public static Texture2D CreateTextureFromCamera(APData assetData, ref bool hasMadeAnIconRenderAsset) {
-		string fixedName = assetData.name.Replace('\\', '_'); 
-		fixedName = fixedName.Replace('/', '_');
+		string fixedName = assetData.name.Replace('/', '_'); 
 		fixedName = fixedName.Replace('.', '_');
 		
 		var textureFilePath = CreateFileDirectory (fixedName);
