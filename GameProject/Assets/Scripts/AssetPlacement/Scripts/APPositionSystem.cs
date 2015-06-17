@@ -3,10 +3,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-
 using UnityEditor;
-
-//TODO Wrap this since it will probably break mobile
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml;

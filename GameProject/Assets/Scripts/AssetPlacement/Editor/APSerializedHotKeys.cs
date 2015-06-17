@@ -25,60 +25,59 @@ public class APSerializedHotKeys : EditorWindow {
 			}
 		}
 	}
-
+#if UNITY_EDITOR_OSX
+	[MenuItem( APGlobals.CommandPath + "Hot Keys/None #none")]
+#else
 	[MenuItem( APGlobals.CommandPath + "Hot Keys/None &_None")]
+#endif
 	public static void SelectItemNone() {
 		EditorPrefs.SetInt (APGlobals.SelectedKey, (int)KeyCode.None); 
 		EditorPrefs.SetInt (APGlobals.SelectedAssetNumber, APGlobals.HotKeySelectionEnabled);
 		RefreshSelectedKey(KeyCode.None);
 	}
 
-
-	[MenuItem( APGlobals.CommandPath + "Hot Keys/Alpha1 &_Alpha1")]
-	public static void SelectItemAlpha1() {
-		EditorPrefs.SetInt (APGlobals.SelectedKey, (int)KeyCode.Alpha1); 
+#if UNITY_EDITOR_OSX
+	[MenuItem( APGlobals.CommandPath + "Hot Keys/Q #q")]
+#else
+	[MenuItem( APGlobals.CommandPath + "Hot Keys/Q &_Q")]
+#endif
+	public static void SelectItemQ() {
+		EditorPrefs.SetInt (APGlobals.SelectedKey, (int)KeyCode.Q); 
 		EditorPrefs.SetInt (APGlobals.SelectedAssetNumber, APGlobals.HotKeySelectionEnabled);
-		RefreshSelectedKey(KeyCode.Alpha1);
+		RefreshSelectedKey(KeyCode.Q);
 	}
 
-
-	[MenuItem( APGlobals.CommandPath + "Hot Keys/Alpha2 &_Alpha2")]
-	public static void SelectItemAlpha2() {
-		EditorPrefs.SetInt (APGlobals.SelectedKey, (int)KeyCode.Alpha2); 
+#if UNITY_EDITOR_OSX
+	[MenuItem( APGlobals.CommandPath + "Hot Keys/W #w")]
+#else
+	[MenuItem( APGlobals.CommandPath + "Hot Keys/W &_W")]
+#endif
+	public static void SelectItemW() {
+		EditorPrefs.SetInt (APGlobals.SelectedKey, (int)KeyCode.W); 
 		EditorPrefs.SetInt (APGlobals.SelectedAssetNumber, APGlobals.HotKeySelectionEnabled);
-		RefreshSelectedKey(KeyCode.Alpha2);
+		RefreshSelectedKey(KeyCode.W);
 	}
 
-
-	[MenuItem( APGlobals.CommandPath + "Hot Keys/Alpha3 &_Alpha3")]
-	public static void SelectItemAlpha3() {
-		EditorPrefs.SetInt (APGlobals.SelectedKey, (int)KeyCode.Alpha3); 
+#if UNITY_EDITOR_OSX
+	[MenuItem( APGlobals.CommandPath + "Hot Keys/E #e")]
+#else
+	[MenuItem( APGlobals.CommandPath + "Hot Keys/E &_E")]
+#endif
+	public static void SelectItemE() {
+		EditorPrefs.SetInt (APGlobals.SelectedKey, (int)KeyCode.E); 
 		EditorPrefs.SetInt (APGlobals.SelectedAssetNumber, APGlobals.HotKeySelectionEnabled);
-		RefreshSelectedKey(KeyCode.Alpha3);
+		RefreshSelectedKey(KeyCode.E);
 	}
 
-
-	[MenuItem( APGlobals.CommandPath + "Hot Keys/Alpha4 &_Alpha4")]
-	public static void SelectItemAlpha4() {
-		EditorPrefs.SetInt (APGlobals.SelectedKey, (int)KeyCode.Alpha4); 
+#if UNITY_EDITOR_OSX
+	[MenuItem( APGlobals.CommandPath + "Hot Keys/R #r")]
+#else
+	[MenuItem( APGlobals.CommandPath + "Hot Keys/R &_R")]
+#endif
+	public static void SelectItemR() {
+		EditorPrefs.SetInt (APGlobals.SelectedKey, (int)KeyCode.R); 
 		EditorPrefs.SetInt (APGlobals.SelectedAssetNumber, APGlobals.HotKeySelectionEnabled);
-		RefreshSelectedKey(KeyCode.Alpha4);
-	}
-
-
-	[MenuItem( APGlobals.CommandPath + "Hot Keys/Alpha5 &_Alpha5")]
-	public static void SelectItemAlpha5() {
-		EditorPrefs.SetInt (APGlobals.SelectedKey, (int)KeyCode.Alpha5); 
-		EditorPrefs.SetInt (APGlobals.SelectedAssetNumber, APGlobals.HotKeySelectionEnabled);
-		RefreshSelectedKey(KeyCode.Alpha5);
-	}
-
-
-	[MenuItem( APGlobals.CommandPath + "Hot Keys/Alpha6 &_Alpha6")]
-	public static void SelectItemAlpha6() {
-		EditorPrefs.SetInt (APGlobals.SelectedKey, (int)KeyCode.Alpha6); 
-		EditorPrefs.SetInt (APGlobals.SelectedAssetNumber, APGlobals.HotKeySelectionEnabled);
-		RefreshSelectedKey(KeyCode.Alpha6);
+		RefreshSelectedKey(KeyCode.R);
 	}
 
 } 
