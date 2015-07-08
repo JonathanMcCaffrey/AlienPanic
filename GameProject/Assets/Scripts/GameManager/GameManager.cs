@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour {
 	public StateGamePaused stateGamePaused { get; set; }
 	public StateGameMenu stateGameMenu { get; set; }
 	public StateNewGame stateNewGame { get; set; }
+	public StateArtSample stateArtSample { get; set; }
 	public StateNotSet stateNotSet { get; set; }
 
 	public static GameManager instance = null;
@@ -55,6 +56,11 @@ public class GameManager : MonoBehaviour {
 		stateNewGame = GetComponent<StateNewGame>();
 		if (!stateNewGame) {
 			LogMissingComponent("StateNewGame");
+		}
+
+		stateArtSample = GetComponent<StateArtSample>();
+		if (!stateArtSample) {
+			LogMissingComponent("StateArtSample");
 		}
 
 		stateNotSet = GetComponent<StateNotSet>();

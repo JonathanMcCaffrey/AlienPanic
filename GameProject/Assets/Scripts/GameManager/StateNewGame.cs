@@ -7,7 +7,7 @@ public class StateNewGame : GameState {
 		GUILayout.Label ("state: NEW GAME");
 	}
 	
-	// Starting a new game, for now loads Level_1
+	// Starting a new game, for now loads Level_0
 	
 	public override void StateUpdate() {
 		print ("StateNewGame::StateUpdate() -- Starting a new game");

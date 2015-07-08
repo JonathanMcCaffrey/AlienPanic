@@ -12,6 +12,11 @@ public class UIButtons : MonoBehaviour
 		//TODO: butter scrolls like butter
 	}
 
+	public void StartArtSample() {		
+		GameManager.instance.ChangeState(GameManager.instance.stateArtSample);
+		//TODO: butter scrolls like butter
+	}
+
 	public void Restart ()
 	{
 		//TODO: Get current level
