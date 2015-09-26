@@ -15,8 +15,8 @@ public class APPositionSystem : MonoBehaviour {
 	public float yPosition = 0;
 
 	//Temporary settings adjust to -1.5 to counteract 0,0 origins  
-	public float adjustX = -1.5;
-	public float adjustY = -1.5;
+	public float adjustX = -1.5f;
+	public float adjustY = -1.5f;
 	
 	public static Vector3 selectedPosition = Vector3.zero;
 	

@@ -124,17 +124,14 @@ public class SceneSaver : MonoBehaviour {
 				}
 			}
 		}
-		
-		Segement segData = rootLevel.AddComponent<Segement> ();
-		segData.size = new Rect(0, 0, segRect.width - segRect.x, segRect.height - segRect.y);
 
 		BoxCollider2D colider2D = rootLevel.AddComponent<BoxCollider2D> ();
 		colider2D.isTrigger = true;
 
 		rootLevel.AddComponent<SegTriggerVolume> ();
 
-		colider2D.size = new Vector2 (segData.size.width, segData.size.height);
-		colider2D.offset = new Vector2 (segData.size.width * 0.5f, segData.size.height * 0.5f);
+		colider2D.size = new Vector2 (segRect.width - segRect.x, segRect.width - segRect.x);
+		colider2D.offset = new Vector2 (colider2D.size.x * 0.5f, colider2D.size.y * 0.5f);
 
 		return rootLevel;
 	}

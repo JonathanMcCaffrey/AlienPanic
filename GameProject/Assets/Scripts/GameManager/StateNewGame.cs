@@ -13,6 +13,6 @@ public class StateNewGame : GameState {
 		print ("StateNewGame::StateUpdate() -- Starting a new game");
 		//TODO: reset the current score and other non high-score playerdata
 
-		Application.LoadLevel("Level 0");
+		Application.LoadLevel("SampleSegment");
 	}
 }
