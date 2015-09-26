@@ -8,11 +8,8 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml;
 using System.Xml.Serialization;
 using System;
-
-//TODO Wrap this for mobile
 using System.IO;
 using UnityEditor;
-
 
 
 public class SceneSaver : MonoBehaviour {	
@@ -63,6 +60,7 @@ public class SceneSaver : MonoBehaviour {
 		xmlSerializer.Serialize (file, rootNode);
 		file.Close ();
 	}
+
 
 	public static GameObject LoadNodeAtPath(string filePath) {
 		XmlSerializer xmlSerializer = new XmlSerializer (typeof(AssetNodeData));
@@ -129,14 +127,11 @@ public class SceneSaver : MonoBehaviour {
 		
 		Segement segData = rootLevel.AddComponent<Segement> ();
 		segData.size = new Rect(0, 0, segRect.width - segRect.x, segRect.height - segRect.y);
-		
-		
-		
+
 		BoxCollider2D colider2D = rootLevel.AddComponent<BoxCollider2D> ();
 		colider2D.isTrigger = true;
 
 		rootLevel.AddComponent<SegTriggerVolume> ();
-
 
 		colider2D.size = new Vector2 (segData.size.width, segData.size.height);
 		colider2D.offset = new Vector2 (segData.size.width * 0.5f, segData.size.height * 0.5f);
@@ -154,7 +149,6 @@ public class SceneSaver : MonoBehaviour {
 		LoadNode ();
 	}
 }
-
 
 [Serializable]
 [XmlRoot("node")]
@@ -188,7 +182,5 @@ public class AssetNodeData {
 		this.z = position.z;
 	}
 }
-
-
 
 #endif

@@ -13,9 +13,10 @@ using System.Xml.Serialization;
 public class APPositionSystem : MonoBehaviour {
 	public float xPosition = 0;
 	public float yPosition = 0;
-	
-	public float adjustX = 0;
-	public float adjustY = 0;
+
+	//Temporary settings adjust to -1.5 to counteract 0,0 origins  
+	public float adjustX = -1.5;
+	public float adjustY = -1.5;
 	
 	public static Vector3 selectedPosition = Vector3.zero;
 	
@@ -73,7 +74,6 @@ public class APPositionSystem : MonoBehaviour {
 				renderer.sprite = sprite;
 
 				marker.transform.parent = gameObject.transform;
-			//	marker.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f); 
 			}
 		}
 	}
@@ -95,8 +95,6 @@ public class APPositionSystem : MonoBehaviour {
 	void MoveDebugMarker (Vector3 position) {
 		if (ShouldMoveMarker ()) {
 			marker.transform.position = selectedPosition;
-
-		//	marker.transform.localScale = new Vector3(adjustX, adjustY, 1);
 		}
 	}
 	
