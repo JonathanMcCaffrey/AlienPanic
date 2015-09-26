@@ -14,8 +14,8 @@ public class APPositionSystem : MonoBehaviour {
 	public float xPosition = 0;
 	public float yPosition = 0;
 	
-	private float adjustX = 0;
-	private float adjustY = 0;
+	public float adjustX = 0;
+	public float adjustY = 0;
 	
 	public static Vector3 selectedPosition = Vector3.zero;
 	
@@ -38,14 +38,15 @@ public class APPositionSystem : MonoBehaviour {
 		}
 	}
 	
-	Vector3 FindPlacementPosition () {
-		Vector2 fixedPos = new Vector2 (Event.current.mousePosition.x + adjustX,
-		                                -Event.current.mousePosition.y + adjustY + Camera.current.pixelHeight);
+	public Vector3 FindPlacementPosition () {
+		Vector2 fixedPos = new Vector2 (Event.current.mousePosition.x,
+		                                -Event.current.mousePosition.y + Camera.current.pixelHeight);
 		var ray = Camera.current.ScreenPointToRay (fixedPos);
 		Vector3 position = ray.GetPoint (distance);
 		xPosition = position.x;
 		yPosition = position.y;
-		selectedPosition = new Vector3 (xPosition, yPosition, distance);
+		selectedPosition = new Vector3 (xPosition + adjustX, yPosition + adjustY, distance);
+
 		return position;
 	}
 
@@ -72,7 +73,7 @@ public class APPositionSystem : MonoBehaviour {
 				renderer.sprite = sprite;
 
 				marker.transform.parent = gameObject.transform;
-				marker.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f); 
+			//	marker.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f); 
 			}
 		}
 	}
@@ -93,7 +94,9 @@ public class APPositionSystem : MonoBehaviour {
 	
 	void MoveDebugMarker (Vector3 position) {
 		if (ShouldMoveMarker ()) {
-			marker.transform.localPosition = position;
+			marker.transform.position = selectedPosition;
+
+		//	marker.transform.localScale = new Vector3(adjustX, adjustY, 1);
 		}
 	}
 	

@@ -63,28 +63,34 @@ public class SceneSaver : MonoBehaviour {
 		xmlSerializer.Serialize (file, rootNode);
 		file.Close ();
 	}
-	
-	public static void LoadNode () {
+
+	public static GameObject LoadNodeAtPath(string filePath) {
 		XmlSerializer xmlSerializer = new XmlSerializer (typeof(AssetNodeData));
 		
-		if (!File.Exists (FilePath () + instance.fileName + ".txt")) {
-			return;
+		if (!File.Exists (FilePath () + filePath + ".txt")) {
+			return null;
 		}
 		
-		FileStream file = new FileStream (FilePath () + instance.fileName + ".txt", FileMode.Open);
+		FileStream file = new FileStream (FilePath () + filePath + ".txt", FileMode.Open);
 		
 		
 		AssetNodeData data = xmlSerializer.Deserialize (file) as AssetNodeData;
 		file.Close ();
 		GameObject rootLevel = null;
-		rootLevel = GameObject.Find (data.text);
+		
+		String rootName = data.text + " - " + filePath;
+		
+		//Lets just make a new one each time instead
+		//rootLevel = GameObject.Find (rootName);
 		if (!rootLevel) {
-			rootLevel = new GameObject (data.text);
+			rootLevel = new GameObject (rootName);
 		}
 		rootLevel.transform.localPosition = data.Position ();
+		
+		Rect segRect = new Rect(int.MaxValue, int.MaxValue, int.MinValue, int.MinValue);
 		foreach (var dataNode in data.children) {
 			GameObject subLevel = null;
-			subLevel = GameObject.Find (dataNode.text);
+			//subLevel = GameObject.Find (dataNode.text);
 			if (!subLevel) {
 				subLevel = new GameObject (dataNode.text);
 			}
@@ -99,9 +105,48 @@ public class SceneSaver : MonoBehaviour {
 					newObject.name = childNode.text;
 					newObject.transform.parent = subLevel.transform;
 					newObject.transform.localPosition = childNode.Position ();
+					
+					
+					//TODO Cleaner
+					if(newObject.transform.position.x < segRect.x) {
+						segRect.x = newObject.transform.localPosition.x;
+					}
+					
+					if(newObject.transform.position.y < segRect.y) {
+						segRect.y = newObject.transform.localPosition.y;
+					}
+					
+					if(newObject.transform.position.x > segRect.width) {
+						segRect.width = newObject.transform.localPosition.x;
+					}
+					
+					if(newObject.transform.position.y > segRect.height) {
+						segRect.height = newObject.transform.localPosition.y;
+					}
 				}
 			}
 		}
+		
+		Segement segData = rootLevel.AddComponent<Segement> ();
+		segData.size = new Rect(0, 0, segRect.width - segRect.x, segRect.height - segRect.y);
+		
+		
+		
+		BoxCollider2D colider2D = rootLevel.AddComponent<BoxCollider2D> ();
+		colider2D.isTrigger = true;
+
+		rootLevel.AddComponent<SegTriggerVolume> ();
+
+
+		colider2D.size = new Vector2 (segData.size.width, segData.size.height);
+		colider2D.offset = new Vector2 (segData.size.width * 0.5f, segData.size.height * 0.5f);
+
+		return rootLevel;
+	}
+	
+	public static GameObject LoadNode () {
+		return LoadNodeAtPath (instance.fileName);
+
 	}	
 	
 	public void Awake() {

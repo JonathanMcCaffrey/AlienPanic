@@ -16,7 +16,7 @@ Asset Placement System is for easily creating and placing assets within the unit
 [HotKeys]
 Alt on PC. Shift on Mac
 
-[Alt/Shift]+E Select AssetPlacementSystem.
+[Alt/Shift]+W Select AssetPlacementSystem.
 [Alt/Shift]+D Create the selected asset at mouse position.
 
 [Alt/Shift]+[Your Custom Button]  All other hotkeys

@@ -12,8 +12,8 @@ public class APPositionSystemEdtior : Editor {
 	SerializedProperty yPosition;
 
 	//Note: Offset of placement off mouse position. Re-enable if needed.
-	//SerializedProperty adjustX;
-	//SerializedProperty adjustY;
+	SerializedProperty adjustX;
+	SerializedProperty adjustY;
 
 	SerializedProperty isMarkerActive;
 	
@@ -22,8 +22,8 @@ public class APPositionSystemEdtior : Editor {
 		xPosition = serializedObject.FindProperty ("xPosition");
 		yPosition = serializedObject.FindProperty ("yPosition");
 
-		//adjustX = serializedObject.FindProperty ("adjustX");
-		//adjustY = serializedObject.FindProperty ("adjustY");
+		adjustX = serializedObject.FindProperty ("adjustX");
+		adjustY = serializedObject.FindProperty ("adjustY");
 		
 		isMarkerActive = serializedObject.FindProperty ("isMarkerActive");
 	}
@@ -40,8 +40,8 @@ public class APPositionSystemEdtior : Editor {
 		} else {
 			GUILayout.Label ("Position [X: " + xPosition.floatValue + " Y: " + yPosition.floatValue + "]");
 			
-			//EditorGUILayout.PropertyField (adjustX, true);
-			//EditorGUILayout.PropertyField (adjustY, true);
+			EditorGUILayout.PropertyField (adjustX, true);
+			EditorGUILayout.PropertyField (adjustY, true);
 			
 			EditorGUILayout.PropertyField (isMarkerActive, true);
 		}

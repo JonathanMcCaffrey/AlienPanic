@@ -11,7 +11,6 @@ public class APGlobals {
 	//And this assumes they are in a folder called PlacementAssets
 	public const string AssetPath = "Resources/"; 
 	
-	
 	//Where the system will put the icons it renders from 3D assets in Assets/
 	public const string IconRenderPath = "/Resources/PlacementIcons/";
 	
@@ -21,13 +20,15 @@ public class APGlobals {
 	public const string CommandPath = "Window/Asset Placement/";
 	
 	//Keys used internally
-	public const string SnapUpdate = "AssetPlacement.doSnapUpdate";
-	public const string ShowAll = "AssetPlacement.ShowAll";
-	public const string ShowLabels = "AssetPlacement.ShowLabels";
-	
-	public const string SelectedTab = "AssetPlacement.SelectedTab";
-	public const string SelectedKey = "AssetPlacement.SelectedKey";
-	public const string SelectedAssetNumber = "AssetPlacement.SelectedAssetNumber";
+	public const string SnapUpdate = "AP.doSnapUpdate";
+	public const string ShowAll = "AP.ShowAll";
+	public const string ShowLabels = "AP.ShowLabels";
+	public const string LargeBrush = "AP.LargeBrush";
+
+
+	public const string SelectedTab = "AP.SelectedTab";
+	public const string SelectedKey = "AP.SelectedKey";
+	public const string SelectedAssetNumber = "AP.SelectedAssetNumber";
 	
 	public const string SavedHotkeyDisplayIndex = "AP.SavedHotkeyDisplayIndex.";
 	public const string SavedHotkeyDisplayName = "AP.SavedHotkeyDisplayName.";
