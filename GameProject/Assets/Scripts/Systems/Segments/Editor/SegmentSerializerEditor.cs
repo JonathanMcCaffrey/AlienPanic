@@ -1,18 +1,18 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEditor;
 using System.Collections;
 
-[CustomEditor(typeof(SceneSaver))]
+[CustomEditor(typeof(SegmentSerializer))]
 [CanEditMultipleObjects]
-public class SceneSaverEditor : Editor {
+public class SegmentSerializerEditor : Editor {
 	SerializedProperty selectedNode;
-	SerializedProperty fileName;
+	SerializedProperty segmentName;
 	SerializedProperty enemyType;
 	SerializedProperty hotKey;
 	
 	void OnEnable() {
 		selectedNode = serializedObject.FindProperty ("selectedNode");
-		fileName = serializedObject.FindProperty ("fileName");
+		segmentName = serializedObject.FindProperty ("segmentName");
 		
 	}
 	
@@ -20,17 +20,17 @@ public class SceneSaverEditor : Editor {
 		serializedObject.Update ();
 		
 		EditorGUILayout.PropertyField (selectedNode, true);
-		EditorGUILayout.PropertyField (fileName, true);
+		EditorGUILayout.PropertyField (segmentName, true);
 		
 		if (GUILayout.Button ("Save")) {
-			if(SceneSaver.instance) {
-				SceneSaver.SaveSelectedNode();
+			if(SegmentSerializer.instance) {
+				SegmentSerializer.SaveSelectedNode();
 			}
 			
 		}
 		
 		if (GUILayout.Button ("Load")) {
-			SceneSaver.LoadNode();
+			SegmentSerializer.LoadNode();
 		}
 		
 		

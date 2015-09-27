@@ -12,6 +12,8 @@ public class CameraTracking : MonoBehaviour {
 	
 	[Range(0.01f, 1.0f)]
 	public float distanceThreshold = 0;
+
+	//TODO Add Quadrant Size
 	
 	public float startY = 0;
 	

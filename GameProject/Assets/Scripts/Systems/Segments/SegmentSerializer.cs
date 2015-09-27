@@ -12,12 +12,12 @@ using System.IO;
 using UnityEditor;
 
 
-public class SceneSaver : MonoBehaviour {	
+public class SegmentSerializer : MonoBehaviour {	
 	public GameObject selectedNode = null;
-	public string fileName = "temp";
+	public string segmentName = "Seg1";
 	
-	public static SceneSaver instance = null;
-	public SceneSaver() {
+	public static SegmentSerializer instance = null;
+	public SegmentSerializer() {
 		instance = this;
 	}
 	
@@ -56,34 +56,28 @@ public class SceneSaver : MonoBehaviour {
 			}
 		}
 		XmlSerializer xmlSerializer = new XmlSerializer (typeof(AssetNodeData));
-		FileStream file = new FileStream (FilePath () + instance.fileName + ".txt", FileMode.Create);
+		FileStream file = new FileStream (FilePath () + instance.segmentName + ".txt", FileMode.Create);
 		xmlSerializer.Serialize (file, rootNode);
 		file.Close ();
 	}
 
 
-	public static GameObject LoadNodeAtPath(string filePath) {
+	public static GameObject LoadSegmentWithName(string segmentName) {
 		XmlSerializer xmlSerializer = new XmlSerializer (typeof(AssetNodeData));
 		
-		if (!File.Exists (FilePath () + filePath + ".txt")) {
+		if (!File.Exists (FilePath () + segmentName + ".txt")) {
 			return null;
 		}
 		
-		FileStream file = new FileStream (FilePath () + filePath + ".txt", FileMode.Open);
+		FileStream file = new FileStream (FilePath () + segmentName + ".txt", FileMode.Open);
 		
 		
 		AssetNodeData data = xmlSerializer.Deserialize (file) as AssetNodeData;
 		file.Close ();
-		GameObject rootLevel = null;
+		String rootName = data.text + " - " + segmentName;
 		
-		String rootName = data.text + " - " + filePath;
-		
-		//Lets just make a new one each time instead
-		//rootLevel = GameObject.Find (rootName);
-		if (!rootLevel) {
-			rootLevel = new GameObject (rootName);
-		}
-		rootLevel.transform.localPosition = data.Position ();
+		GameObject newSegment = new GameObject (rootName);
+		newSegment.transform.localPosition = data.Position ();
 		
 		Rect segRect = new Rect(int.MaxValue, int.MaxValue, int.MinValue, int.MinValue);
 		foreach (var dataNode in data.children) {
@@ -92,7 +86,7 @@ public class SceneSaver : MonoBehaviour {
 			if (!subLevel) {
 				subLevel = new GameObject (dataNode.text);
 			}
-			subLevel.transform.parent = rootLevel.transform;
+			subLevel.transform.parent = newSegment.transform;
 			subLevel.transform.localPosition = dataNode.Position ();
 			foreach (var childNode in dataNode.children) {
 				//TODO Make cleaner
@@ -125,25 +119,24 @@ public class SceneSaver : MonoBehaviour {
 			}
 		}
 
-		BoxCollider2D colider2D = rootLevel.AddComponent<BoxCollider2D> ();
+		BoxCollider2D colider2D = newSegment.AddComponent<BoxCollider2D> ();
 		colider2D.isTrigger = true;
-
-		rootLevel.AddComponent<SegTriggerVolume> ();
+		newSegment.AddComponent<SegmentTriggerVolume> ();
 
 		colider2D.size = new Vector2 (segRect.width - segRect.x, segRect.width - segRect.x);
 		colider2D.offset = new Vector2 (colider2D.size.x * 0.5f, colider2D.size.y * 0.5f);
 
-		return rootLevel;
+		return newSegment;
 	}
 	
 	public static GameObject LoadNode () {
-		return LoadNodeAtPath (instance.fileName);
+		return LoadSegmentWithName (instance.segmentName);
 
 	}	
 	
 	public void Awake() {
-		SaveSelectedNode ();
-		LoadNode ();
+		//TODO Move this and improve it
+		SegmentManager.AddNewSegement(LoadSegmentWithName (SegmentManager.CreateRandomSegmentName()));
 	}
 }
 
