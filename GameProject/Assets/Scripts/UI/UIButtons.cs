@@ -9,12 +9,10 @@ public class UIButtons : MonoBehaviour
 {
 	public void StartNewGame() {		
 		GameManager.instance.ChangeState(GameManager.instance.stateNewGame);
-		//TODO: butter scrolls like butter
 	}
 
 	public void StartArtSample() {		
 		GameManager.instance.ChangeState(GameManager.instance.stateArtSample);
-		//TODO: butter scrolls like butter
 	}
 
 	public void Restart ()
