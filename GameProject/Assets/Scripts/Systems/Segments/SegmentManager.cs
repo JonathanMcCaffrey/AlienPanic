@@ -1,4 +1,16 @@
-﻿using UnityEngine;
+/*
+ * 	SegmentManager.cs
+ * 	
+ * 	Levels are currently broken into small segments for load forever: 
+ * 
+ * 	MaxSegmentCount currently controls how many Segments can exist in list.
+ * 
+ * 	
+ * 
+ */
+
+
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 

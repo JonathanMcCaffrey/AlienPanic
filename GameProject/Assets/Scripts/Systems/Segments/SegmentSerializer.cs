@@ -1,5 +1,17 @@
-﻿
-#if UNITY_EDITOR
+/*
+ * 	SegmentSerializer.cs
+ * 	
+ * Allows for the saving of Segments to be used in the SegmentManager.cs
+ * 
+ * Use the Asset placement system to create a Segment. With current defaults, create a level starting a 0,0 in world space
+ * Then go Right and Up in building the Segment. (Segments orgins are currently expected as 0,0)
+ * 
+ * Suggest using the Camera Quadrants as a sizing guide.
+ * 
+ * When happy with Segment don't work get to save it with a unique name!
+ * 	
+ * 
+ */
 
 using UnityEngine;
 using System.Collections;
@@ -9,8 +21,6 @@ using System.Xml;
 using System.Xml.Serialization;
 using System;
 using System.IO;
-using UnityEditor;
-
 
 public class SegmentSerializer : MonoBehaviour {	
 	public GameObject selectedNode = null;
@@ -90,8 +100,10 @@ public class SegmentSerializer : MonoBehaviour {
 			subLevel.transform.localPosition = dataNode.Position ();
 			foreach (var childNode in dataNode.children) {
 				//TODO Make cleaner
-				string assetString = "Assets/Resources/PlacementAssets/" + dataNode.text + "/" + childNode.text + ".prefab";
-				var asset = AssetDatabase.LoadAssetAtPath (assetString, typeof(GameObject)) as GameObject;
+
+
+				var asset = Resources.Load("PlacementAssets/" + dataNode.text + "/" + childNode.text) as GameObject;
+					
 				if (asset) {
 					var newObject = GameObject.Instantiate (asset) as GameObject;
 					newObject.name = childNode.text;
@@ -122,6 +134,7 @@ public class SegmentSerializer : MonoBehaviour {
 		BoxCollider2D colider2D = newSegment.AddComponent<BoxCollider2D> ();
 		colider2D.isTrigger = true;
 		newSegment.AddComponent<SegmentTriggerVolume> ();
+
 
 		colider2D.size = new Vector2 (segRect.width - segRect.x, segRect.width - segRect.x);
 		colider2D.offset = new Vector2 (colider2D.size.x * 0.5f, colider2D.size.y * 0.5f);
@@ -173,4 +186,3 @@ public class AssetNodeData {
 	}
 }
 
-#endif
