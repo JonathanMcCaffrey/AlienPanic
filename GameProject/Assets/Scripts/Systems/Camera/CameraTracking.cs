@@ -1,3 +1,10 @@
+/*
+ * 	CameraTracking.cs
+ * 	
+ * Handles the Camera to player tracking, and the vertical motion of the camera between quadrants. 
+ * 
+ */
+
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
