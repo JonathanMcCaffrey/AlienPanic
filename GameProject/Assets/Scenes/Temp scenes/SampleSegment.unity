@@ -37,9 +37,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
---- !u!127 &3
-LevelGameManager:
-  m_ObjectHideFlags: 0
 --- !u!157 &4
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -68,6 +65,7 @@ LightmapSettings:
     m_TextureCompression: 0
     m_FinalGather: 0
     m_FinalGatherRayCount: 1024
+    m_ReflectionCompression: 2
   m_LightmapSnapshot: {fileID: 0}
   m_RuntimeCPUUsage: 25
 --- !u!196 &5
@@ -389,6 +387,118 @@ Prefab:
     - target: {fileID: 11400016, guid: fa2610561a144d644b01a4169cb3611a, type: 2}
       propertyPath: cameraOffsetY
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 21200000, guid: fa2610561a144d644b01a4169cb3611a, type: 2}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 21200000, guid: fa2610561a144d644b01a4169cb3611a, type: 2}
+      propertyPath: m_Color.g
+      value: .800000012
+      objectReference: {fileID: 0}
+    - target: {fileID: 21200000, guid: fa2610561a144d644b01a4169cb3611a, type: 2}
+      propertyPath: m_Color.b
+      value: .800000012
+      objectReference: {fileID: 0}
+    - target: {fileID: 21200000, guid: fa2610561a144d644b01a4169cb3611a, type: 2}
+      propertyPath: m_Color.a
+      value: .800000012
+      objectReference: {fileID: 0}
+    - target: {fileID: 21200006, guid: fa2610561a144d644b01a4169cb3611a, type: 2}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 21200006, guid: fa2610561a144d644b01a4169cb3611a, type: 2}
+      propertyPath: m_Color.g
+      value: .800000012
+      objectReference: {fileID: 0}
+    - target: {fileID: 21200006, guid: fa2610561a144d644b01a4169cb3611a, type: 2}
+      propertyPath: m_Color.b
+      value: .800000012
+      objectReference: {fileID: 0}
+    - target: {fileID: 21200006, guid: fa2610561a144d644b01a4169cb3611a, type: 2}
+      propertyPath: m_Color.a
+      value: .800000012
+      objectReference: {fileID: 0}
+    - target: {fileID: 21200008, guid: fa2610561a144d644b01a4169cb3611a, type: 2}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 21200008, guid: fa2610561a144d644b01a4169cb3611a, type: 2}
+      propertyPath: m_Color.g
+      value: .800000012
+      objectReference: {fileID: 0}
+    - target: {fileID: 21200008, guid: fa2610561a144d644b01a4169cb3611a, type: 2}
+      propertyPath: m_Color.b
+      value: .800000012
+      objectReference: {fileID: 0}
+    - target: {fileID: 21200008, guid: fa2610561a144d644b01a4169cb3611a, type: 2}
+      propertyPath: m_Color.a
+      value: .800000012
+      objectReference: {fileID: 0}
+    - target: {fileID: 21200002, guid: fa2610561a144d644b01a4169cb3611a, type: 2}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 21200002, guid: fa2610561a144d644b01a4169cb3611a, type: 2}
+      propertyPath: m_Color.g
+      value: .800000012
+      objectReference: {fileID: 0}
+    - target: {fileID: 21200002, guid: fa2610561a144d644b01a4169cb3611a, type: 2}
+      propertyPath: m_Color.b
+      value: .800000012
+      objectReference: {fileID: 0}
+    - target: {fileID: 21200002, guid: fa2610561a144d644b01a4169cb3611a, type: 2}
+      propertyPath: m_Color.a
+      value: .800000012
+      objectReference: {fileID: 0}
+    - target: {fileID: 21200010, guid: fa2610561a144d644b01a4169cb3611a, type: 2}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 21200010, guid: fa2610561a144d644b01a4169cb3611a, type: 2}
+      propertyPath: m_Color.g
+      value: .800000012
+      objectReference: {fileID: 0}
+    - target: {fileID: 21200010, guid: fa2610561a144d644b01a4169cb3611a, type: 2}
+      propertyPath: m_Color.b
+      value: .800000012
+      objectReference: {fileID: 0}
+    - target: {fileID: 21200010, guid: fa2610561a144d644b01a4169cb3611a, type: 2}
+      propertyPath: m_Color.a
+      value: .800000012
+      objectReference: {fileID: 0}
+    - target: {fileID: 21200004, guid: fa2610561a144d644b01a4169cb3611a, type: 2}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 21200004, guid: fa2610561a144d644b01a4169cb3611a, type: 2}
+      propertyPath: m_Color.g
+      value: .800000012
+      objectReference: {fileID: 0}
+    - target: {fileID: 21200004, guid: fa2610561a144d644b01a4169cb3611a, type: 2}
+      propertyPath: m_Color.b
+      value: .800000012
+      objectReference: {fileID: 0}
+    - target: {fileID: 21200004, guid: fa2610561a144d644b01a4169cb3611a, type: 2}
+      propertyPath: m_Color.a
+      value: .800000012
+      objectReference: {fileID: 0}
+    - target: {fileID: 21200012, guid: fa2610561a144d644b01a4169cb3611a, type: 2}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 21200012, guid: fa2610561a144d644b01a4169cb3611a, type: 2}
+      propertyPath: m_Color.g
+      value: .800000012
+      objectReference: {fileID: 0}
+    - target: {fileID: 21200012, guid: fa2610561a144d644b01a4169cb3611a, type: 2}
+      propertyPath: m_Color.b
+      value: .800000012
+      objectReference: {fileID: 0}
+    - target: {fileID: 21200012, guid: fa2610561a144d644b01a4169cb3611a, type: 2}
+      propertyPath: m_Color.a
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa2610561a144d644b01a4169cb3611a, type: 2}
@@ -2760,6 +2870,7 @@ Sprite:
   m_PackingTag: 
   m_RD:
     texture: {fileID: 2800000, guid: 12ae6337f3f2c7a40a158edc5c8abd6f, type: 3}
+    alphaTexture: {fileID: 0}
     vertices:
     - serializedVersion: 2
       pos: {x: .639999986, y: .349999994, z: 0}
@@ -3769,8 +3880,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0576573f333b243439afe03605e0a25e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xPosition: -91.8971405
-  yPosition: 47.8711014
+  xPosition: -25.4149628
+  yPosition: 66.0199738
   adjustX: -1.5
   adjustY: -1.5
   marker: {fileID: 1915352226}
