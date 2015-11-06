@@ -20,12 +20,19 @@ public class Health : MonoBehaviour {
 	public void ChangeHealth(int healthAdjustment) {
 		healthRemaining += healthAdjustment;
 		healthRemaining = Mathf.Clamp(healthRemaining, 0, maxHealth);
-
+		
+		Renderer rend = GetComponentInChildren<Renderer>();
+		if(rend) {
+			rend.material.shader = Shader.Find("Specular");
+			rend.material.SetColor("_SpecColor", Color.red);
+		}
+		
+		
 		if (!IsAlive ()) {
 			OnDeath ();
 		}
 	}
-
+	
 	/// <summary>
 	/// Determines whether the actor is alive.
 	/// </summary>
