@@ -73,11 +73,11 @@ public class SegmentSerializer : MonoBehaviour {
 	
 	
 	public static GameObject LoadSegmentWithName(string segmentName) {
-		XmlSerializer xmlSerializer = new XmlSerializer (typeof(AssetNodeData));
+		//XmlSerializer xmlSerializer = new XmlSerializer (typeof(AssetNodeData));
 		
-		if (!File.Exists (FilePath () + segmentName + ".txt")) {
-			return null;
-		}
+		//if (!File.Exists (FilePath () + segmentName + ".txt")) {
+		//	return null;
+		//}
 		
 		//FileStream file = new FileStream (FilePath () + segmentName + ".txt", FileMode.Open);
 		
