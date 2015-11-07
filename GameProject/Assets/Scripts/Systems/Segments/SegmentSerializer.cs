@@ -70,8 +70,8 @@ public class SegmentSerializer : MonoBehaviour {
 		xmlSerializer.Serialize (file, rootNode);
 		file.Close ();
 	}
-
-
+	
+	
 	public static GameObject LoadSegmentWithName(string segmentName) {
 		XmlSerializer xmlSerializer = new XmlSerializer (typeof(AssetNodeData));
 		
@@ -79,11 +79,16 @@ public class SegmentSerializer : MonoBehaviour {
 			return null;
 		}
 		
-		FileStream file = new FileStream (FilePath () + segmentName + ".txt", FileMode.Open);
+		//FileStream file = new FileStream (FilePath () + segmentName + ".txt", FileMode.Open);
+		
+		TextAsset file = Resources.Load<TextAsset>("TextLevelData/" + segmentName) as TextAsset;
 		
 		
-		AssetNodeData data = xmlSerializer.Deserialize (file) as AssetNodeData;
-		file.Close ();
+		AssetNodeData data = new AssetNodeData (file.text); 
+		//	AssetNodeData data = xmlSerializer.Deserialize (file) as AssetNodeData;
+		
+		
+		//file.Close ();
 		String rootName = data.text + " - " + segmentName;
 		
 		GameObject newSegment = new GameObject (rootName);
@@ -100,10 +105,10 @@ public class SegmentSerializer : MonoBehaviour {
 			subLevel.transform.localPosition = dataNode.Position ();
 			foreach (var childNode in dataNode.children) {
 				//TODO Make cleaner
-
-
+				
+				
 				var asset = Resources.Load("PlacementAssets/" + dataNode.text + "/" + childNode.text) as GameObject;
-					
+				
 				if (asset) {
 					var newObject = GameObject.Instantiate (asset) as GameObject;
 					newObject.name = childNode.text;
@@ -130,21 +135,21 @@ public class SegmentSerializer : MonoBehaviour {
 				}
 			}
 		}
-
+		
 		BoxCollider2D colider2D = newSegment.AddComponent<BoxCollider2D> ();
 		colider2D.isTrigger = true;
 		newSegment.AddComponent<SegmentTriggerVolume> ();
-
-
+		
+		
 		colider2D.size = new Vector2 (segRect.width - segRect.x, segRect.width - segRect.x);
 		colider2D.offset = new Vector2 (colider2D.size.x * 0.5f, colider2D.size.y * 0.5f);
-
+		
 		return newSegment;
 	}
 	
 	public static GameObject LoadNode () {
 		return LoadSegmentWithName (instance.segmentName);
-
+		
 	}	
 	
 	public void Awake() {
@@ -175,7 +180,71 @@ public class AssetNodeData {
 	[XmlArray("children"),XmlArrayItem("child")]
 	public List<AssetNodeData> children = new List<AssetNodeData> ();
 	
+	//Mobile Port of Serializer. Hopefully works.
+	public AssetNodeData(string data) {
+		
+		XmlTextReader reader = new XmlTextReader(new StringReader(data));
+
+		List<AssetNodeData> subChildren = new List<AssetNodeData> ();
+
+		while(reader.Read())
+		{
+			if(reader.IsStartElement("child")) {
+				String text = reader.GetAttribute ("text");
+
+				String inner = reader.ReadInnerXml();
+
+				AssetNodeData node = new AssetNodeData();
+				node.initSubs(inner);
+				node.text = text;
+				children.Add(node);
+			}
+		}
+		
+	}
+	
+	public void initSubs(string data) {
+		
+		XmlTextReader reader = new XmlTextReader(new StringReader(data));
+		
+		int count = 0;
+		while (reader.Read()) {
+			
+			
+			if (reader.GetAttribute ("text") != null && !reader.GetAttribute ("text").Equals ("")) {
+				
+				count++;
+				
+				AssetNodeData node = new AssetNodeData ();
+				children.Add (node);
+				
+				children [count - 1].text = reader.GetAttribute ("text");
+				
+			}
+			
+			
+			if (reader.GetAttribute ("x") != null && !reader.GetAttribute ("x").Equals ("")) {
+				children [count - 1].x = float.Parse (reader.GetAttribute ("x"));
+				
+			}
+			
+			
+			if (reader.GetAttribute ("y") != null && !reader.GetAttribute ("y").Equals ("")) {
+				children [count - 1].y = float.Parse (reader.GetAttribute ("y"));
+				
+			}
+			
+			
+			if (reader.GetAttribute ("z") != null && !reader.GetAttribute ("z").Equals ("")) {
+				children [count - 1].z = float.Parse (reader.GetAttribute ("z"));
+				
+			}
+			
+		}
+	}
+	
 	public AssetNodeData() {
+		
 	}
 	
 	public AssetNodeData(string text, Vector3 position) {
