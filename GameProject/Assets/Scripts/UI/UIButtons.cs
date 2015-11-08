@@ -20,6 +20,9 @@ public class UIButtons : MonoBehaviour
 		//TODO: Get current level
 		// restart current level
 		//TODO: Use the manager instead of Application.LoadLevel
+
+		SegmentManager.segCount = 0;
+
 		GameManager.instance.ChangeState(GameManager.instance.stateGamePlaying);
 		Debug.Log ("ResetGame:: Restart -- Loading scene Level_1");
 		Application.LoadLevel ("Level 0");

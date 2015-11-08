@@ -8,7 +8,7 @@
  * 
  * Suggest using the Camera Quadrants as a sizing guide.
  * 
- * When happy with Segment don't work get to save it with a unique name!
+ * When happy with Segment don't forget to save it with a unique name!
  * 	
  * 
  */

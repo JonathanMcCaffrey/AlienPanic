@@ -2,8 +2,8 @@
 using System.Collections;
 
 public class Health : MonoBehaviour {
-	public int maxHealth = 1;
-	private int healthRemaining = 1;
+	public int maxHealth = 3;
+	private int healthRemaining = 3;
 	public int HealthRemaining { 
 		get { return healthRemaining; }
 	}

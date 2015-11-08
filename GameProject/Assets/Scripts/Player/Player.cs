@@ -4,6 +4,9 @@ using System.Collections;
 public class Player : MonoBehaviour {
 	public static MonoBehaviour instance = null;
 
+	void Start() {
+		SegmentManager.segCount = 0;
+	}
 
 	void Awake() {
 		if (instance) {

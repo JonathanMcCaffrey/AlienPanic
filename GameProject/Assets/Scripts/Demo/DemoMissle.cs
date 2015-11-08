@@ -5,6 +5,14 @@ public class DemoMissle : MonoBehaviour {
 	
 	public GameObject player = null;
 
+	void Start() {
+		GameObject foundPlayer = GameObject.Find ("Character");
+
+		if (foundPlayer) {
+			player = foundPlayer;
+		}
+	}
+
 	private bool once = true;
 	void Update () {
 		if (!once) {

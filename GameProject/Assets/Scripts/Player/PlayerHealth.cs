@@ -8,6 +8,8 @@ public class PlayerHealth : Health {
 		if (!explosionPrefab) {
 			Debug.LogError("Unable to set up player health: No explosion prefab is attached.");
 		}
+
+
 	}
 
 	/// <summary>

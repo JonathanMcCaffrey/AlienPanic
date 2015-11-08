@@ -34,7 +34,9 @@ public class DemoPlayerControl : MonoBehaviour{
 				}
 			}
 		}
-		
+
+
+
 		// Ensure the player doesn't exceed the velocity constraints.
 		GetComponent<Rigidbody2D>().velocity = new Vector2(Mathf.Clamp(GetComponent<Rigidbody2D>().velocity.x, -maxSpeed.x, maxSpeed.x), Mathf.Clamp(GetComponent<Rigidbody2D>().velocity.y, -maxSpeed.y, maxSpeed.y));
 	}

@@ -45,8 +45,38 @@ public class SegmentManager {
 		get ().list.Add (newSegment);
 	}
 
-	//TODO Make this
+	//TODO Make this better
+	public static int segCount = 0;
+
+	//Some players demoing at booth wanted some lose/win state.
 	public static string CreateRandomSegmentName() {
+
+		if (segCount > 12) {
+			segCount = 0;
+			Debug.Log ("ResetGame:: MainMenu() -- Loading MainMenu");
+			Application.LoadLevel("MainMenu");
+		}
+
+		if (segCount > 7) {
+			bool isLose = Random.Range (0, 2) == 0;
+			if(isLose) {
+				
+				return "LoseSeg";
+
+			} else {
+				return "MissleSeg";
+			}
+
+		}
+
+		bool isMissle = Random.Range (0, 2) == 0;
+
+		if(segCount > 1 && isMissle) {
+			return "MissleSeg";
+		}
+
+		segCount++;
+
 		return "Seg1";
 	}
 
