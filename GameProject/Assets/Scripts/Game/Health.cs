@@ -2,8 +2,8 @@
 using System.Collections;
 
 public class Health : MonoBehaviour {
-	public int maxHealth = 2;
-	private int healthRemaining = 2;
+	public int maxHealth = 1;
+	private int healthRemaining = 1;
 	public int HealthRemaining { 
 		get { return healthRemaining; }
 	}
@@ -21,11 +21,11 @@ public class Health : MonoBehaviour {
 		healthRemaining += healthAdjustment;
 		healthRemaining = Mathf.Clamp(healthRemaining, 0, maxHealth);
 		
-		Renderer rend = GetComponentInChildren<Renderer>();
-		if(rend) {
+		//Renderer rend = GetComponentInChildren<Renderer>();
+		//if(rend) {
 			//rend.material.shader = Shader.Find("Specular");
 			//rend.material.SetColor("_SpecColor", Color.red);
-		}
+		//}
 		
 		
 		if (!IsAlive ()) {
