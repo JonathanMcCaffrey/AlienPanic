@@ -212,6 +212,18 @@ Prefab:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11463806, guid: c333ed6ef0e63471ca01a17be3f9a810, type: 2}
+      propertyPath: m_Text
+      value: 'Static
+
+        Level'
+      objectReference: {fileID: 0}
+    - target: {fileID: 11482304, guid: c333ed6ef0e63471ca01a17be3f9a810, type: 2}
+      propertyPath: m_Text
+      value: 'Random
+
+        Level'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c333ed6ef0e63471ca01a17be3f9a810, type: 2}
   m_IsPrefabParent: 0

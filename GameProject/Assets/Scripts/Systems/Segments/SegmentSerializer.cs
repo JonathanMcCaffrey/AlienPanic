@@ -76,7 +76,7 @@ public class SegmentSerializer : MonoBehaviour {
 		//XmlSerializer xmlSerializer = new XmlSerializer (typeof(AssetNodeData));
 		
 		//if (!File.Exists (FilePath () + segmentName + ".txt")) {
-		//	return null;
+		//	return null; //This code does not work on Mobile
 		//}
 		
 		//FileStream file = new FileStream (FilePath () + segmentName + ".txt", FileMode.Open);
@@ -179,8 +179,9 @@ public class AssetNodeData {
 	
 	[XmlArray("children"),XmlArrayItem("child")]
 	public List<AssetNodeData> children = new List<AssetNodeData> ();
-	
-	//Mobile Port of Serializer. Hopefully works.
+
+	//This is a Mobile port of the XML Serializer.
+	//Don't worry about it when just using the editor.
 	public AssetNodeData(string data) {
 		
 		XmlTextReader reader = new XmlTextReader(new StringReader(data));
@@ -202,7 +203,8 @@ public class AssetNodeData {
 		}
 		
 	}
-	
+
+	//This is probably hacky code. Ensure it makes sense, or rewrite
 	public void initSubs(string data) {
 		
 		XmlTextReader reader = new XmlTextReader(new StringReader(data));
@@ -212,34 +214,26 @@ public class AssetNodeData {
 			
 			
 			if (reader.GetAttribute ("text") != null && !reader.GetAttribute ("text").Equals ("")) {
-				
 				count++;
 				
 				AssetNodeData node = new AssetNodeData ();
 				children.Add (node);
-				
 				children [count - 1].text = reader.GetAttribute ("text");
-				
 			}
 			
 			
 			if (reader.GetAttribute ("x") != null && !reader.GetAttribute ("x").Equals ("")) {
 				children [count - 1].x = float.Parse (reader.GetAttribute ("x"));
-				
 			}
-			
-			
+
 			if (reader.GetAttribute ("y") != null && !reader.GetAttribute ("y").Equals ("")) {
 				children [count - 1].y = float.Parse (reader.GetAttribute ("y"));
-				
 			}
 			
 			
 			if (reader.GetAttribute ("z") != null && !reader.GetAttribute ("z").Equals ("")) {
 				children [count - 1].z = float.Parse (reader.GetAttribute ("z"));
-				
 			}
-			
 		}
 	}
 	
