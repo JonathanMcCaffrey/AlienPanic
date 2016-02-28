@@ -41,5 +41,25 @@ public class UIButtons : MonoBehaviour
 		Application.LoadLevel(Application.loadedLevel+1);
 		// PlayerPrefs.GetString("CurrentLevel");
 	}
-	
+
+	public void TogglePause() {
+		//TODO: fix this super hacky
+		if(GameManager.instance.paused == 0)
+			GameManager.instance.ChangeState(GameManager.instance.stateGamePaused);
+		if(GameManager.instance.paused == 1)
+			GameManager.instance.ChangeState(GameManager.instance.stateGamePlaying);
+		Debug.Log ("Pause");
+	}
+
+	public void Pause() {
+		//TODO: fix this super hacky
+		GameManager.instance.ChangeState(GameManager.instance.stateGamePaused);
+		Debug.Log ("Pause");
+	}
+
+	public void Resume() {
+		//TODO: fix this super hacky
+		GameManager.instance.ChangeState(GameManager.instance.stateGamePlaying);
+		Debug.Log ("Resume");
+	}
 }

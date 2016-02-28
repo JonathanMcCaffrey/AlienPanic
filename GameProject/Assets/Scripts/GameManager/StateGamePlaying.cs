@@ -17,6 +17,7 @@ public class StateGamePlaying : GameState {
 
 		// Render the GUI.
 		//GUI.Label (new Rect(20, 10, 150, 20), string.Format ("state: GAME PLAYING"));
+		GameManager.instance.inGameMenu.SetActive (false);
 	}
 
 	public override void StateUpdate() {
@@ -32,5 +33,6 @@ public class StateGamePlaying : GameState {
 
 		//Unpause the spacetime
 		Time.timeScale = 1;
+		GameManager.instance.paused = 0;
 	}	
 }

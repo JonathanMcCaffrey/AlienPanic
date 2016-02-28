@@ -27,6 +27,9 @@ public class GameManager : MonoBehaviour {
 	public static GameManager instance = null;
 	private GameState currentState;
 
+	public GameObject inGameMenu;
+	public int paused;
+
 	private void Awake () {
 		stateGamePlaying = GetComponent<StateGamePlaying>();
 		if (!stateGamePlaying) {
@@ -69,6 +72,7 @@ public class GameManager : MonoBehaviour {
 		}
 		
 		instance = this;
+
 	}
 
 	// Use this for initialization
