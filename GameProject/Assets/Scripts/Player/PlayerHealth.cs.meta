@@ -1,8 +1,14 @@
 fileFormatVersion: 2
 guid: 90b0264db07664a25aa8aa3630e25b1b
+timeCreated: 1458177612
+licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - explosionPrefab: {instanceID: 0}
+  - OxygenSlider: {fileID: 11447484, guid: 2044749fad691f34cb93e71062de4615, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
+  assetBundleName: 
+  assetBundleVariant: 

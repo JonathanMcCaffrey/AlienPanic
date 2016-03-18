@@ -2,16 +2,31 @@
 using System.Collections;
 
 public class DemoCollectable : MonoBehaviour {
-	
-	private bool once = true;
+
+	public float O2_Bonus; // The Oxygen gained from collecting this token
+
+	bool once = true;
+	GameObject player;
+	PlayerHealth HealthScript;
 
 	void OnWillRenderObject() {
 		once = true;
+
 	}
 	
+
+	void Start () {
+		player = GameObject.FindWithTag ("Player");	
+		PlayerHealth HealthScript = (PlayerHealth) player.GetComponent(typeof(PlayerHealth));
+		Debug.Log ("Token Started " + HealthScript);
+	}
+		
 	void OnCollisionEnter2D (Collision2D col) {
 		if (col.gameObject.tag == "Player") {
 			gameObject.transform.localScale = new Vector3 (0f, 0f, 1);
+
+			// Add Oxygen to the player's Oxygen level
+			HealthScript.Affect_O2(O2_Bonus);
 		
 			if(Score.instance) {
 				Score.instance.AddPoint (10);
