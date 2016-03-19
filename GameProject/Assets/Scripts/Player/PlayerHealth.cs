@@ -101,7 +101,6 @@ public class PlayerHealth : Health {
 	public void Affect_O2(float O2)
 	{
 		O2_Modifier += O2;
-		O2_Current = 100;
 	}
 
 
