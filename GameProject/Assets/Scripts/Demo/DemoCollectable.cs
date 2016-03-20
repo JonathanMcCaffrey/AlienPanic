@@ -13,12 +13,10 @@ public class DemoCollectable : MonoBehaviour {
 		once = true;
 
 	}
-	
 
 	void Start () {
 		player = GameObject.FindWithTag ("Player");	
-		PlayerHealth HealthScript = (PlayerHealth) player.GetComponent(typeof(PlayerHealth));
-		Debug.Log ("Token Started " + HealthScript);
+		HealthScript = player.GetComponent<PlayerHealth>();
 	}
 		
 	void OnCollisionEnter2D (Collision2D col) {

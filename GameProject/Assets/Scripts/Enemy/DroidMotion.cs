@@ -9,9 +9,11 @@ public class DroidMotion : MonoBehaviour {
 	public float contact = 0.5f; // The distance to the player to make contact
 	public float moveSize = 0.2f; // For the up/down movement when Idling
 	public float rotSpeed = 0.1f;  // Speed at which to rotate when droid is finished
+	public float O2_Drain = -30.0f;
 
 	Animator anim;
 	GameObject player;
+	PlayerHealth HealthScript;
 	Vector3 movement;
 	bool chasing = false;
 	bool finished = false; // set to true after the droid has hurt the player
@@ -24,6 +26,7 @@ public class DroidMotion : MonoBehaviour {
 		anim.SetBool ("DetectedPlayer", false);
 
 		player = GameObject.FindWithTag("Player");	
+		HealthScript = player.GetComponent<PlayerHealth>();
 	}
 	
 	// Update is called once per frame
@@ -39,6 +42,9 @@ public class DroidMotion : MonoBehaviour {
 			delta_y = player.transform.position.y - transform.position.y;		
 
 			if(delta_x < contact && delta_y < contact){
+				// The droid is touching the player.  The player thus looses Oxygen
+				HealthScript.Affect_O2(O2_Drain);
+
 				finished = true;
 				startPosition = gameObject.transform.position.y; // reset this start position for the next call to move()
 			}

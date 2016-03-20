@@ -12665,7 +12665,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400002, guid: 5e1f4fcc6849b0b459c8722e748b0bce, type: 2}
       propertyPath: modify_rate
-      value: 20
+      value: 35
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e1f4fcc6849b0b459c8722e748b0bce, type: 2}
@@ -30487,6 +30487,7 @@ MonoBehaviour:
   contact: .5
   moveSize: 1
   rotSpeed: 3
+  O2_Drain: -30
 --- !u!1001 &2034002775
 Prefab:
   m_ObjectHideFlags: 0

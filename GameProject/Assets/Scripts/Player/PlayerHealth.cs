@@ -46,7 +46,7 @@ public class PlayerHealth : Health {
 	
 	void Set_Current_O2()
 	{
-		float O2_Change;
+		float O2_Change = 0.0f;
 		
 		// Determine how much O2 is changing
 		if (O2_Modifier > 0.0f){
@@ -65,13 +65,17 @@ public class PlayerHealth : Health {
 		}
 		else {
 			// Oxygen Depletes at a normal rate
-			O2_Change = Time.deltaTime * deplete_rate;
+			O2_Change = -1*Time.deltaTime * deplete_rate;
 		}
 		
 		// Set the current level of O2
-		O2_Current = O2_Current - O2_Change;
+		O2_Current = O2_Current + O2_Change;
 		if(O2_Current > O2_Max)
 			O2_Current = O2_Max;
+
+		// Stop increasing O2 if it is already at Maximum
+		if (O2_Current == O2_Max && O2_Modifier > 0.0f)
+			O2_Modifier = 0.0f;
 	}
 	
 	void Update_Oxygen_Slier(){
