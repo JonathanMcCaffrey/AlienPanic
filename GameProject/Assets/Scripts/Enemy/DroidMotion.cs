@@ -32,6 +32,10 @@ public class DroidMotion : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		float delta_x, delta_y;
+
+		if (player == null) // exit the update function if the player is dead
+			return;
+
 		if(finished == true){ // IN THIS STATE THE DROID HAS ALREADY DAMAGED THE PLAYER AND IS DONE
 			anim.SetBool ("DetectedPlayer", false); // set to false to return in the default animation state
 			move ();  // move up and downn
