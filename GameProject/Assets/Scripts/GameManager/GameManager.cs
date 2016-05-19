@@ -12,6 +12,7 @@
 
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour {
 
@@ -29,6 +30,7 @@ public class GameManager : MonoBehaviour {
 
 	public GameObject inGameMenu;
 	public int paused;
+    public GameObject audioManagerPrefab;
 
 	private void Awake () {
 		stateGamePlaying = GetComponent<StateGamePlaying>();
@@ -101,15 +103,37 @@ public class GameManager : MonoBehaviour {
 	
 	public void ChangeState (GameState newState) {
 
-        //TODO remove
-        //Example state change audio 
-        if (AudioManager.Instance && !(newState is StateNotSet))
-        {
-            AudioManager.Instance.PlayClip(AudioManager.Instance.menu.play);
-        }
+//        //TODO remove
+//        //Example state change audio 
+//        if (AudioManager.Instance && !(newState is StateNotSet))
+//        {
+//            AudioManager.Instance.PlayClip(AudioManager.Instance.menu.play);
+//        }
+//
+        UpdateAudioByState(newState);
 
         currentState = newState;
 	}
+
+    private void UpdateAudioByState(GameState state)
+    {
+        if (currentState != state)
+        {
+            if (state is StateGamePlaying) //TODO: State Manager: StateNewGame is not used in code so changed to StateGamePlaying for now
+                AudioManager.Instance.PlayBackground(AudioManager.Instance.gameplay.background[0]);
+            else if (state is StateGameWon)
+                AudioManager.Instance.PlayBackground(AudioManager.Instance.gameplay.playerWon);
+            else if (state is StateGameLost)
+                AudioManager.Instance.PlayBackground(AudioManager.Instance.gameplay.playerLost);
+            else if (state is StateGamePaused)
+                AudioManager.Instance.PlayBackground(AudioManager.Instance.gameplay.gamePause);
+            else if (state is StateGameMenu)
+                AudioManager.Instance.PlayBackground(AudioManager.Instance.menu.background[0]);
+            else
+                //TODO Debug: To see why states are being changed soo many times. Remove redundant states later if not required.
+                AudioManager.Instance.PlayClip(AudioManager.Instance.menu.play); //Temporary for debugging
+        }
+    }
 
 	public void DisplayCurrentState () {
 		if (currentState != null) {

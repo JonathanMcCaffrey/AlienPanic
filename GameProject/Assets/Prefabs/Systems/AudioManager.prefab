@@ -17,7 +17,7 @@ GameObject:
   m_TagString: Audio
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &427164
 Transform:
@@ -312,6 +312,15 @@ MonoBehaviour:
     playerToObstruction:
       audio: {fileID: 0}
       volume: 6
+    playerWon:
+      audio: {fileID: 8300000, guid: 9f00b8f0862d5481e84113cf7a8f156c, type: 3}
+      volume: 10
+    playerLost:
+      audio: {fileID: 8300000, guid: b6e00c4dec0c04c7a8162f4fdc618d64, type: 3}
+      volume: 10
+    gamePause:
+      audio: {fileID: 0}
+      volume: 6
   PlanetSelection:
     background:
       audio: {fileID: 0}
@@ -328,7 +337,27 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: gameplay.playerWon.audio
+      value: 
+      objectReference: {fileID: 8300000, guid: 9f00b8f0862d5481e84113cf7a8f156c, type: 3}
+    - target: {fileID: 0}
+      propertyPath: gameplay.playerLost.audio
+      value: 
+      objectReference: {fileID: 8300000, guid: b6e00c4dec0c04c7a8162f4fdc618d64, type: 3}
+    - target: {fileID: 0}
+      propertyPath: gameplay.playerLost.volume
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: gameplay.playerWon.volume
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 195166}

@@ -24,6 +24,9 @@ public class GameplayAudio
 	public CustomAudioSourceComponent playerToGround;
 	public CustomAudioSourceComponent playerToCollectable;
 	public CustomAudioSourceComponent playerToObstruction;
+    public CustomAudioSourceComponent playerWon;
+    public CustomAudioSourceComponent playerLost;
+    public CustomAudioSourceComponent gamePause;
 }
 
 [System.Serializable]  // You need to have this line in there
@@ -68,8 +71,8 @@ public class AudioManager : MonoBehaviour {
             {
                 if (_instance == null)
                 {
-
-                    _instance = GameObject.FindWithTag("Audio").GetComponent("AudioManager") as AudioManager;
+                    _instance = ((GameObject)Instantiate(GameManager.instance.audioManagerPrefab)).GetComponent("AudioManager") as AudioManager;
+                    //_instance = GameObject.FindWithTag("Audio").GetComponent("AudioManager") as AudioManager;
                     DontDestroyOnLoad(_instance);
                 }
                 return _instance;
@@ -79,7 +82,7 @@ public class AudioManager : MonoBehaviour {
 
     void Awake()
     {
-        
+        _instance = this;
     }
 
 	// Use this for initialization
@@ -126,8 +129,10 @@ public class AudioManager : MonoBehaviour {
         SFXAudioSource.PlayOneShot(audioToPlay.audio, audioToPlay.volume);
     }
 
-    public IEnumerator PlayBackground (CustomAudioSourceComponent audioToPlay)
+    public void PlayBackground (CustomAudioSourceComponent audioToPlay)
 	{
+        Debug.Log("PlayBackground Audio");
+
 		if (BGMAudioSource1 != null && BGMAudioSource2 != null) 
 		{
 			if (!BGMAudioSource1.isPlaying) 
@@ -145,7 +150,7 @@ public class AudioManager : MonoBehaviour {
                 lastPopulatedAudioSource = 1;
 
                 StartCoroutine(fadeIn(BGMAudioSource1, false));
-                Debug.Log("Fading in Audio 1");
+                Debug.Log("Fading in Audio 1: " + audioToPlay.audio.name);
 
                 //Test case: to check if the fading is working
                 //yield return new WaitForSeconds(5.00f);
@@ -169,10 +174,10 @@ public class AudioManager : MonoBehaviour {
                 lastPopulatedAudioSource = 2;
 
                 StartCoroutine(fadeIn(BGMAudioSource2, true));
-                Debug.Log("Fading in Audio 2");
+                Debug.Log("Fading in Audio 2: " + audioToPlay.audio.name);
 			}
 		}
 
-        yield return null;
+        //yield return null;
 	}
  }

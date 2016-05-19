@@ -33,7 +33,7 @@ public class UIButtons : MonoBehaviour
 	public void MainMenu() {	
 		GameManager.instance.ChangeState(GameManager.instance.stateGameMenu);
 		Debug.Log ("ResetGame:: MainMenu() -- Loading MainMenu");
-		Application.LoadLevel("MainMenu");
+		Application.LoadLevel("_MainMenu");
 	}
 
 	public void NextLevel() {
