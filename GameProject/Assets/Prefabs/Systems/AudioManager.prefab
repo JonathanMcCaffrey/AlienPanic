@@ -28,6 +28,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -273,6 +274,12 @@ MonoBehaviour:
       volume: 10
     - audio: {fileID: 8300000, guid: 96f3b46da7093476a90e589389155ddc, type: 3}
       volume: 10
+    - audio: {fileID: 8300000, guid: 96f3b46da7093476a90e589389155ddc, type: 3}
+      volume: 10
+    - audio: {fileID: 8300000, guid: 96f3b46da7093476a90e589389155ddc, type: 3}
+      volume: 10
+    - audio: {fileID: 8300000, guid: 96f3b46da7093476a90e589389155ddc, type: 3}
+      volume: 10
     play:
       audio: {fileID: 8300000, guid: dd0fad376dcfd4470bc9118e4c0d66e5, type: 3}
       volume: 1
@@ -299,7 +306,7 @@ MonoBehaviour:
     playerDeath: []
     playerToMissile:
       audio: {fileID: 0}
-      volume: 6
+      volume: 5
     playerToBird:
       audio: {fileID: 0}
       volume: 6
