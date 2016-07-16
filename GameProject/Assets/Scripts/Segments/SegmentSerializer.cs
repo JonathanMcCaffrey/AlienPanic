@@ -10,7 +10,6 @@
  * 
  * When happy with Segment don't forget to save it with a unique name!
  * 	
- * 
  */
 
 using UnityEngine;
@@ -30,10 +29,9 @@ public class SegmentSerializer : MonoBehaviour {
 	public SegmentSerializer() {
 		instance = this;
 	}
-	
-	
+
 	static string FilePath() { 
-		return "Assets/Resources/TextLevelData" + "/";
+		return "Assets/Resources/TextLevelData/Segments/";
 	}
 	
 	static void GetOnlyChildren (GameObject root, List<Transform> fixedChildren) {
@@ -81,7 +79,7 @@ public class SegmentSerializer : MonoBehaviour {
 		
 		//FileStream file = new FileStream (FilePath () + segmentName + ".txt", FileMode.Open);
 		
-		TextAsset file = Resources.Load<TextAsset>("TextLevelData/" + segmentName) as TextAsset;
+		TextAsset file = Resources.Load<TextAsset>("TextLevelData/Segments/" + segmentName) as TextAsset;
 		
 		
 		AssetNodeData data = new AssetNodeData (file.text); 
@@ -154,12 +152,13 @@ public class SegmentSerializer : MonoBehaviour {
 	
 	public void Awake() {
 		//TODO Move this and improve it
+		SegmentManager.spawnedSegCount = 0;
 		SegmentManager.AddNewSegement(LoadSegmentWithName (SegmentManager.CreateRandomSegmentName()));
 	}
 }
 
 [Serializable]
-[XmlRoot("node")]
+[XmlRoot("node")] //TODO Make this its own file class
 public class AssetNodeData {
 	[XmlAttribute("text")]
 	public string text = "blank";

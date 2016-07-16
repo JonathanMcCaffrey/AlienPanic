@@ -16,6 +16,8 @@ using System.Collections.Generic;
 
 public class SegmentManager {
 
+	public static LevelInfo levelInfo;
+
 	List<GameObject> list = null;
 
 	const int MaxSegmentCount = 3;
@@ -45,39 +47,28 @@ public class SegmentManager {
 		get ().list.Add (newSegment);
 	}
 
-	//TODO Make this better
-	public static int segCount = 0;
-
-	//Some players demoing at booth wanted some lose/win state.
+	public static int spawnedSegCount = 0;
 	public static string CreateRandomSegmentName() {
-
-		if (segCount > 12) {
-			segCount = 0;
-			Debug.Log ("ResetGame:: MainMenu() -- Loading MainMenu");
-			Application.LoadLevel("MainMenu");
+		if (levelInfo == null) {
+			return "Seg1";
 		}
 
-		if (segCount > 7) {
-			bool isLose = Random.Range (0, 2) == 0;
-			if(isLose) {
-				
-				return "LoseSeg";
+		List<LevelSegInfo> segChances = new List<LevelSegInfo>();
 
-			} else {
-				return "MissleSeg";
+		for (int segIndex = 0; segIndex < levelInfo.levelSegList.Count; segIndex++) {
+			LevelSegInfo segInfo = levelInfo.levelSegList [segIndex];
+
+			if (segInfo.occursAfter <= spawnedSegCount) {
+				for (int chanceIndex = 0; chanceIndex < segInfo.probablity; chanceIndex++) {
+					segChances.Add (segInfo);
+				}
 			}
-
 		}
+			
+		int chosenSeg = Random.Range (0, segChances.Count);
 
-		bool isMissle = Random.Range (0, 2) == 0;
+		spawnedSegCount++;
 
-		if(segCount > 1 && isMissle) {
-			return "MissleSeg";
-		}
-
-		segCount++;
-
-		return "Seg1";
+		return segChances [chosenSeg].fileName;
 	}
-
 }

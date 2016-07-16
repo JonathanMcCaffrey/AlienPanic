@@ -1,0 +1,27 @@
+{
+   "levelOrder":4,
+   "levelName":"Level Four",
+   "fileName":"Level4",
+   "levelSegList":[
+      {
+         "fileName":"1",
+         "probablity":0,
+         "occursAfter":0
+      },
+      {
+         "fileName":"2",
+         "probablity":3,
+         "occursAfter":2
+      },
+      {
+         "fileName":"3",
+         "probablity":3,
+         "occursAfter":4
+      },
+      {
+         "fileName":"4",
+         "probablity":6,
+         "occursAfter":0
+      }
+   ]
+}

@@ -1,0 +1,27 @@
+{
+   "levelOrder":1,
+   "levelName":"Example",
+   "fileName":"Level1",
+   "levelSegList":[
+      {
+         "fileName":"1",
+         "probablity":1,
+         "occursAfter":0
+      },
+      {
+         "fileName":"2",
+         "probablity":3,
+         "occursAfter":2
+      },
+      {
+         "fileName":"3",
+         "probablity":3,
+         "occursAfter":4
+      },
+      {
+         "fileName":"4",
+         "probablity":6,
+         "occursAfter":6
+      }
+   ]
+}

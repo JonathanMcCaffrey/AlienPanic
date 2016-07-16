@@ -5,7 +5,7 @@ public class Player : MonoBehaviour {
 	public static MonoBehaviour instance = null;
 
 	void Start() {
-		SegmentManager.segCount = 0;
+		SegmentManager.spawnedSegCount = 0;
 	}
 
 	void Awake() {
