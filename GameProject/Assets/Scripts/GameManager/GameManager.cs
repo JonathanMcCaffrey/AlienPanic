@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour {
 	public StateGameMenu stateGameMenu { get; set; }
 	public StateNewGame stateNewGame { get; set; }
 	public StateArtSample stateArtSample { get; set; }
+	public StateLevelSelect stateLevelSelect { get; set; }
 	public StateNotSet stateNotSet { get; set; }
 
 	public static GameManager instance = null;
@@ -66,6 +67,11 @@ public class GameManager : MonoBehaviour {
 		stateArtSample = GetComponent<StateArtSample>();
 		if (!stateArtSample) {
 			LogMissingComponent("StateArtSample");
+		}
+
+		stateLevelSelect = GetComponent<StateLevelSelect>();
+		if (!stateLevelSelect) {
+			LogMissingComponent("StateLevelSelect");
 		}
 
 		stateNotSet = GetComponent<StateNotSet>();

@@ -23,9 +23,9 @@ public class LevelInfo {
 	public string fileName = "";
 
 	[XmlAttribute("levelSeg")] //TODO look into formatting
-	public List<LevelSegInfo> levelSegList = new List<LevelSegInfo>();
+	public LevelSegInfo[] levelSegList;
 
-	public static LevelInfo Load(string text) {
+	public LevelInfo Load(string text) {
 		return JsonUtility.FromJson<LevelInfo> (text);
 	}
 

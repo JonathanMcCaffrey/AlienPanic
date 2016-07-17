@@ -34,9 +34,7 @@ public class LevelSelect {
 
 				string json = reader.ReadToEnd ();
 
-				levelList.Add (LevelInfo.Load (json));
-
-
+				levelList.Add (new LevelInfo().Load (json));
 			}
 		}
 	}

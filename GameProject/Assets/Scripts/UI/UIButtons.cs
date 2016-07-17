@@ -15,6 +15,10 @@ public class UIButtons : MonoBehaviour
 		GameManager.instance.ChangeState(GameManager.instance.stateArtSample);
 	}
 
+	public void StartLevelSelect() {		
+		GameManager.instance.ChangeState(GameManager.instance.stateLevelSelect);
+	}
+
 	public void Restart ()
 	{
 		//TODO: Get current level

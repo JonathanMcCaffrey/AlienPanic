@@ -28,7 +28,7 @@ public class LevelSegInfo {
 		this.occursAfter = occursAfter;
 	}
 
-	public LevelInfo Load(string text) {
-		return JsonUtility.FromJson<LevelInfo> (text);
+	public LevelSegInfo Load(string text) {
+		return JsonUtility.FromJson<LevelSegInfo> (text);
 	}
 }

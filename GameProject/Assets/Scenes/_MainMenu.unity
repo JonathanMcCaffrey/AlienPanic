@@ -339,7 +339,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 214811937}
-        m_MethodName: StartArtSample
+        m_MethodName: StartLevelSelect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -805,11 +805,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 430008, guid: 11d24cd7591c74d8cad245124d21cc74, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -34.4866982
+      value: -34.4867
       objectReference: {fileID: 0}
     - target: {fileID: 430008, guid: 11d24cd7591c74d8cad245124d21cc74, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 720.266296
+      value: 720.2663
       objectReference: {fileID: 0}
     - target: {fileID: 430008, guid: 11d24cd7591c74d8cad245124d21cc74, type: 2}
       propertyPath: m_LocalPosition.z
@@ -817,7 +817,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 430008, guid: 11d24cd7591c74d8cad245124d21cc74, type: 2}
       propertyPath: m_LocalRotation.x
-      value: .70710659
+      value: 0.7071066
       objectReference: {fileID: 0}
     - target: {fileID: 430008, guid: 11d24cd7591c74d8cad245124d21cc74, type: 2}
       propertyPath: m_LocalRotation.y
@@ -829,11 +829,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 430008, guid: 11d24cd7591c74d8cad245124d21cc74, type: 2}
       propertyPath: m_LocalRotation.w
-      value: -.707106948
+      value: -0.70710695
       objectReference: {fileID: 0}
     - target: {fileID: 430008, guid: 11d24cd7591c74d8cad245124d21cc74, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 430008, guid: 11d24cd7591c74d8cad245124d21cc74, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -89.980194
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 11d24cd7591c74d8cad245124d21cc74, type: 2}

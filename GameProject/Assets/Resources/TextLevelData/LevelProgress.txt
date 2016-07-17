@@ -1,1 +1,1 @@
-{"highestCompleteLevel":0,"lastPlayedLevel":0}
+{"highestCompleteLevel":1,"lastPlayedLevel":1}

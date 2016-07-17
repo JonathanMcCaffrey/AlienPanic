@@ -56,7 +56,7 @@ public class SegmentManager {
 
 		List<LevelSegInfo> segChances = new List<LevelSegInfo>();
 
-		for (int segIndex = 0; segIndex < levelInfo.levelSegList.Count; segIndex++) {
+		for (int segIndex = 0; segIndex < levelInfo.levelSegList.Length; segIndex++) {
 			LevelSegInfo segInfo = levelInfo.levelSegList [segIndex];
 
 			if (segInfo.occursAfter <= spawnedSegCount) {
