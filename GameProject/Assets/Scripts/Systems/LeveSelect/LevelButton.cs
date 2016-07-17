@@ -18,13 +18,19 @@ public class LevelButton : MonoBehaviour {
 
 		Application.LoadLevel ("SampleSegment");
 	}
-
+		
 	public GameObject Generate(LevelInfo levelInfo) {
 		GameObject newButton = Instantiate(Resources.Load<GameObject> ("Prefabs/Menu/LevelButton"));
 		LevelButton levelButon = newButton.GetComponent<LevelButton> ();
 		levelButon.levelInfo = levelInfo;
 
-		levelButon.GetComponentInChildren<Text> ().text = levelInfo.levelName;
+		if (LevelProgress.getHighestCompletedLevel () >= levelInfo.levelOrder - 1) {
+			levelButon.GetComponentInChildren<Text> ().text = levelInfo.levelName;
+
+		} else {
+			levelButon.GetComponentInChildren<Text> ().text = "Locked";
+			levelButon.GetComponentInChildren<Button> ().interactable = false;
+		}
 
 		return newButton;
 	}

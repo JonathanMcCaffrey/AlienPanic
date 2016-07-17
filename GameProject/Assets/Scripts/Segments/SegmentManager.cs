@@ -9,6 +9,7 @@
  * 
  */
 
+//Todo Add an event system
 
 using UnityEngine;
 using System.Collections;
