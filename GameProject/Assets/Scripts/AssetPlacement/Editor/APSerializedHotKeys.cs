@@ -25,5 +25,63 @@ public class APSerializedHotKeys : EditorWindow {
 			}
 		}
 	}
+<<<<<<< HEAD
+=======
+#if UNITY_EDITOR_OSX
+	[MenuItem( APGlobals.CommandPath + "Hot Keys/None #none")]
+#else
+	[MenuItem( APGlobals.CommandPath + "Hot Keys/None &_None")]
+#endif
+	public static void SelectItemNone() {
+		EditorPrefs.SetInt (APGlobals.SelectedKey, (int)KeyCode.None); 
+		EditorPrefs.SetInt (APGlobals.SelectedAssetNumber, APGlobals.HotKeySelectionEnabled);
+		RefreshSelectedKey(KeyCode.None);
+	}
+
+#if UNITY_EDITOR_OSX
+	[MenuItem( APGlobals.CommandPath + "Hot Keys/Q #q")]
+#else
+	[MenuItem( APGlobals.CommandPath + "Hot Keys/Q &_Q")]
+#endif
+	public static void SelectItemQ() {
+		EditorPrefs.SetInt (APGlobals.SelectedKey, (int)KeyCode.Q); 
+		EditorPrefs.SetInt (APGlobals.SelectedAssetNumber, APGlobals.HotKeySelectionEnabled);
+		RefreshSelectedKey(KeyCode.Q);
+	}
+
+#if UNITY_EDITOR_OSX
+	[MenuItem( APGlobals.CommandPath + "Hot Keys/W #w")]
+#else
+	[MenuItem( APGlobals.CommandPath + "Hot Keys/W &_W")]
+#endif
+	public static void SelectItemW() {
+		EditorPrefs.SetInt (APGlobals.SelectedKey, (int)KeyCode.W); 
+		EditorPrefs.SetInt (APGlobals.SelectedAssetNumber, APGlobals.HotKeySelectionEnabled);
+		RefreshSelectedKey(KeyCode.W);
+	}
+
+#if UNITY_EDITOR_OSX
+	[MenuItem( APGlobals.CommandPath + "Hot Keys/E #e")]
+#else
+	[MenuItem( APGlobals.CommandPath + "Hot Keys/E &_E")]
+#endif
+	public static void SelectItemE() {
+		EditorPrefs.SetInt (APGlobals.SelectedKey, (int)KeyCode.E); 
+		EditorPrefs.SetInt (APGlobals.SelectedAssetNumber, APGlobals.HotKeySelectionEnabled);
+		RefreshSelectedKey(KeyCode.E);
+	}
+
+#if UNITY_EDITOR_OSX
+	[MenuItem( APGlobals.CommandPath + "Hot Keys/R #r")]
+#else
+	[MenuItem( APGlobals.CommandPath + "Hot Keys/R &_R")]
+#endif
+	public static void SelectItemR() {
+		EditorPrefs.SetInt (APGlobals.SelectedKey, (int)KeyCode.R); 
+		EditorPrefs.SetInt (APGlobals.SelectedAssetNumber, APGlobals.HotKeySelectionEnabled);
+		RefreshSelectedKey(KeyCode.R);
+	}
+
+>>>>>>> origin/master
 } 
 #endif

@@ -3,6 +3,7 @@
 --- !u!129 &1
 PlayerSettings:
   m_ObjectHideFlags: 0
+<<<<<<< HEAD
   serializedVersion: 7
   AndroidProfiler: 0
   defaultScreenOrientation: 2
@@ -16,6 +17,24 @@ PlayerSettings:
   m_ShowUnitySplashScreen: 1
   defaultScreenWidth: 1136
   defaultScreenHeight: 640
+=======
+  serializedVersion: 6
+  AndroidProfiler: 0
+  defaultScreenOrientation: 4
+  targetDevice: 2
+  targetGlesGraphics: 1
+  targetIOSGraphics: -1
+  targetResolution: 0
+  accelerometerFrequency: 60
+  companyName: Unity Game Makers
+  productName: Alien Panic
+  cloudProjectId: 
+  defaultCursor: {fileID: 0}
+  cursorHotspot: {x: 0, y: 0}
+  m_ShowUnitySplashScreen: 1
+  defaultScreenWidth: 1024
+  defaultScreenHeight: 768
+>>>>>>> origin/master
   defaultScreenWidthWeb: 960
   defaultScreenHeightWeb: 600
   m_RenderingPath: 1
@@ -35,7 +54,11 @@ PlayerSettings:
   useOSAutorotation: 1
   use32BitDisplayBuffer: 1
   disableDepthAndStencilBuffers: 0
+<<<<<<< HEAD
   defaultIsFullScreen: 0
+=======
+  defaultIsFullScreen: 1
+>>>>>>> origin/master
   defaultIsNativeResolution: 1
   runInBackground: 0
   captureSingleScreen: 0
@@ -71,13 +94,20 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
+<<<<<<< HEAD
   bundleIdentifier: com.UGM.AlienPanic
+=======
+  bundleIdentifier: com.ugm.alienpanictest
+>>>>>>> origin/master
   bundleVersion: 1.0
   preloadedAssets: []
   metroEnableIndependentInputSource: 0
   metroEnableLowLatencyPresentationAPI: 0
   xboxOneDisableKinectGpuReservation: 0
+<<<<<<< HEAD
   virtualRealitySupported: 0
+=======
+>>>>>>> origin/master
   productGUID: 3a8984573b6d44decadf1ac29eacc6ec
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 9
@@ -117,8 +147,13 @@ PlayerSettings:
   iOSLaunchScreenLandscape: {fileID: 0}
   iOSLaunchScreenBackgroundColor:
     serializedVersion: 2
+<<<<<<< HEAD
     rgba: 157509996
   iOSLaunchScreenFillPct: 1
+=======
+    rgba: 0
+  iOSLaunchScreenFillPct: 100
+>>>>>>> origin/master
   iOSLaunchScreenSize: 100
   iOSLaunchScreenCustomXibPath: 
   AndroidTargetDevice: 0
@@ -132,14 +167,22 @@ PlayerSettings:
   m_AndroidBanners:
   - width: 320
     height: 180
+<<<<<<< HEAD
     banner: {fileID: 0}
+=======
+    banner: {fileID: 2800000, guid: c47a92af95ad3490c9ad8fa02f4de005, type: 3}
+>>>>>>> origin/master
   androidGamepadSupportLevel: 0
   resolutionDialogBanner: {fileID: 0}
   m_BuildTargetIcons:
   - m_BuildTarget: 
     m_Icons:
     - m_Icon: {fileID: 2800000, guid: a7d7c5f6f49ae4d70a6a5737d0a847b8, type: 3}
+<<<<<<< HEAD
       m_Size: 54583
+=======
+      m_Size: 128
+>>>>>>> origin/master
   m_BuildTargetBatching: []
   m_BuildTargetGraphicsAPIs:
   - m_BuildTarget: WindowsStandaloneSupport
@@ -202,8 +245,11 @@ PlayerSettings:
   ps4SaveDataImagePath: 
   ps4BGMPath: 
   ps4ShareFilePath: 
+<<<<<<< HEAD
   ps4ShareOverlayImagePath: 
   ps4PrivacyGuardImagePath: 
+=======
+>>>>>>> origin/master
   ps4NPtitleDatPath: 
   ps4RemotePlayKeyAssignment: -1
   ps4EnterButtonAssignment: 1
@@ -211,8 +257,12 @@ PlayerSettings:
   ps4ApplicationParam2: 0
   ps4ApplicationParam3: 0
   ps4ApplicationParam4: 0
+<<<<<<< HEAD
   ps4GarlicHeapSize: 2048
   ps4Passcode: OuSpM2Tlh01vOzwvSikHFswuzleht6xG
+=======
+  ps4Passcode: vp7Dxm58i6bjohxRnMQb5Ldxf9992AX7
+>>>>>>> origin/master
   ps4pnSessions: 1
   ps4pnPresence: 1
   ps4pnFriends: 1
@@ -223,7 +273,10 @@ PlayerSettings:
   psp2NPTrophyPackPath: 
   psp2NPSupportGBMorGJP: 0
   psp2NPAgeRating: 12
+<<<<<<< HEAD
   psp2NPTitleDatPath: 
+=======
+>>>>>>> origin/master
   psp2NPCommsID: 
   psp2NPCommunicationsID: 
   psp2NPCommsPassphrase: 
@@ -236,9 +289,14 @@ PlayerSettings:
   psp2LiveAreaTrialPath: 
   psp2PatchChangeInfoPath: 
   psp2PatchOriginalPackage: 
+<<<<<<< HEAD
   psp2PackagePassword: 5PN2qmWqBlQ9wQj99nsQzldVI5ZuGXbE
   psp2KeystoneFile: 
   psp2MemoryExpansionMode: 0
+=======
+  psp2PackagePassword: 
+  psp2KeystoneFile: 
+>>>>>>> origin/master
   psp2DRMType: 0
   psp2StorageType: 0
   psp2MediaCapacity: 0
@@ -267,7 +325,8 @@ PlayerSettings:
   psp2InfoBarColor: 0
   psmSplashimage: {fileID: 0}
   spritePackerPolicy: DefaultPackerPolicy
-  scriptingDefineSymbols: {}
+  scriptingDefineSymbols:
+    4: 
   metroPackageName: _2D v3
   metroPackageLogo: 
   metroPackageLogo140: 
@@ -373,7 +432,10 @@ PlayerSettings:
   XboxOnePackagingOverridePath: 
   XboxOneAppManifestOverridePath: 
   XboxOnePackageEncryption: 0
+<<<<<<< HEAD
   XboxOnePackageUpdateGranularity: 2
+=======
+>>>>>>> origin/master
   XboxOneDescription: 
   XboxOneIsContentPackage: 0
   XboxOneEnableGPUVariability: 0
@@ -382,26 +444,34 @@ PlayerSettings:
   XboxOneAllowedProductIds: []
   XboxOnePersistentLocalStorageSize: 0
   intPropertyNames:
+<<<<<<< HEAD
   - Android::ScriptingBackend
   - Metro::ScriptingBackend
   - Standalone::ScriptingBackend
   - WP8::ScriptingBackend
+=======
+>>>>>>> origin/master
   - WebGL::ScriptingBackend
   - WebGL::audioCompressionFormat
   - WebGL::exceptionSupport
   - WebGL::memorySize
   - iOS::Architecture
+<<<<<<< HEAD
   - iOS::EnableIncrementalBuildSupportForIl2cpp
   - iOS::ScriptingBackend
   Android::ScriptingBackend: 0
   Metro::ScriptingBackend: 2
   Standalone::ScriptingBackend: 0
   WP8::ScriptingBackend: 2
+=======
+  - iOS::ScriptingBackend
+>>>>>>> origin/master
   WebGL::ScriptingBackend: 1
   WebGL::audioCompressionFormat: 4
   WebGL::exceptionSupport: 0
   WebGL::memorySize: 256
   iOS::Architecture: 0
+<<<<<<< HEAD
   iOS::EnableIncrementalBuildSupportForIl2cpp: 0
   iOS::ScriptingBackend: 0
   boolPropertyNames:
@@ -424,3 +494,15 @@ PlayerSettings:
   projectName: 
   organizationId: 
   cloudEnabled: 0
+=======
+  iOS::ScriptingBackend: 0
+  boolPropertyNames:
+  - WebGL::dataCaching
+  WebGL::dataCaching: 0
+  stringPropertyNames:
+  - WebGL::emscriptenArgs
+  - WebGL::template
+  WebGL::emscriptenArgs: 
+  WebGL::template: APPLICATION:Default
+  firstStreamedLevelWithResources: 0
+>>>>>>> origin/master
