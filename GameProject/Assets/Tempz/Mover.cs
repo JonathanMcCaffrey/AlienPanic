@@ -7,6 +7,6 @@ public class Mover : MonoBehaviour
 
 	void Start ()
 	{
-		rigidbody2D.velocity = transform.right * speed;
+		GetComponent<Rigidbody2D>().velocity = transform.right * speed;
 	}
 }

@@ -34,7 +34,7 @@ public class APDataDrawer : PropertyDrawer {
 			fixedLabel = nameString;
 		}
 
-		var stringList = fixedLabel.Split ('\\');
+		var stringList = fixedLabel.Split ('/');
 		fixedLabel = stringList[stringList.Length - 1];
 
 		GUI.Label (new Rect (rect.x, rect.y, rect.width * 0.60f, rect.height), fixedLabel);

@@ -10,6 +10,6 @@ public class WinOnCollision : MonoBehaviour {
 	void  OnCollisionEnter2D (Collision2D other) {
 		print ("WinOnCollision::OnCollisionEnter2D() " + other.gameObject.name);
 		
-		GameManager.instance.NewGameState(GameManager.instance.stateGameWon);
+		GameManager.instance.ChangeState(GameManager.instance.stateGameWon);
 	}
 }

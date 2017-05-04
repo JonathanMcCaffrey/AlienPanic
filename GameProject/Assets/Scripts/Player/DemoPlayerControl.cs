@@ -18,10 +18,10 @@ public class DemoPlayerControl : MonoBehaviour{
 		particleTimer += Time.deltaTime;
 		
 		if (gameObject.transform.position.y < levelCeiling) {
-			rigidbody2D.AddForce (new Vector2 (thrustForce.x, 0), ForceMode2D.Force);	// Add the horizontal force.
+			GetComponent<Rigidbody2D>().AddForce (new Vector2 (thrustForce.x, 0), ForceMode2D.Force);	// Add the horizontal force.
 			
 			if (movingUp) {
-				rigidbody2D.AddForce (new Vector2 (0, thrustForce.y), ForceMode2D.Force);	// Add the vertical force.
+				GetComponent<Rigidbody2D>().AddForce (new Vector2 (0, thrustForce.y), ForceMode2D.Force);	// Add the vertical force.
 				
 				if (particleTimer > 0.02f || (gameObject.transform.position.y > 10 && particleTimer > 0.01f)) {
 					particleTimer = 0.0f;
@@ -34,9 +34,11 @@ public class DemoPlayerControl : MonoBehaviour{
 				}
 			}
 		}
-		
+
+
+
 		// Ensure the player doesn't exceed the velocity constraints.
-		rigidbody2D.velocity = new Vector2(Mathf.Clamp(rigidbody2D.velocity.x, -maxSpeed.x, maxSpeed.x), Mathf.Clamp(rigidbody2D.velocity.y, -maxSpeed.y, maxSpeed.y));
+		GetComponent<Rigidbody2D>().velocity = new Vector2(Mathf.Clamp(GetComponent<Rigidbody2D>().velocity.x, -maxSpeed.x, maxSpeed.x), Mathf.Clamp(GetComponent<Rigidbody2D>().velocity.y, -maxSpeed.y, maxSpeed.y));
 	}
 	
 	/// <summary>

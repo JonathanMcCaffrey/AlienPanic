@@ -69,7 +69,6 @@ public class APChoiceSystem : MonoBehaviour {
 						assetList.Add (assetData);
 						
 						string fixedPath = localPath; 
-						fixedPath = fixedPath.Replace('\\', '/');
 						
 						var prefab = AssetDatabase.LoadAssetAtPath(fixedPath, typeof(GameObject)) as GameObject;
 						assetData.gameObject = prefab;
@@ -227,7 +226,11 @@ public class APChoiceSystem : MonoBehaviour {
 			if(!keyCodeList.ContainsKey(asset.keyCode)) {
 				var keyString = ((KeyCode)asset.keyCode).ToString();
 				var text = 
-					"\n\n\t[MenuItem( APGlobals.CommandPath + \"Hot Keys/" + keyString + " &_" + keyString + "\")]" +
+					"\n#if UNITY_EDITOR_OSX" +
+						"\n\t[MenuItem( APGlobals.CommandPath + \"Hot Keys/" + keyString + " #" + keyString.ToLower() + "\")]" +
+						"\n#else" +
+						"\n\t[MenuItem( APGlobals.CommandPath + \"Hot Keys/" + keyString + " &_" + keyString + "\")]" +
+						"\n#endif" +
 						"\n\tpublic static void SelectItem" + keyString + "() {" +
 						"\n\t\tEditorPrefs.SetInt (APGlobals.SelectedKey, (int)KeyCode." + keyString + "); " +
 						"\n\t\tEditorPrefs.SetInt (APGlobals.SelectedAssetNumber, APGlobals.HotKeySelectionEnabled);" +

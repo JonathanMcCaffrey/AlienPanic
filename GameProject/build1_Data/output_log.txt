@@ -1,0 +1,370 @@
+Initialize engine version: 5.1.3f1 (b0a23b31c3d8)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 9.0c [igdumdim32.dll 20.19.15.4331]
+    Renderer: Intel(R) HD Graphics 4600
+    Vendor:   Intel
+    VRAM:     2103 MB (via DXGI)
+    Caps:     Shader=30 DepthRT=1 NativeDepth=1 NativeShadow=1 DF16=1 INTZ=1 NULL=1 RESZ=1 SlowINTZ=0
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\savardl\Documents\Unity Projects\AlienPanic\GameProject\build1_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\savardl\Documents\Unity Projects\AlienPanic\GameProject\build1_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\savardl\Documents\Unity Projects\AlienPanic\GameProject\build1_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\savardl\Documents\Unity Projects\AlienPanic\GameProject\build1_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\savardl\Documents\Unity Projects\AlienPanic\GameProject\build1_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
+Loading C:\Users\savardl\Documents\Unity Projects\AlienPanic\GameProject\build1_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
+Platform assembly: C:\Users\savardl\Documents\Unity Projects\AlienPanic\GameProject\build1_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\savardl\Documents\Unity Projects\AlienPanic\GameProject\build1_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\savardl\Documents\Unity Projects\AlienPanic\GameProject\build1_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\savardl\Documents\Unity Projects\AlienPanic\GameProject\build1_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\savardl\Documents\Unity Projects\AlienPanic\GameProject\build1_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
+Loading C:\Users\savardl\Documents\Unity Projects\AlienPanic\GameProject\build1_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
+Platform assembly: C:\Users\savardl\Documents\Unity Projects\AlienPanic\GameProject\build1_Data\Managed\System.Core.dll (this message is harmless)
+- Completed reload, in  0.046 seconds
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+Platform assembly: C:\Users\savardl\Documents\Unity Projects\AlienPanic\GameProject\build1_Data\Managed\System.dll (this message is harmless)
+StateArtSample::StateUpdate() -- Starting art sample
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 4.410380 ms
+Additional Game Camera Deleted
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+
+Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 8709.
+Total: 1.352664 ms (FindLiveObjects: 0.292086 ms CreateObjectMapping: 0.194154 ms MarkObjects: 0.849317 ms  DeleteObjects: 0.016678 ms)
+
+Score:: Initialize() -- Loaded highscore: 890
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+StateNotSet::StateUpdate() -- Character found, changing state to stateGamePlaying
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Bird Created
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Bird Created
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Bird Destroyed
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Bird Destroyed
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+StateGameLost::StateUpdate() 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+The referenced script on this Behaviour is missing!
+ 
+(Filename:  Line: 1715)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 3.564911 ms
+
+Unloading 229 unused Assets to reduce memory usage. Loaded Objects now: 280.
+Total: 1.058867 ms (FindLiveObjects: 0.028225 ms CreateObjectMapping: 0.021810 ms MarkObjects: 0.265144 ms  DeleteObjects: 0.742832 ms)
+
+ResetGame:: MainMenu() -- Loading MainMenu
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Level 'MainMenu' (-1) couldn't be loaded because it has not been added to the build settings.
+To add a level to the build settings use the menu File->Build Settings...
+ 
+(Filename:  Line: 290)
+
+StateGameMenu::StateUpdate() 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.437060 ms
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 366.
+Total: 0.406269 ms (FindLiveObjects: 0.029935 ms CreateObjectMapping: 0.018389 ms MarkObjects: 0.346398 ms  DeleteObjects: 0.011118 ms)
+
+StateArtSample::StateUpdate() -- Starting art sample
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.827935 ms
+Additional Game Camera Deleted
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 8714.
+Total: 1.799989 ms (FindLiveObjects: 0.453311 ms CreateObjectMapping: 0.158659 ms MarkObjects: 1.170057 ms  DeleteObjects: 0.017533 ms)
+
+Score:: Initialize() -- Loaded highscore: 890
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+StateNotSet::StateUpdate() -- Character found, changing state to stateGamePlaying
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Bird Created
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Bird Created
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Bird Destroyed
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Bird Destroyed
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+StateGameLost::StateUpdate() 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+The referenced script on this Behaviour is missing!
+ 
+(Filename:  Line: 1715)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 3.336545 ms
+
+Unloading 229 unused Assets to reduce memory usage. Loaded Objects now: 280.
+Total: 1.040906 ms (FindLiveObjects: 0.037205 ms CreateObjectMapping: 0.021810 ms MarkObjects: 0.298929 ms  DeleteObjects: 0.681678 ms)
+
+ResetGame:: MainMenu() -- Loading MainMenu
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Level 'MainMenu' (-1) couldn't be loaded because it has not been added to the build settings.
+To add a level to the build settings use the menu File->Build Settings...
+ 
+(Filename:  Line: 290)
+
+StateGameMenu::StateUpdate() 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.436205 ms
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 366.
+Total: 0.426369 ms (FindLiveObjects: 0.028652 ms CreateObjectMapping: 0.017961 ms MarkObjects: 0.368208 ms  DeleteObjects: 0.010691 ms)
+
+StateArtSample::StateUpdate() -- Starting art sample
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.575620 ms
+Additional Game Camera Deleted
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 8714.
+Total: 1.839333 ms (FindLiveObjects: 0.459298 ms CreateObjectMapping: 0.155237 ms MarkObjects: 1.201703 ms  DeleteObjects: 0.021810 ms)
+
+Score:: Initialize() -- Loaded highscore: 890
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+StateNotSet::StateUpdate() -- Character found, changing state to stateGamePlaying
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Bird Created
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Bird Created
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Bird Destroyed
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Bird Destroyed
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+StateGameLost::StateUpdate() 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+The referenced script on this Behaviour is missing!
+ 
+(Filename:  Line: 1715)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 3.669686 ms
+
+Unloading 229 unused Assets to reduce memory usage. Loaded Objects now: 280.
+Total: 1.005411 ms (FindLiveObjects: 0.030790 ms CreateObjectMapping: 0.021810 ms MarkObjects: 0.297646 ms  DeleteObjects: 0.653880 ms)
+
+ResetGame:: MainMenu() -- Loading MainMenu
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Level 'MainMenu' (-1) couldn't be loaded because it has not been added to the build settings.
+To add a level to the build settings use the menu File->Build Settings...
+ 
+(Filename:  Line: 290)
+
+StateGameMenu::StateUpdate() 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.431929 ms
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 366.
+Total: 0.439626 ms (FindLiveObjects: 0.028225 ms CreateObjectMapping: 0.017533 ms MarkObjects: 0.382749 ms  DeleteObjects: 0.010263 ms)
+
+StateArtSample::StateUpdate() -- Starting art sample
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.509761 ms
+Additional Game Camera Deleted
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 8714.
+Total: 1.808542 ms (FindLiveObjects: 0.456305 ms CreateObjectMapping: 0.156948 ms MarkObjects: 1.177327 ms  DeleteObjects: 0.017106 ms)
+
+Score:: Initialize() -- Loaded highscore: 890
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+StateNotSet::StateUpdate() -- Character found, changing state to stateGamePlaying
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Bird Created
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Bird Created
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Bird Destroyed
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Bird Destroyed
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+StateGameLost::StateUpdate() 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+The referenced script on this Behaviour is missing!
+ 
+(Filename:  Line: 1715)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 4.170895 ms
+
+Unloading 229 unused Assets to reduce memory usage. Loaded Objects now: 280.
+Total: 1.012681 ms (FindLiveObjects: 0.023093 ms CreateObjectMapping: 0.021810 ms MarkObjects: 0.302777 ms  DeleteObjects: 0.664144 ms)
+
+ResetGame:: MainMenu() -- Loading MainMenu
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Level 'MainMenu' (-1) couldn't be loaded because it has not been added to the build settings.
+To add a level to the build settings use the menu File->Build Settings...
+ 
+(Filename:  Line: 290)
+
+StateGameMenu::StateUpdate() 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.426797 ms
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 366.
+Total: 0.449890 ms (FindLiveObjects: 0.029080 ms CreateObjectMapping: 0.017961 ms MarkObjects: 0.391729 ms  DeleteObjects: 0.010691 ms)
+
+StateArtSample::StateUpdate() -- Starting art sample
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.519170 ms
+Additional Game Camera Deleted
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 8714.
+Total: 1.890224 ms (FindLiveObjects: 0.457588 ms CreateObjectMapping: 0.157376 ms MarkObjects: 1.258153 ms  DeleteObjects: 0.016678 ms)
+
+Score:: Initialize() -- Loaded highscore: 890
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+StateNotSet::StateUpdate() -- Character found, changing state to stateGamePlaying
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Bird Created
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Bird Created
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Bird Destroyed
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Bird Destroyed
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:get_transform ()
+  at DroidMotion.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+StateGameLost::StateUpdate() 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+The referenced script on this Behaviour is missing!
+ 
+(Filename:  Line: 1715)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 3.720576 ms
+
+Unloading 229 unused Assets to reduce memory usage. Loaded Objects now: 280.
+Total: 1.151240 ms (FindLiveObjects: 0.059016 ms CreateObjectMapping: 0.025659 ms MarkObjects: 0.386597 ms  DeleteObjects: 0.678684 ms)
+

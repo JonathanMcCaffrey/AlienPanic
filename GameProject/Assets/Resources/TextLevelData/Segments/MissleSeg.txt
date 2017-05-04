@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<node xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" text="PlacementAssets" x="0" y="0" z="0">
+  <children>
+    <child text="Ceilings" x="0" y="0" z="0">
+      <children />
+    </child>
+    <child text="Decor" x="0" y="0" z="0">
+      <children />
+    </child>
+    <child text="Floors" x="0" y="0" z="0">
+      <children>
+        <child text="Floor_MetalRock1" x="0" y="0" z="501">
+          <children />
+        </child>
+        <child text="Floor_MetalRock1" x="3" y="0" z="501">
+          <children />
+        </child>
+        <child text="Floor_MetalRock1" x="6" y="0" z="501">
+          <children />
+        </child>
+        <child text="Floor_MetalRock1" x="9" y="0" z="501">
+          <children />
+        </child>
+        <child text="Floor_MetalRock1" x="12" y="0" z="501">
+          <children />
+        </child>
+        <child text="Floor_MetalRock1" x="18" y="0" z="501">
+          <children />
+        </child>
+        <child text="Floor_MetalRock1" x="15" y="0" z="501">
+          <children />
+        </child>
+        <child text="Floor_RockGrateL" x="21" y="0" z="501">
+          <children />
+        </child>
+        <child text="Floor_MetalRock2" x="30" y="0" z="501">
+          <children />
+        </child>
+        <child text="Floor_MetalRock2" x="33" y="0" z="501">
+          <children />
+        </child>
+        <child text="Floor_MetalRock2" x="39" y="0" z="501">
+          <children />
+        </child>
+        <child text="Floor_MetalRock2" x="36" y="0" z="501">
+          <children />
+        </child>
+        <child text="Floor_Rock" x="0" y="18" z="501">
+          <children />
+        </child>
+        <child text="Floor_Rock" x="9" y="18" z="501">
+          <children />
+        </child>
+        <child text="Floor_Rock" x="18" y="18" z="501">
+          <children />
+        </child>
+        <child text="Floor_Rock" x="27" y="18" z="501">
+          <children />
+        </child>
+      </children>
+    </child>
+    <child text="Lights" x="0" y="0" z="0">
+      <children />
+    </child>
+    <child text="Misc" x="0" y="0" z="0">
+      <children>
+        <child text="Coin" x="27" y="6" z="501">
+          <children />
+        </child>
+     
+        <child text="Coin" x="27" y="9" z="501">
+          <children />
+        </child>
+        <child text="Coin" x="18" y="12" z="501">
+          <children />
+        </child>
+      </children>
+    </child>
+    <child text="Objects" x="0" y="0" z="0">
+      <children />
+    </child>
+    <child text="Sounds" x="0" y="0" z="0">
+      <children />
+    </child>
+    <child text="Walls" x="0" y="0" z="0">
+      <children />
+    </child>
+  </children>
+</node>
